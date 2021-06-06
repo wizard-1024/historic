@@ -1,0 +1,22 @@
+# Make PWDGEN for Mingw32 GNU C/C++ v2.95.2 (Microsoft Windows, 32-bit)
+
+# $Id: makefile.mgw 1.1 2000/10/07 19:10:44 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+#
+# This file is part of project PWDGEN.
+#
+
+TARGET = pwdgen
+
+#all: $(TARGET).exe
+
+c_flags = -ansi -D_WIN32
+
+$(TARGET).exe:  $(TARGET).c
+	gcc  $(c_flags) -o $(TARGET).exe $(TARGET).c
+
+clean:
+	del $(TARGET).exe
+  

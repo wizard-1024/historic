@@ -1,0 +1,19 @@
+WSPING32.ZIP is a distribution package of 
+Windows Sockets PING 32-bit implementation.
+
+This archive contains the following files:
+COPYING        -  GNU General Public License (GPL)
+WSPING32.TXT   -  this file!
+WSPING32.C     -  source code (multiplatform version)
+WSPING32.MAK   -  Win32 make file
+WSPING32.MDP   -  Win32 project file
+WSPING32.EXE   -  Win32 executable code
+ICMP.LIB       -  Win32 wrapper library for ICMP.DLL
+ICMPAPI.H      -  Win32 ICMP Echo Request API
+ICEXPORT.H     -  IP public definitions
+
+All software is distributed under GNU GPL (see COPYING for details).
+Any comments and notes are welcome.
+
+Dmitry Stefankov  (dstef@nsl.ru, wizard@radio-msu.net)
+November, 1998

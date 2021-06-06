@@ -1,0 +1,34 @@
+#
+# "$Id: makefile.dj 1.1 2003/01/27 20:11:57 dstef Exp dstef $"
+#
+
+PROJECT = atapicd
+
+CC = gcc
+CFLAGS = -c -x c++ -s
+INCLUDEPATH = $(INCLUDE)
+LIBPATH = $(LIB)
+LINK = gcc
+LFLAGS = -s
+
+.cpp.o:
+	$(CC) $(CFLAGS) -o $@ $<
+
+HPP_DEPENDENCIES = sb.hpp inth.hpp fproto.hpp extern.hpp compile.hpp \
+                   cdrom.hpp atapicd.hpp ata.hpp atapi.hpp
+
+CPP_DEPENDENCIES = output.cpp sb.cpp main.cpp inth.cpp info.cpp ata.cpp \
+                   data.cpp misc.cpp audio.cpp atapicd.cpp atapi.cpp
+
+OBJ_DEPENDENCIES = data.o sb.o output.o audio.o ata.o inth.o \
+                   misc.o info.o atapi.o atapicd.o main.o
+
+EXE_DEPENDENCIES = $(OBJ_DEPENDENCIES)
+
+$(PROJECT).exe: $(OBJ_DEPENDENCIES)
+	$(LINK) $(LFLAGS) -o $(PROJECT).exe *.o -lstdcxx
+
+clean:
+	del *.exe
+	del *.o
+                         

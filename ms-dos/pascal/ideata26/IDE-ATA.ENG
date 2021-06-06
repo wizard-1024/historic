@@ -1,0 +1,170 @@
+IDE-ATA Drive Identification Program v2.60
+(August, 1997)
+
+This program was designed to get a lot useful info from ATA standard
+feature - Drive Identify (Note it works also for most ESDI drives).
+But many good features were added over last years of development.
+
+The brief description of features follows in alphabetic order:
+
+1. Paging to scroll over program output  (switch -lines)
+   It is useful sometimes to disable paging and write output info to file.
+   Sample:  IDE-ATA  -lines:0 >ide-ata.out
+   
+2. Write Identify Drive Sector to binary file (switches -fa, -fd)
+   If you have some troubles about your drive capabilities then you can
+   write drive identification sector to file (its length is 512 bytes)
+   and learn it yourself.
+   Sample:  IDE-ATA -fa+ -fd:sector.bin
+   Please note in last sample the program will automatically overwrite
+   the existing file and if you have some ATA drives the identification
+   sector will be written only for the last found drive. To avoid this
+   use asking method:
+   Sample:  IDE-ATA -fa+
+   
+3. Emulate Identify Drive Command by reading of binary file
+   (switches -fe, -fd)
+   This is unique feature but useful for diagnostic, service and support.
+   Really, it is just a reverse feature to switches -fa.
+   Sample:  IDE-ATA  -fe+  -fd:mysector.bin
+   
+4. Using of delay mechanism (switch -delay)
+   It will decrease a performance everywhere in program almost linearly.
+   Usually you don't need this switch because IDE-ATA has very reliable
+   and optimized timing algorithm.
+   Sample:  IDE-ATA  -delay:3
+   
+5. Display built-in ROM BIOS hard drive parameters (switch -romtype)
+   In old times it was extremely useful to look what drives
+   your PC computer can be supported. Now BIOS is so clever that 
+   you already forget about this.
+   Sample:  IDE-ATA  -romtype:+
+   
+6. Find a matching parameters for your HDD CMOS configuration
+   (switches -all, -max)
+   Searches more matching combination of cylinders/heads/sectors
+   for your drive. The best fit combinations are detected by -max
+   and all possible combinations are found by switch -all.
+   Sample:  IDE-ATA  -max:+
+   
+7. Make a HDD controller reset if it is necessary (switch -reset)
+   Some older drives can be unreliable during read of identification sector
+   therefore it added this switch.
+   Sample:  IDE-ATA  -reset+
+   
+8. Debugging output for additional diagnostic (switch -debug)
+   It is useful for system software developers to look register contents.
+   Sample:  IDE-ATA  -debug+
+   
+9. Measure a time transfer of identification sector (switch -time)
+   This time is correct always because it depends on hardware and
+   therefore system drivers implementation and software cache cannot affect
+   this time except very smart IDE intelligent controllers.
+   In general case you must get the common PC performance bus for your drive.
+   Sample:  IDE-ATA  -time:+
+   
+10.Use 32-bit transfer mode (switch -32bit)
+   Usually 16-bit transfers are used by system software, but now
+   32-bit software world is in progress.
+   Sample:  IDE-ATA  -32bit+
+   
+11.Can select any drive on any 4 standard controllers to identify
+   (switches -ds0,..,-ds7)
+   The following example disables primary controller looking and
+   tertiary controller searching.
+   Sample:  IDE-ATA  -ds0-  -ds1-  -ds5+  -ds6+
+   
+12.Use interrupt method to transfer a sector (switches -int0,..,-int3)
+   Default method to read identification sector is the polling method
+   but it's very useful to look how interrupt hardware logic works.
+   The following sample enables the interrupt method for primary controller
+   but note that you must provide the software interrupt number but not 
+   the interrupt request (IRQ) number.
+   Sample:  IDE-ATA  -int:$76
+   
+13.Display only vital information (switch -dvi)
+   Short form of output information with disabled paging.
+   Sample:  IDE-ATA  -dvi+
+   
+14.Use old head/cylinder/sector MFM BIOS algorithm for drive parameters
+   detection (switch -mfm)
+   Historical feature: no need for modern drives.
+   Sample:  IDE-ATA  -mfm+
+   
+15.Workaround switch for some versions of popular Triones drivers
+   (switch -triones)
+   The problem is explained in the source code more detail.
+   If you have a problem to run IDE-ATA with Triones DOS drivers
+   try this switch.
+   Sample:  IDE-ATA  -triones+
+   
+16.User defined addresses and interrupt to identify a drive
+   (switches -base,-status,-intu)
+   This is a very useful for non-standard ATA implementations.
+   You must provide both base and status register but really only base
+   value will be used except case when you will resetting drive by switch
+   -reset. Switch -base means base I/O register for IDE controller and
+   switch -status means alternate status register for IDE drive (but really,
+   of course, the control register because the alternate status register 
+   is the next).
+   The following table lists the default values:
+   controller    base    status   interrupt
+   primary       $1F0    $3F6     $76 (IRQ14)
+   secondary     $170    $376     $77 (IRQ15), or maybe $72 (IRQ10)
+   tertiary      $1E8    $3EE     $74 (IRQ12), or maybe $73 (IRQ11)
+   quaternary    $168    $36E     $72 (IRQ10), or maybe $71 (IRQ9)
+   The following example forces the program to display info only about
+   the user-defined drive using the interrupt method.
+   Sample:  IDE-ATA -ds0- -ds1- -ds2- -ds3- -base:$168 -status:$36E -intu:$72
+   
+17.And, of course, short online help is available for user 
+   (switches -?, -help)
+   Sample:  IDE-ATA  -?
+   
+18.Correct calculations in both world standards: binary and decimal
+   (How to count a MegaByte? IDE-ATA makes it for you!)
+
+11.Enable to unmask IRQ for selected controller (switch -irq0,..,-irq3,-irqu)
+   In some cases the PC system software (for example, BIOS) do not unmask
+   the corresponding IRQs for the potential drives and therefore the interrupt
+   method will be useless. If you use this switch a program will unmask
+   the necessary IRQ bit but only during the program work.
+   Sample:  IDE-ATA  -int0:$76 -irq0:14
+
+
+
+The program does not make any destructive actions. It only reads the
+identification drive sector (512 bytes) and displays this sector contents
+according ATA specifications (ATA-3 Release 6 was last). Note: if anybody
+knows more later specifications please send me these files or papers or
+give the exact pointers how to get them.
+Program can read and write this sector to/from a file.
+Two classic methods are used to hardware interaction: polling (default)
+and interrupt. The timing algorithm was carefully tested on many ATA drives
+and PC computers, but if you are in doubt then the source code will be
+released in the archive DSUTIL20.ZIP soon. The source code was excluded
+because most users no need it.
+
+The program must work in most DOS versions, MS-DOS box for Microsoft
+Windows 3.1, MS-DOS mode for Microsoft Windows 95. Due the direct hardware
+access this program don't work in a MS-DOS box for the Microsoft Windows NT
+and maybe other emulation environments. Of course, IDE-ATA don't need any
+help from BIOS and any other hardware driver to read IDE identify drive sector.
+In most cases it is enough to run IDE-ATA without any switches.
+
+The very reliable method to use this program is the following:
+load the old MS-DOS from the system diskette and run IDE-ATA program.
+Anyway, you will use this program as IS.
+
+Just the same program but for ATAPI CD-ROM drives called ATAPI-CD also
+will be available on Internet soon.
+
+Please note,
+I don't support my old DOS software (IDE-ATA and ATAPICD are supported because
+they are best-world in their class) except DebugKit that I made for
+real-time systems debugging (including all DOS and Windows platforms).
+
+Dmitry V. Stefankov,
+Freelance Software Engineer
+e-mail: wizard@radio-msu.net
+Russia, Moscow, +007 (095) 9446304

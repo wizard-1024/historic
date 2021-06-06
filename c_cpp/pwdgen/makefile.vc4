@@ -1,0 +1,23 @@
+# Make PWDGEN for Microsoft Visual C/C++ v4.2 (Microsoft Windows, 32-bit)
+
+# $Id: makefile.vc4 1.1 2000/10/07 19:10:57 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+#
+# This file is part of project PWDGEN.
+#
+
+TARGET = pwdgen
+
+#all: $(TARGET).exe
+
+c_flags = -D_WIN32 -D_MSVC4
+
+$(TARGET).exe:  $(TARGET).c
+	cl  $(c_flags) /Fe$(TARGET).exe /Tc$(TARGET).c
+
+clean:
+        del $(TARGET).obj
+	del $(TARGET).exe
+  

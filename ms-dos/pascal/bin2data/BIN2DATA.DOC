@@ -1,0 +1,80 @@
+* File Name:            BIN2DATA.DOC
+* Date:                 1 June 1994
+* Version:              1
+* Updates count:        0
+* Purpose:              Documentation for BIN2DATA.PAS
+* Author:               Dmitry Stefankov
+* Format:               Simplified form of ISO/DIS 6592 standard
+
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:                   BIN2DATA.PAS
+Version:                        1
+Release:                        03
+Date:                           2 September 1997
+History:                        Written for internal use of author
+                                (for BIOS ToolKit)
+
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:                 no specified
+Supply order:                   no specified
+Purpose:                        formats converter
+Area of usage:                  utility program for OS
+Common knowledges:              no specified
+Problem description:            convert binary file to 
+                                its PC assembler/pascal/c file
+Additional knowledges:          no specified
+Agreements and terminology:     standard IBM PC terminology
+Algorithms and principles:      described in source code
+Function:                       single
+Characteristics:                application (utility),
+                                special class (converters)
+Restrictions:                   (1) Intel computer architecture only 
+                                (2) see hardware/software requirements
+Errors processing:              described in source code
+Data safety/protection:         described in source code
+Data for application:           input:  any binary file
+                                output: MASM compatible file
+Programming language:           Turbo Pascal (Version 7.0+)
+Instructions to compile:        TPC  bin2data.pas , where
+                                TPC is a Turbo Pascal command-line compiler
+Requirements for software:      operating system:  PC/MS-DOS (Version 3.0+)
+                                other:             no specified
+Requirements for hardware:      computer:  IBM PC, IBM PS/2 or compatible 
+                                memory:    minimum 128 Kbytes
+                                other:     no specified
+Example to run:                 bin2data.exe in.bin out.pas 16 7 pascal, where
+                                <in.bin>   -> input filename
+                                <out.pas>  -> output filename
+                                <16>       -> number bytes per output line
+                                <7>        -> ASCII set (7-bit)
+                                <pas>      -> use pascal output format
+Miscellaneous:                  none specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:      no specified
+Program structure:              single module
+Program listing:                source code available
+Data techical description:      no specified
+Control commands:               no specified
+Work methods:                   batch mode
+Messages:                       described in source code
+Setup:                          no required
+Adaptation:                     no specified
+Tests:                          no specified
+Service:                        no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                      read license agreement
+Changes to source code:         read license agreement
+Serial number:                  no specified
+Price:                          read license agreement
+Other:                          nothing

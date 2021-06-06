@@ -1,0 +1,25 @@
+# Make TESTCRC for Microsoft Visual C/C++ v4.2 for Win32
+
+# $Id: makefile.vc4 1.3 2000/01/21 20:26:38 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project TESTCRC.
+#
+
+TARGET = testcrc
+
+#all: $(TARGET).exe
+
+CC     = cl
+CFLAGS = -D_WIN32 -D_MSVC4 -O2 -WX -W3 /TP
+MAKEFILE = makefile.vc4
+
+$(TARGET).exe:  $(TARGET).c  $(MAKEFILE)
+	$(CC) $(CFLAGS) $(TARGET).c
+
+clean:
+        del $(TARGET).obj
+	del $(TARGET).exe

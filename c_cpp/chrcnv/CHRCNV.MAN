@@ -1,0 +1,183 @@
+.\" Copyright (c) 1985, 1991, 1993
+.\"	The Regents of the University of California.  All rights reserved.
+.\"
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer.
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer in the
+.\"    documentation and/or other materials provided with the distribution.
+.\" 3. All advertising materials mentioning features or use of this software
+.\"    must display the following acknowledgement:
+.\"	This product includes software developed by the University of
+.\"	California, Berkeley and its contributors.
+.\" 4. Neither the name of the University nor the names of its contributors
+.\"    may be used to endorse or promote products derived from this software
+.\"    without specific prior written permission.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+.\" SUCH DAMAGE.
+.\"
+.\"     @(#)chrcnv.1	8.2 (Berkeley) 11/16/98
+.\"	$Id: chrcnv.man 1.3 2000/01/22 05:31:07 dstef Exp dstef $
+.\"
+.Dd November 16, 1998
+.Dt CHRCNV 1
+.Os BSD 4.4
+.Sh NAME
+.Nm chrcnv
+.Nd cyrillic
+.Tn converter
+for files
+.Sh SYNOPSIS
+.Nm chrcnv
+.Op Fl a
+.Op Fl c
+.Op Fl d
+.Op Fl e Ar mask
+.Op Fl f
+.Op Fl g
+.Op Fl i Ar mask
+.Op Fl k
+.Op Fl l Ar inputencoding
+.Op Fl m Ar resmemsiz
+.Op Fl o Ar outdir
+.Op Fl p
+.Op Fl r Ar outputencoding
+.Op Fl s
+.Op Fl v
+.Op Fl w
+.Op Fl z
+.Ar dirname
+.Sh DESCRIPTION
+.Nm Chrcnv
+convertes the file(s) from one encoding to other encoding.
+The primary purpose is to support the miscellaneous russian encodings.
+All conversions are made on a
+.Nm char-to-char
+translation basis.
+.Nm Chrcnv
+is also automatically detected an encoding of input text
+in most cases.
+.Nm Chrcnv
+also recursively traverses through directories.
+Manipulations with 
+.Ar charset
+field for 
+.Ar HTML
+documents are provided
+additional possibilities for Web-administrators.
+.Nm Chrcnv
+works by the following way: reads input, translates it,
+processes
+.Ar HTML
+document (
+.Ar charset
+field operations ), and writes output.
+.Sh OPTIONS
+The options are as follows:
+.Bl -tag -width Ds
+.It Fl a
+Auto detection of input encoding for file.
+.It Fl c
+Replace
+.Ar charset
+accoring output encoding type.
+.It Fl d
+Debugging level.
+.It Fl e Ar mask
+Exclude file(s) for search, wildcards are allowed.
+.It Fl f
+Print full filename.
+.It Fl g
+Ignore case in filenames.
+.It Fl i Ar mask
+Include file(s) for search, wildcards are allowed.
+.It Fl k
+Only detection of input encoding for file (no translation).
+.It Fl l Ar inputencoding
+  0=no translation (default)
+  1=windows-1251 (russian)
+  2=koi8-r (russian)
+  3=cp-866 (russian)
+  4=iso-8859-5 (russian)
+  5=mac (russian)
+.It Fl m Ar resmemsiz
+Reserve memory to replace operations in bytes
+(default=1024, min=1, max=8192).
+.It Fl o Ar outdir
+Directory to store the output file(s).
+.It Fl p
+Add charset accoring output encoding type
+.It Fl r Ar outputencoding
+Same as input encoding type.
+.It Fl s
+Search also subdirectories.
+.It Fl v
+Verbose output.
+.It Fl w
+Wipe
+.Ar charset
+field in
+.Ar HTML headers.
+.It Fl z
+Disable case-insensitive search.
+.It dirname
+Directory name to search.
+.Sh NOTES
+.Nm Chrcnv
+processes switches for charset in the following order:
+.br
+switch
+.Ar -w
+, switch
+.Ar -c
+, switch 
+.Ar -p .
+.br
+This is a defined order by design and it cannot be changed.
+.Sh EXAMPLES
+In the following example 
+.Nm chrcnv 
+will be converted
+.Ar HTML
+files, automatically detecting input text encoding, to russian encoding
+KOI8. For all the checked
+.Ar HTML
+documents
+.Ar charset
+field will be
+replaced by or added KOI8-r
+.Ar charset
+field.
+Output catalog will be
+contain just the same tree of subdirectories as input catalog.
+
+.Nm chrcnv 
+.Ar -s -a -r 2 -w -p -i *.html -o 
+.Ar /var/tmp \  /home/user
+
+In the short following example
+.Nm chrcnv
+will be only detected
+the input encoding for all matching files in current directory.
+
+.Nm   chrcnv 
+.Ar -a -k -i *.txt
+.Sh HISTORY
+.Nm
+command appeared in November 1998
+.Sh AUTHOR
+.Tn Dmitry V. Stefankov
+(dstef@nsl.ru, dima@mccbn.ru)

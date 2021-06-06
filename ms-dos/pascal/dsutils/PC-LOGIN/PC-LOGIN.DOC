@@ -1,0 +1,75 @@
+* File Name:            PC-LOGIN.DOC
+* Date:                 28 June 1994
+* Version:              1
+* Updates count:        0
+* Purpose:              Documentation for PC-LOGIN.PAS
+* Author:               Dmitry Stefankov
+* Format:               Simplified form of ISO/DIS 6592 standard
+
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:                   PC-LOGIN.PAS
+Version:                        1
+Release:                        02
+Date:                           2 August 1997
+History:                        Written for internal use of author
+                                (Collect statistics of my working hours)
+
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:                 no specified
+Supply order:                   no specified
+Purpose:                        system statistics
+Area of usage:                  utility program for OS
+Common knowledges:              no specified
+Problem description:            PC system user login
+Additional knowledges:          no specified
+Agreements and terminology:     standard IBM PC terminology
+Algorithms and principles:      described in source code
+Function:                       single
+Characteristics:                application (utility),
+                                special class (system-administration)
+Restrictions:                   (1) Intel computer architecture only 
+                                (2) see hardware/software requirements
+Errors processing:              described in source code
+Data safety/protection:         described in source code
+Data for application:           input:  text file (PC std)
+                                output: text file (PC std)
+Programming language:           Turbo Pascal (Version 6.0+)
+Instructions to compile:        TPC  pc-login.pas , where
+                                TPC is a Turbo Pascal command-line compiler
+Requirements for software:      operating system:  PC/MS-DOS (Version 3.0+)
+                                other:             no specified
+Requirements for hardware:      computer:  IBM PC, IBM PS/2 or compatible 
+                                memory:    minimum 192 Kbytes
+                                other:     no specified
+Example to run:                 pc-login.exe userlog.err , where
+                                <userlog.err>   -> sample PC login filename
+Miscellaneous:                  none specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:      no specified
+Program structure:              single module
+Program listing:                source code available
+Data techical description:      no specified
+Control commands:               no specified
+Work methods:                   batch mode
+Messages:                       described in source code
+Setup:                          no required
+Adaptation:                     no specified
+Tests:                          no specified
+Service:                        no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                      read license agreement
+Changes to source code:         read license agreement
+Serial number:                  no specified
+Price:                          read license agreement
+Other:                          nothing

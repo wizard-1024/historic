@@ -1,0 +1,18 @@
+RAS2LOG.ZIP is a distribution package of 
+program reading eventlog for Remote Access Service (RAS)
+and writing this log in HTML file.
+
+This archive contains the following files:
+COPYING       -  GNU General Public License (GPL)
+RAS2LOG.TXT   -  this file!
+RAS2LOG.C     -  source code (multiplatform version)
+RAS2LOG.MAK   -  Win32 make file
+RAS2LOG.MDP   -  Win32 project file
+RAS2LOG.EXE   -  Win32 executable code
+
+
+All software is distributed under GNU GPL (see COPYING for details).
+Any comments and notes are welcome.
+
+Dmitry Stefankov  (dstef@nsl.ru, wizard@radio-msu.net)
+November, 1998

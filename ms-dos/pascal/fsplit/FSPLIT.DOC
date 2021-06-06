@@ -1,0 +1,82 @@
+* File Name:            FSPLIT.DOC
+* Date:                 18 October 1993
+* Version:              1
+* Updates count:        1
+* Purpose:              Documentation for FSPLIT.PAS
+* Author:               Dmitry Stefankov
+* Format:               Simplified form of ISO/DIS 6592 standard
+
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:                   FSPLIT.PAS
+Version:                        1
+Release:                        23
+Date:                           2 Septmber 1997
+History:                        Written for internal use of author
+                                (for BIOS ToolKit)
+
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:                 no specified
+Supply order:                   no specified
+Purpose:                        file(s) image(s) manipulation
+Area of usage:                  utility program for OS
+Common knowledges:              no specified
+Problem description:            split one file to two files using interleave
+                                factor
+Additional knowledges:          no specified
+Agreements and terminology:     standard IBM PC terminology
+Algorithms and principles:      described in source code
+Function:                       single
+Characteristics:                application (utility),
+                                special class (file-manipulation)
+Restrictions:                   (1) Intel computer architecture only 
+                                (2) see hardware/software requirements
+Errors processing:              described in source code
+Data safety/protection:         described in source code
+Data for application:           input:  two files (any)
+                                output: one file (just merged)
+Programming language:           Turbo Pascal (Version 7.0+)
+Instructions to compile:        TPC  fsplit.pas , where
+                                TPC is a Turbo Pascal command-line compiler
+Requirements for software:      operating system:  PC/MS-DOS (Version 3.0+)
+                                other:             no specified
+Requirements for hardware:      computer:  IBM PC, IBM PS/2 or compatible 
+                                memory:    minimum 192 Kbytes
+                                other:     no specified
+Example to run:                 fmerge.exe in.spl out.evn out.odd  2 4 , where
+                                <in.spl>   -> input filename 
+                                <out.evn>  -> output filename (even)
+                                <out.odd>  -> output filename (odd)
+                                <2>        -> number of bytes for even part
+                                              on each pass
+                                <4>        -> number of bytes for odd part
+                                              on each pass
+Miscellaneous:                  none specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:      no specified
+Program structure:              single module
+Program listing:                source code available
+Data techical description:      no specified
+Control commands:               no specified
+Work methods:                   batch mode
+Messages:                       described in source code
+Setup:                          no required
+Adaptation:                     no specified
+Tests:                          no specified
+Service:                        no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                      read license agreement
+Changes to source code:         read license agreement
+Serial number:                  no specified
+Price:                          read license agreement
+Other:                          nothing

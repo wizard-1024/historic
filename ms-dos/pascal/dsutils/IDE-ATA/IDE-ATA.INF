@@ -1,0 +1,49 @@
+File name: IDEATA26.ZIP
+One line description: IDE-ATA Drive Identification program v2.60
+Replaces:
+Suggested Garbo directory: /pc/diskutil
+Uploader name & email: Dmitry V. Stefankov, dima@mccbn.ru
+Author or company: Dmitry V. Stefankov
+Email address: wizard@radio-msu.net
+Surface address: 4-2-30, Isakowskogo Str., Moscow, 123181, Russia
+Special requirements: NO
+Shareware payment required from private users: NO
+Shareware payment required from corporates: NO
+Distribution limitations: NO
+Garbo CD-ROM distribution allowed without preconditions: YES
+Demo: NO
+Nagware: NO
+Self-documenting: YES
+External documentation included: YES / 7 KB
+Source included: NO
+Size: 24 KB
+10 lines description:
+IDE-ATA Drive Identification Program v2.60 displays a lot
+of useful information about ATA drive(s) attached to PC computer.
+ATA-1, ATA-2, ATA-3 specifications are supported as it is recommended
+in these standards. Useful features: support of 4 standard controllers,
+user-defined hardware addresses to find ATA drive, polling/interrupt
+methods to detect ATA drive, read/write identification sector from/to file
+and much other.
+Long description:
+IDE-ATA Drive Identification Program v2.60 is the well-known
+information utility about attached ATA drive(s) to PC computer.
+This program is displayed the identification information according
+the ATA-1, ATA-2, ATA-3 specifications. Program is used the polling
+and/or interrupt method to talk directly with hardware. Includes
+the following useful features:
+Support of all 4 standard HDD controllers;
+User-defined hardware addresses to detect attached ATA drive(s);
+16/32-bit sector transfer;
+Evaluation of HDD controller performance (as PC bus performance);
+Read/Write identification sector from/to file;
+Reliable timing algorithm to detect ATA hardware;
+Display built-in ROM BIOS HDD parameters table;
+Find matching CMOS parameters for hard disk drive (HDD);
+Debugging diagnostic;
+Binary and decimal arithmetic for purist of any kind;
+Online help;
+Friendly simple character-mode interface no using of heaven modern GUI;
+Reset of HDD controller if necessary;
+Short/long form to output the information if necessary;
+And other useful features.

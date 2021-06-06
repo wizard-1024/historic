@@ -1,0 +1,32 @@
+Compilation instructions.
+
+
+The following platforms were used and tested:
+
+1.1 MS-DOS environment, Borland C/C++ v3.1
+       make -f makefile.bcc
+1.2 MS-DOS environment, Microsoft Visual C/C++ v1.52
+       nmake -f makefile.msc
+1.3 MS-DOS environment, DJGPP C/C++ v2.95.2
+       make -f makefile.dj
+
+2.1 Win32 environment, Microsoft Visual C++ v2.2, 4.2
+       make -f makefile.vc4
+2.2 Win32 environment, Mingw32 GNU C/C++ v2.95.2
+       make -f makefile.mgw
+
+3.1 FreeBSD Unix 2.2.2, GNU C/C++ 2.7.1
+3.2 FreeBSD UNIX 3.3, GNU C/C++ 2.8.1
+       make -f makefile.bsd
+3.3 RedHat Linux 6.1, GNU C/C++ 2.91.66
+       make -f makefile.lnx
+Maybe, make these steps for UNIX:
+# tr -d "\r" <makefile.bsd >makefile
+# rm makefile.bsd
+# mv makefile makefile.bsd
+
+4.1 BeOS v.4.5 GNU C/C++ 2.9-beos-99r1beta
+       make -f makefile.beo
+
+
+### $Id: build.txt 1.2 2000/01/21 20:51:11 dstef Exp dstef $

@@ -1,0 +1,8 @@
+#! /bin/sh
+/usr/sbin/vidcontrol green
+/usr/sbin/vidcontrol  -b red
+e="`echo e | tr e '\033'`"
+seq="${e}[2J${e}[0;0H"
+cat << END_ME
+$seq
+END_ME

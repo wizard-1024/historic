@@ -1,0 +1,3 @@
+#! /bin/sh
+lynx /usr/share/doc/en/articles/new-users/index.html
+

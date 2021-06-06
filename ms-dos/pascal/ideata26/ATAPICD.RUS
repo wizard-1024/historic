@@ -1,0 +1,245 @@
+ATAPI CD-ROM Drive Identification Program v2.01
+(August, 1997)
+
+
+Эта программа была разработана для получения служебной информации
+о параметрах CD-ROM привода в соответствии со стандартом ATA
+при обращении к функциям:
+(1) Identify Device  (ATAPI command);
+(2) Drive Inquiry    (ATAPI command);
+(3) Mode Sense       (ATAPI command).
+
+
+Ключи управления программой :
+
+1. Задание количества строк для страничного вывода на экран
+  ( -lines:<количество строк на странице экрана> )
+  Иногда удобно запретить страничный просмотр, например, при записи отчета
+  программы в файл.
+Пример: atapicd -lines:0 >atapicd.out
+
+2. Программный сброс контроллера диска при необходимости (ключ -sreset).
+Ключ рекомендуется для приводов, обращение программы к которым  дает сбои.
+Пример: atapicd -sreset:1
+
+3. Отладочный диагностический вывод (-debug).
+Используется для диагностики работы программы. Включает просмотр
+содержимого регистров. Некоторые старые приводы 2-х и менее скоростные могут 
+быть определены только с помощью этого ключа.
+Пример: atapicd -debug:1
+
+4. Выбор любого диска, подключенного к любому из 4-х контроллеров для
+идентификации (ключи -ds0, -ds1,..,-ds7). В следующем примере запрещается
+опрос дисков первого контроллера и разрешается опрос дисков для третьего
+контроллера:
+Пример: atapicd -ds0:0- ds1:1- -ds5:1 -ds6:1
+
+5.Использование прерывания для передачи данных из сектора идентификации
+(ключи -int0, ..., -int3).
+Обычно по умолчанию используется метод опроса. Использование прерываний
+позволяет изучить логику работы по прерыванию. В следующем примере разрешено
+считывание по прерыванию для первого контроллера, но следует учитывать, что
+указывать следует номер программного прерывания, а не аппаратного.
+Пример: atapicd  -int:0x76
+Только команда идентификации привода может быть выполнена по прерыванию. 
+Остальные - только опросом.
+
+6. Использование указываемых пользователем адресов и прерываний для доступа
+к идентификационной информации диска (ключи -base, -status, -ctrl, -intu). Эта
+возможность используется для исследования нестандартных IDE устройств.
+Вы должны указать и базовый регистр и регистр состояния, но на самом деле
+только значение для базы будет использоваться, кроме случая использования
+ключа -reset для сброса устройства. Ключ -base означает базовый регистр
+ввода/вывода IDE контроллера, а ключ -status указывает на дополнительный
+регистр состояния IDE устройства (реально это регистр управления, так как
+регистр состояния следующий). Ключ -ctrl делает регистр управления 
+дополнительным регистром состояния IDE контроллера. В следующей таблице 
+приведены значения по умолчанию:
+Контроллер      База    Состояние       Прерывание
+Первый          0x1F0    0x3F6          0x76 (IRQ14)
+Второй   	0x170    0x376  	0x77 (IRQ15), также может быть 0x72 (IRQ10)
+Третий          0x1E8    0x3EE          0x74 (IRQ12), также может быть 0x73 (IRQ11
+Четвертый       0x168    0x36E          0x72 (IRQ10), также может быть 0x71 (IRQ9)
+В следующем примере программа отобразит информацию только для определенного
+пользователем адреса, пpименяя прерывания для считывания сектора:
+Пример: atapicd -ds0:0 -ds1:0 -ds2:0 -ds3:0 -base:0x168 -ctrl:0x36E -status:0x36E -intu:0x72
+
+7. Выбор языка (ключ -lang)
+   По умолчанию английский, но пока русского языка нет:
+   Пример:  atapicd  -lang:0
+
+7. Сброс контроллера диска при необходимости для чтения сектора идентификации 
+(ключ -ireset). Ключ рекомендуется для некоторых старых дисков, которые могут 
+давать сбои после чтения их сектора идентификации.
+Пример: atapicd -ireset:1
+
+9. Запись в файлы результатов выполнения каждой команды (ключ -dump). Файлы 
+будут распологаться в текущей директории, а их имена будут соответствовать 
+номеру привода на контроллере.
+Пример: atapicd  -dump:1
+
+10. Инверсия строки идентификации устройства (ключ -model). В соответствии со 
+стандартом ATAPI текст должен быть в т.н Motorola style, но некоторые 
+устройства могут использовать другую кодировку. Поэтому, если название модели 
+не читается нормально, используйте этот ключ.  
+Пример:  atapicd  -model:1
+
+11. Снятие маскирования с прерываний выбранного контроллера (ключ -irq0,..,-irq3,-irqu). В некоторых случаях системное ПО (например, BIOS) маскирует прерывания IDE контроллера, чтобы запретить обычным программам доступ по прерыванию. Если этот ключ будет использоваться, то размаскирование произойдет только на время работы программы.
+Пример: atapicd  -int0:0x76 -irq0:14
+   
+18. И, наконец, краткая помощь (ключ -?, -help).
+Пример: atapicd  -?
+
+Программа не выполняет никаких разрушительных действий. Она лишь считывает
+сектор с идентификационной информацией (512 байт), страницу поддерживаемых 
+возможностей через команду ATAPI CD-ROM Mode Sense, и отображает эти данные в
+соответствии со спецификацией ATAPI (ATAPI релиз 2.6 была последней). Если у
+кого-либо есть более поздние варианты стандарта, просьба сообщить мне.
+Программа использовалась при тестировании большого числа различных приводов 
+CD-ROM и только на старых дисководах наблюдались странные результаты без 
+использования ключей программы, но с различными ключами можно и на таких 
+приводах добиваться правильных результатов.
+Эта программа работает под MS-DOS, в окне MS-DOS Windows 3.11, в режиме MS-DOS
+Windows 95 (но под Windows не работает опрос по прерыванию), но не работает в 
+Windows NT. Программа не нуждается в помощи BIOS и каких-либо внешних драйверах.
+В большинстве случаев указание каких-либо ключей не требуется.
+Тем не менее, наиболее надежный метод использования программы - загрузиться с
+дискеты с классическим MS-DOS и запустить программу.
+
+Успехов в идентификации Ваших CD-ROM!
+Пpосьба не обpащаться ко мне по поводу объяснения pезультатов, а обpащаться к
+тексту стандаpта ATAPI, где все это pасписывается очень подpобно. Описание
+многих теpминов на pусском языке есть на www.spline.ru/glossary.htm
+
+Дмитрий Викторович Стефанков,
+Россия, Москва
+Электронная почта: wizard@radio-msu.net
+
+P.S. 
+Пример ниже дан для 10-ти скоростного накопителя Pioneer.
+Для определения возможностей по форматам Вашего CD-ROM найдите строку
+<CD-ROM Capabilities and Mechanical Status Page Data> и текст ниже сообщит о 
+всех поддерживаемых форматах тестируемого привода.
+
+ATAPI/CD-ROM Drive Info 2.01, Copyright (c) 1996, 1997 Dmitry V. Stefankov
+All rights reserved. Disassembly or decompilation no prohibited.
+.....Testing primary drive on primary controller.....
+************************* Identify Device Data *********************
+Model number....................... Pioneer CD-ROM ATAPI Model DR-A10X  0100
+Serial number......................                     
+Firmware revision.................. E1.00A  
+Peripheral device type ............ CD-ROM
+Removable device................... yes
+Protocol type for device........... ATAPI
+Command packet size................ 12 bytes
+Command packet DRQ type ........... microprocessor (slow=3ms)
+DMA supported...................... yes
+LBA supported...................... yes
+Disabling of IORDY supported....... yes
+IORDY supported.................... yes
+Overlap operation supported........ yes
+PIO transfer cycle timing.......... mode 3 (180 ns, i.e. 11.1 MB/sec)
+SingleWord DMA transfer............ mode 2 (240 ns, i.e. 8.33 MB/sec)
+Support SingleWord DMA transfer.... mode 0 (960 ns, i.e. 2.08 MB/sec)
+Support SingleWord DMA transfer.... mode 1 (480 ns, i.e. 4.17 MB/sec)
+Support SingleWord DMA transfer.... mode 2 (240 ns, i.e. 8.33 MB/sec)
+Active SingleWord DMA transfer..... mode 2 (240 ns, i.e. 8.33 MB/sec)
+Support MultiWord DMA transfer..... mode 0 (480 ns, i.e. 4.17 MB/sec)
+Support MultiWord DMA transfer..... mode 1 (150 ns, i.e. 13.3 MB/sec)
+Active MultiWord DMA transfer...... mode 1 (150 ns, i.e. 13.3 MB/sec)
+Enhanced PIO transfer modes........ mode 3 (180 ns, i.e. 11.1 MB/sec)
+Min MultiWord DMA xfr cycle........ 150 ns 
+Manuf/rec MultiWord DMA xfr cycle.. 150 ns 
+Min PIO transfer w/o Flow Control.. 180 ns 
+Min PIO xfr w/IORDY Flow Control... 180 ns 
+Exp. time to release (cmd rcvd).... 100 ns 
+Exp. time to release (srvc cmd).... 100 us 
+Major version number (std)......... 3
+Minor version number (std)......... 9
+************************ Inquiry Device Data ***********************
+Peripheral device type ............ CD-ROM
+Removable medium................... yes
+Vendor identification.............. PIONEER 
+Product identification............. CD-ROM DR-A10X  
+Product revision level............. 1.04
+ANSI version....................... 0
+ECMA version....................... 0
+ISO version........................ 0
+ATAPI version...................... 2
+Response data format............... 1
+Additional length (param bytes).... 42
+************************ Inquiry Device Mode Pages Data ************
+Medium type code = 0x70 (door closed, no disc present)
+********** Read Error Recovery Parameters Page Data **********
+---Error correction flags---
+Disable correction................................. no
+Disable transfer on error.......................... no
+Post error (reports recovered errors).............. no
+Read continuous (w/o error recovery)............... no
+Transfer block (not recovered within time limits).. no
+Error recovery parameter........................... 0
+Read retry count (recovery algorithm calls)........ 30
+********** CD-ROM Device Parameters Page Data **********
+---Device Parameters---
+Minimum time in hold track state................... 8 min
+S units per MSF - M unit........................... 60 (std value)
+F units per MSF - S unit........................... 75 (std value)
+********** CD-ROM Audio Control Page Data **********
+---Red book audio decoders and ADPCM decoders---
+Support of completion status during playback....... yes
+Stop on track crossing during playback............. no
+Logical block per second of playback............... 0
+---Four Red book audio decoders---
+Output Port 0 connected with audio channel 0
+Output Port 0 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 1 connected with audio channel 1
+Output Port 1 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 2 muted
+Output Port 2 volume (binary,attenuation level).... 0 (mute,off)
+Output Port 3 muted
+Output Port 3 volume (binary,attenuation level).... 0 (mute,off)
+********** CD-ROM Capabilities and Mechanical Status Page Data **********
+---General characterisctics---
+Drive Buffer Size (KB)................. 128
+Maximum Drive Speed (KBytes/second).... 1764 (Speed is ~X10)
+Current Drive Speed (KBytes/second).... 1764 (Speed is ~X10)
+Number of discrete volume levels....... 0
+---Media function capability bits---
+CD-R disc read function (Orange Book Part II)...... yes
+CD-E disc read function (Orange Book Part III)..... no
+Read function of CD-Rs written with addr.method 2.. yes
+CD-R disc write function (Orange Book Part II)..... no
+CD-E disc write function (Orange Book Part III).... no
+---Drive's capability bits---
+Audio play/overlap operation supported............. yes
+Deliver composite audio and video data stream...... no
+Supports digital output (IEC958) on port 1......... no
+Supports digital output (IEC958) on port 2......... no
+Read sectors in Mode 2 Form 1 (XA) format.......... yes
+Read sectors in Mode 2 Form 2 format............... yes
+Read multiple session of Photo-CD dics............. yes
+Red Book audio can be read using READ-CD command... yes
+CD-DA stream is accurate (recover w/o failure)..... yes
+Sub-channel data can have combined R-W info........ no
+R-W SubCh data de-interleaved & error corrected.... no
+C2 Error Pointers/C2 Blocks Error Flags support.... no
+International Standard Recording Code Information.. yes
+Media Catalog Number............................... yes
+Software commands really lock media into drive..... yes
+Drive is currently in prevented(locked) state...... no
+Prevent/Allow jumper present (optional)............ no
+Drive can eject disc using software command........ yes
+Drive has tray type loading mechanism.
+Audio level of channel has independent control..... yes
+Mute of each channel has independent control....... yes
+Device contains an embedded changer................ no
+Software slot selection (LOAD/UNLOAD cmd).......... no
+---Drive's digital output---
+Data valid on rising edge of the BCK signal
+Left channel
+MSB comes first
+Length is 32 BCKs
+.....Testing secondary drive on primary controller.....
+.....Testing primary drive on secondary controller.....
+.....Testing secondary drive on secondary controller.....
+ATAPICD: Done.

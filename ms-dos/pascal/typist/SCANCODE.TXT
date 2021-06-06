@@ -1,0 +1,55 @@
+# Extracted from Interrupt List 45 (R.Brown u.o), April 1995
+
+Values for keyboard scan code:
+ 01h	Esc		 31h	N
+ 02h	1 !		 32h	M
+ 03h	2 @		 33h	, <		 63h	F16
+ 04h	3 #		 34h	. >		 64h	F17
+ 05h	4 $		 35h	/ ?		 65h	F18
+ 06h	5 %		 36h	Right Shift	 66h	F19
+ 07h	6 ^		 37h	Grey*		 67h	F20
+ 08h	7 &		 38h	Alt		 68h	F21
+ 09h	8 *		 39h	SpaceBar	 69h	F22
+ 0Ah	9 (		 3Ah	CapsLock	 6Ah	F23
+ 0Bh	0 )		 3Bh	F1		 6Bh	F24
+ 0Ch	- _		 3Ch	F2		 6Ch	--
+ 0Dh	= +		 3Dh	F3		 6Dh	EraseEOF
+ 0Eh	Backspace	 3Eh	F4
+ 0Fh	Tab		 3Fh	F5		 6Fh	Copy/Play
+ 10h	Q		 40h	F6
+ 11h	W		 41h	F7
+ 12h	E		 42h	F8		 72h	CrSel
+ 13h	R		 43h	F9
+ 14h	T		 44h	F10		 74h	ExSel
+ 15h	Y		 45h	NumLock		 75h	--
+ 16h	U		 46h	ScrollLock	 76h	Clear
+ 17h	I		 47h	Home
+ 18h	O		 48h	UpArrow
+ 19h	P		 49h	PgUp
+ 1Ah	[ {		 4Ah	Grey-
+ 1Bh	] }		 4Bh	LeftArrow
+ 1Ch	Enter		 4Ch	Keypad 5
+ 1Dh	Ctrl		 4Dh	RightArrow
+ 1Eh	A		 4Eh	Grey+
+ 1Fh	S		 4Fh	End
+ 20h	D		 50h	DownArrow
+ 21h	F		 51h	PgDn
+ 22h	G		 52h	Ins
+ 23h	H		 53h	Del
+ 24h	J		 54h	SysReq
+ 25h	K
+ 26h	L		 56h	left \| (102-key)
+ 27h	; :		 57h	F11
+ 28h	' "		 58h	F12		 AAh	self-test complete
+ 29h	` ~					 E0h	prefix code
+ 2Ah	Left Shift	 5Ah	PA1		 E1h	prefix code
+ 2Bh	\ |		 5Bh	F13		 EEh	ECHO
+ 2Ch	Z		 5Ch	F14		 F0h	prefix code (key break)
+ 2Dh	X		 5Dh	F15		 FAh	ACK 
+ 2Eh	C					 FDh	diagnostic failure
+ 2Fh	V					 FEh	RESEND
+ 30h	B					 FFh	kbd error/buffer full
+Notes:	scan codes 56h-E1h are only available on the extended (101/102-key)
+	  keyboard and Host Connected (122-key) keyboard; scan codes 5Ah-76h
+	  are only available on the 122-key keyboard
+	the SysReq key is often labeled SysRq

@@ -1,0 +1,80 @@
+# Make SHUTDOWN
+
+# $Id: makefile 1.1 1999/12/20 19:09:33 dstef Exp dstef $
+
+#
+# Copyright (c) 1999 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of SHUTDOWN.
+#
+
+PROJECT = shutdown
+
+!if "$(CURLANGC)" != ""
+COMPILER = $(CURLANGC)
+!endif
+
+
+CC = cc                                     # Default = UNIX
+!if "$(COMPILER)" == "BC31"
+CC = bcc
+!endif
+!if "$(COMPILER)" == "VC15"
+CC = cl
+!endif
+!if "$(COMPILER)" == ""
+!error Unknown compiler $(COMPILER) specified
+!endif
+
+CFLAGS = -D_UNIX -o $(PROJECT)
+!if "$(COMPILER)" == "BC31"
+CFLAGS = -D_BCC
+!endif
+!if "$(COMPILER)" == "VC15"
+CFLAGS = /D_MSVC
+!endif
+ALL_CFLAGS = $(CFLAGS)
+
+LINK = link
+LFLAGS =
+ALL_LFLAGS = $(LFLAGS)
+
+SUF_C = c
+SUF_O = o
+SUF_E = 
+REMOVE = rm
+
+!if ("$(COMPILER)" == "BC31") || ("$(COMPILER)" == "VC15")
+SUF_O = obj
+SUF_E = exe
+REMOVE = del
+!endif
+
+
+.SUFFIXES:
+.SUFFIXES: .$(SUF_C) .$(SUF_O) .$(SUF_E)
+
+.$(SUF_C).$(SUF_E):
+
+.$(SUF_C).$(SUF_O):
+    $(CC) $(ALL_CFLAGS) $*.$(SUF_C)
+
+.$(SUF_O).$(SUF_E):
+    $(LINK) $(ALL_LFLAGS) $*.$(SUF_O)
+
+SOURCES = $(PROJECT).$(SUF_C)
+OBJECTS = $(PROJECT).$(SUF_O)
+LIBS = 
+PROGRAMS = $(PROJECT).$(SUF_E)
+
+# default target
+all: $(PROGRAMS)
+
+$(PROJECT).$(SUF_O): $(PROJECT).$(SUF_C)
+$(PROJECT).$(SUF_E): $(PROJECT).$(SUF_O)
+
+# wipe out
+clean:
+     $(REMOVE) $(PROJECT).$(SUF_O)
+     $(REMOVE) $(PROJECT).$(SUF_E)

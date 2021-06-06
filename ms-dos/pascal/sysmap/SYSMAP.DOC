@@ -1,0 +1,23 @@
+
+;  SYSMAP.DOC  file  for V1.05A, 06/13/90
+;  Author:   Dmitri V. Stefankov
+
+   SYSMAP.EXE  -  freeware program created by Dmitri V. Stefankov
+		  This version is the lastest.
+											
+   How to use?
+   Enter at prompt:  SYSMAP [options] , where the following options supported:
+		     snow=false	     --> no check for snow
+		     snow=true	     --> check for snow  (old CGAs, some lap-tops)
+		     bios=true	     --> use for video output BIOS calls
+		     bios=false	     --> use the direct access to video memory
+
+   Defaults:
+        Parameter:     bios=false   --> see above
+	Parameter:     snow=???     --> the SYSMAP try to detect the video card
+				        and set this switch based on card type that
+					may not work for some video adapters. 
+
+    Example:  SYSMAP   snow=true  bios=false
+
+Note:   Distributed this file with the file SYSMAP.EXE!

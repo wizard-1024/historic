@@ -1,0 +1,22 @@
+# $Id: files.txt 1.5 2003/02/05 20:59:03 dstef Exp dstef $
+
+----- General files -----
+files.txt
+build.txt
+
+----- Checksums files -----
+md5sums
+md5sums.asc
+
+----- Source codes -----
+testsum.c  
+
+----- Project make/build files -----
+makefile.bcc
+makefile.msc
+makefile.w11
+makefile.mgw 
+makefile.bsd
+makefile.vc4
+makefile.dj  
+makefile.lnx

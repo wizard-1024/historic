@@ -1,0 +1,59 @@
+#
+# "$Id: makefile.msc 1.1 1999/01/02 03:02:16 dstef Exp dstef $"
+#
+
+PROJECT = atapicd
+
+CC = cl
+CFLAGS = /AL /c
+INCLUDEPATH = $(INCLUDE)
+LIBPATH = $(LIB)
+LIBS = 
+LINK = link
+LFLAGS = /NOI
+
+.c.obj:
+  $(CC) $(CFLAGS) $*.c 
+
+.cpp.obj:
+  $(CC) $(CFLAGS) $*.cpp
+
+HPP_DEPENDENCIES = sb.hpp inth.hpp fproto.hpp extern.hpp compile.hpp \
+                   cdrom.hpp atapicd.hpp ata.hpp atapi.hpp
+
+CPP_DEPENDENCIES = output.cpp sb.cpp main.cpp inth.cpp info.cpp ata.cpp \
+                   data.cpp misc.cpp audio.cpp atapicd.cpp atapi.cpp
+
+OBJ_DEPENDENCIES = data.obj sb.obj output.obj audio.obj ata.obj inth.obj \
+                   misc.obj info.obj atapi.obj atapicd.obj main.obj
+                   
+EXE_DEPENDENCIES = $(HPP_DEPENDENCIES) $(CPP_DEPENDENCIES) $(OBJ_DEPENDENCIES)
+                   
+
+$(PROJECT).exe: $(EXE_DEPENDENCIES)
+	echo >NUL @<<$(PROJECT).CRF
+ata.obj+
+audio.obj+
+atapi.obj+
+atapicd.obj+
+main.obj+
+data.obj+
+info.obj+
+inth.obj+
+misc.obj+
+output.obj+
+sb.obj        
+$(PROJECT).EXE
+$(PROJECT).MAP
+$(LIBS)
+
+
+
+<<
+	$(LINK) $(LFLAGS) @$(PROJECT).CRF
+
+      
+clean:
+     del *.exe
+     del *.obj
+                         

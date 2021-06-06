@@ -1,0 +1,31 @@
+# $Id: files.txt 1.3 2000/01/21 20:51:45 dstef Exp dstef $
+
+----- General files -----
+testcrc.txt
+files.txt
+build.txt
+
+----- Control sums files -----
+md5sums
+md5sums.asc
+
+----- Source codes -----
+testcrc.c  
+
+----- Project make/build files -----
+makefile.bcc 
+makefile.mgw 
+makefile.msc
+makefile.bsd
+makefile.beo
+makefile.vc4
+makefile.dj  
+makefile.lnx
+
+----- Win32 MSVC 4+ project files -----
+testcrc.mdp
+testcrc.mak
+
+----- Borland C++ project filess -----
+testcrc.dsk
+testcrc.prj

@@ -1,0 +1,79 @@
+Microsoft (R) Macro Assembler Version 5.10                  5/11/96 15:19:50
+                                                             Page     1-1
+
+
+				page 59,132
+				
+				; Author: Dmitry V. Stefankov, 11 May'96
+				; Original idea from Internet peoples
+				; Assembler: MASM 5.1+ or compatible
+				
+				.8086
+				.model  small
+				.code
+ 0100				ORG 100h
+				
+ 0100				@Start:
+				;;---------- Create file ------------------------------------------------
+ 0100  BA 011D R		        mov     dx, OFFSET @FileName        ;; DS:DX -> filename
+ 0103  B4 3C			        mov     ah, 3Ch                     ;; Create handle
+ 0105  33 C9			        xor     cx, cx                      ;; Normal
+ 0107  CD 21			        int     21h                         ;; DOS call
+ 0109  72 11			        jc     @Done                        ;; Check for errors
+				;;---------- Init variables before dump ---------------------------------
+ 010B  93			        xchg    bx, ax                      ;; Swap handle and mayve zero
+ 010C  99			        cwd                                 ;; DX:AX -> 0
+ 010D  8B F0			        mov     si, ax                      ;; SI = starting segment number
+ 010F  B1 10			        mov     cl, 16                      ;; CX = # of bytes to write
+				;;---------- Write a dump region to file --------------------------------
+ 0111				@DoDump:
+ 0111  8E DE			        mov     ds, si                      ;; DS = segment number, DS:DX->buf
+ 0113  B4 40			        mov     ah, 40h                     ;; Write handle
+ 0115  CD 21			        int     21h                         ;; DOS call
+ 0117  72 03			        jc     @Done                        ;; Check for errors
+				;;---------- Check for termination conditions ---------------------------
+ 0119  46			        inc     si                          ;; Advance to next segment number
+ 011A  75 F5			        jnz    @DoDump                      ;; Past 1MB boundary?
+ 011C				@Done:
+ 011C  C3			        ret                                 ;; Return to DOS through INT 20h
+				;;---------- Dump filename ----------------------------------------------
+ 011D  44 00			@FileName   DB  'D',0                       ;; ASCIIZ filename to dump
+				
+				END @Start
+Microsoft (R) Macro Assembler Version 5.10                  5/11/96 15:19:50
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+DGROUP . . . . . . . . . . . . .  	GROUP
+  _DATA  . . . . . . . . . . . .  	0000	WORD	PUBLIC	'DATA'
+_TEXT  . . . . . . . . . . . . .  	011F	WORD	PUBLIC	'CODE'
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+SHDUMP . . . . . . . . . . . . .  	L BYTE	011D	_TEXT
+
+@CODE  . . . . . . . . . . . . .  	TEXT  _TEXT		
+@CODESIZE  . . . . . . . . . . .  	TEXT  0		
+@CPU . . . . . . . . . . . . . .  	TEXT  257		
+@DATASIZE  . . . . . . . . . . .  	TEXT  0		
+@DODUMP  . . . . . . . . . . . .  	L NEAR	0111	_TEXT
+@DONE  . . . . . . . . . . . . .  	L NEAR	011C	_TEXT
+@FILENAME  . . . . . . . . . . .  	TEXT  shdump		
+@START . . . . . . . . . . . . .  	L NEAR	0100	_TEXT
+@VERSION . . . . . . . . . . . .  	TEXT  510		
+
+
+     38 Source  Lines
+     38 Total   Lines
+     20 Symbols
+
+  47172 + 402104 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

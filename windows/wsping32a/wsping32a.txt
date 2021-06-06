@@ -1,0 +1,23 @@
+WSPING32A.ZIP is a distribution package of 
+Windows Sockets PING 32-bit implementation.
+
+This archive contains the following files:
+COPYING          -  GNU General Public License (GPL)
+WSPING32A.TXT    -  this file!
+WSPING32A.C      -  source code (multiplatform version)
+WSPING32A.MAK    -  Win32 make file
+WSPING32A.EXE    -  Win32 executable code (ANSI)
+WSPING32AU.EXE   -  Win32 executable code (UNICODE)
+ICMPAPI.H        -  Win32 ICMP Echo Request API
+ICEXPORT.H       -  IP public definitions
+WSPING32A.HELP   -  Win32 options help
+WSPING32AU.HELP  -  Win32 options help
+PING_MS.HELP     -  Microsoft options help
+PING_FBSD.HELP   -  FreeBSD options help
+
+All software is distributed under GNU GPL (see COPYING for details).
+Any comments and notes are welcome.
+
+Dmitry Stefankov  (dmstef22@dstef.pp.ru, dmstef@gmail.com)
+September, 2009
+

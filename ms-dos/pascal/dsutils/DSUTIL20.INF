@@ -1,0 +1,71 @@
+File name:  DSUTIL20.ZIP
+One line description:  DOS UTILITIES (IDE-ATA,DDLOADER,SHOWTERR, etc.)
+Replaces: DSUTIL12.ZIP
+Suggested Garbo directory:  /pc/turbopa7
+Uploader name & email:  Dmitry V. Stefankov, dima@mccbn.ru
+Author or company:  Dmitry V. Stefankov
+Email address:  wizard@radio-msu.net
+Surface address: 4-2-30, Isakowskogo Str., Moscow, 123181, Russia
+Special requirements:  Turbo Pascal version 6 or/and higher
+Shareware payment required from private users:  NO
+Shareware payment required from corporates:  NO
+Distribution limitations: NO
+Garbo CD-ROM distribution allowed without preconditions: YES
+Demo:  NO
+Nagware:  NO
+Self-documenting:  YES
+External documentation included:  YES
+Source included:  YES
+Size:  522 KBytes
+10 lines description:
+Package of miscellaneous useful utilities for MS-DOS.
+Includes the following programs:
+IDE-ATA   - all about your ATA drive
+SHOWTERR  - Turbo runtime errors handler
+HD-MBOOT  - CMOS type of AT fixed disk saving, installation of any
+            disk drive type for your machine (older AT computers)
+FILE2BIN, BIN2FILE - partial copying to/from file
+OS-BOOT  - loader for multiple OS's on fixed disk
+FSPLIT,FMERGE - split/merge any file with any interleave value
+And other useful programs with source code.
+Long description:
+See file FILELIST.DOC for fast look of purpose of each program.
+IDE-ATA   - display a full lot of information about ATA drive
+            according to the current standard of 1993
+OS-BOOT   - multiple operating systems loader from fixed disk
+HD-MBOOT  - my favorite program for my hard disk
+            1) Boot from AT hard disk from any AT computer
+            2) Reliable storing of CMOS disk type if you will need this
+            3) Built-in low-level formatter
+            4) Installation of any disk drive for any computer (great!)
+            5) Any RAM area at 0:$$$$ for user-defined type
+FILE2BIN, BIN2FILE  - fast partial copying to/from any file, very useful 
+	    for any installation/patch/upgrade purposes.
+BIN2ASM	  - convert any binary file to the nice MS-Assembler form
+BIN2BIT   - same as BIN2ASM, only output in the bit strings form
+	    (useful for video/printer font and generators)
+FINDREP	  - simple, but very reliable find&replace utulity
+FSPLIT/FMERGE - split/merge with any interleave (extremely useful for
+	    PROM/ROM/EPROM programmers)
+ASC2BIN   - converter ASCII hex/dec/oct dump file to its binary equivalent
+ASCZ2BIN  - convert ASCIIZ file to the nice MS-Assembler format file
+	    (useful fot automatic converters from C to PASCAL/ASM)
+ATINTVEC  - AT ROM interrupt vector finder (for BIOS makers/patchers)
+LPRINT    - easy,simple,reliable print program (my favourite - I type all
+	    only with it!)
+MERGE12   - expand 2 text pages to one side of large paper list
+	    (i.e 4 pages on 1 paper list - very economic!)
+OPTEXE    - sample of simplest optimization
+UNIX2DOS  - convert UNIX manuals to more easy form to print
+TRANSPRN  - background print converter (not implemented yet fully)
+BIN2DATA  - convert any binary file to the nice ASM/C/PASCAL form
+CHIPVIEW  - read standard/extened/chipset-specific AT CMOS memory
+DDLOADER  - dynamically device loader during DOS start-up
+HDCRESET  - HDD controller reset during DOS start-up
+LC        - line counter
+MAP2EXE   - add runtime debugging Pascal info into executable
+PC-LOGIN  - logging statistics
+SHOWTERR  - Turbo runtime errors text description handler
+
+That is all for current release,
+Dmitry Stefankov

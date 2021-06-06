@@ -1,0 +1,264 @@
+//Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "raskeep.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+AUTHOR_BMP              BITMAP  MOVEABLE PURE   "AUTHOR.BMP"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+RASKEEP_ICON            ICON    DISCARDABLE     "RASKEEP.ICO"
+CONNECT_ICON            ICON    DISCARDABLE     "CONNECT.ICO"
+HELP_ICON               ICON    DISCARDABLE     "HELP.ICO"
+CANADA_ICON             ICON    DISCARDABLE     "CANADA.ICO"
+PHONE_ICON              ICON    DISCARDABLE     "PHONE.ICO"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""raskeep.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+RASKEEP_DLG DIALOG DISCARDABLE  0, 0, 356, 151
+STYLE DS_MODALFRAME | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "RAS Connection Keep"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,299,95,50,14
+    PUSHBUTTON      "&Cancel",IDCANCEL,299,112,50,14
+    LTEXT           "RAS Connection Keep Service (Daemon)",IDC_STATIC,191,7,
+                    126,8
+    LTEXT           "Copyright \251 1997 Dmitry Stefankov",IDC_STATIC,206,18,
+                    110,8
+    LTEXT           "&Test interval:",IDC_STATIC,16,94,41,8
+    EDITTEXT        ID_TEST_TIME,59,92,31,12,ES_AUTOHSCROLL
+    LTEXT           "seconds",IDC_STATIC,95,94,30,9
+    LTEXT           "&Retry interval:",IDC_STATIC,13,111,44,8
+    EDITTEXT        ID_RETRY_TIME,59,109,31,12,ES_AUTOHSCROLL
+    LTEXT           "seconds",IDC_STATIC,95,111,30,9
+    LTEXT           "R&etry:",IDC_STATIC,38,128,20,8
+    EDITTEXT        ID_RETRY,59,126,31,12,ES_AUTOHSCROLL
+    LTEXT           "attempts",IDC_STATIC,93,128,30,9
+    LTEXT           "Remote &site:",IDC_STATIC,148,99,40,8
+    EDITTEXT        ID_REMOTE_IP,190,97,52,12,ES_AUTOHSCROLL
+    LTEXT           "&Ping Timeout:",IDC_STATIC,143,112,44,8
+    EDITTEXT        ID_ICMP_TIMOUT,190,112,48,12,ES_AUTOHSCROLL
+    LTEXT           "milliseconds",IDC_STATIC,242,114,40,8
+    LTEXT           "Ping &DataSize:",IDC_STATIC,141,126,47,8
+    EDITTEXT        ID_ICMP_DATSIZ,190,126,48,12,ES_AUTOHSCROLL
+    LTEXT           "bytes",IDC_STATIC,242,129,18,8
+    LTEXT           "IP address",IDC_STATIC,246,101,34,8
+    PUSHBUTTON      "&Help",ID_HELP,299,133,50,14
+    LTEXT           " Entr&yname:",IDC_STATIC,26,15,37,8
+    EDITTEXT        ID_RAS_ENTRY,65,11,52,13,ES_AUTOHSCROLL
+    LTEXT           "&Username:",IDC_STATIC,26,31,35,8
+    EDITTEXT        ID_RAS_USER,64,29,53,13,ES_AUTOHSCROLL
+    LTEXT           "P&assword:",IDC_STATIC,28,47,33,8
+    EDITTEXT        ID_RAS_PASS,64,46,53,13,ES_AUTOHSCROLL
+    LTEXT           "Doma&in:",IDC_STATIC,34,63,27,8
+    EDITTEXT        ID_RAS_DOMAIN,64,62,53,13,ES_AUTOHSCROLL
+    CONTROL         "Messages to Event Log",ID_ERR_LOG,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,145,54,83,10
+    GROUPBOX        "RAS",IDC_STATIC,9,3,116,77
+    GROUPBOX        "GENERAL",IDC_STATIC,8,83,118,62
+    GROUPBOX        "ICMP",IDC_STATIC,138,86,147,56
+    GROUPBOX        "Miscellaneous",IDC_STATIC,138,26,214,58
+    ICON            CONNECT_ICON,IDC_STATIC,150,7,18,20
+    CONTROL         "Close failed connection",ID_CLOSE_RAS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,145,40,83,10
+    CONTROL         "Service Status",IDC_STATIC,"Static",SS_LEFTNOWORDWRAP | 
+                    WS_GROUP,243,71,46,8
+    EDITTEXT        ID_SERVICE_STAT,292,69,38,12,ES_AUTOHSCROLL | NOT 
+                    WS_TABSTOP
+    LTEXT           "Alive &message (minutes)",IDC_STATIC,268,39,77,8
+    EDITTEXT        ID_ALIVE_TIME,241,37,21,13,ES_AUTOHSCROLL
+    CONTROL         "Use hard retries always",ID_HARD_RETRY,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,145,69,84,10
+    CONTROL         "Shutdown if no reconnection",ID_SHUTDOWN,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,242,56,97,10
+    ICON            RASKEEP_ICON,RASKEEP_ICON,327,7,18,20
+END
+
+HELP_DLG DIALOG DISCARDABLE  0, 0, 355, 278
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "RAS Connection Keep Daemon  HELP"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,300,238,50,14
+    LTEXT           "Copyright \251 1997 Dmitry Stefankov",IDC_STATIC,6,264,
+                    110,8
+    LTEXT           "Ras Connection Keep Daemon is an native NT service that maintains periodic contact with the indicated  host.  The host you select must support the ICMP protocol.\n",
+                    IDC_STATIC,9,24,343,18
+    LTEXT           "The daemon sends a ping to the selected host before the beginning of the test interval.  If the remote host is alive then daemon goes to sleep for a test interval time. Otherwise it tries to restore the RAS connection using the following method: ",
+                    IDC_STATIC,8,45,343,28
+    LTEXT           "(1) closes and opens RAS connection.; \n(2) pings a remote host; \n(3) repeats the previous steps wanted times with the sleep interval between attempts.",
+                    IDC_STATIC,12,71,339,28
+    LTEXT           "It is recommended you will used the highest  time intervals to avoid more network traffic.  ",
+                    IDC_STATIC,7,97,344,11
+    LTEXT           "It is also possible to change the defaults for the ICMP echo packet , but  remember about the network congestion. The default values are used before your changes of them.",
+                    IDC_STATIC,8,107,343,20
+    LTEXT           "For the wanted RAS connection it is enough to have only the entry name, but sometimes you must  supply also the username and the password and maybe the domain name.",
+                    IDC_STATIC,8,127,343,20
+    LTEXT           "The daemon stores the user settings in the registry. It also writes some diagnostic messages to the eventlog.",
+                    IDC_STATIC,6,146,344,11
+    ICON            HELP_ICON,HELP_ICON,9,2,18,20
+    LTEXT           "Remote Access Service (RAS) Daemon",IDC_STATIC,29,8,123,
+                    8
+    PUSHBUTTON      "&About",ID_ABOUT,300,258,51,14
+    ICON            CANADA_ICON,CANADA_ICON,311,3,18,20
+    LTEXT           "Use  the switch -? for a daemon from the command line to get a some information about  the supported switches.",
+                    IDC_STATIC,6,156,345,11
+    LTEXT           "Special options:\n  (1) ""Hard retries"" means additional 9 pings during 3 minutes if first ping at the beginning of the test interval is failed.",
+                    IDC_STATIC,4,165,350,19
+    LTEXT           "(2) ""Alive message"" writes a mesage to eventlog every N minutes (0 disables this).\n(3) ""Close failed connection"" will be closed the RAS connection at exit if last no works.",
+                    IDC_STATIC,5,181,321,21
+    LTEXT           "(4) ""Shutdown if no reconnection"" will be restarted a system during one minute if daemon was unable to restore the RAS connection after all retries.",
+                    IDC_STATIC,4,198,345,16
+    LTEXT           "LAST NOTE:  Daemon was tested only on the Microsoft Windows NT v3.51",
+                    IDC_STATIC,4,239,291,13
+    LTEXT           "(5) If the IP address is ""0.0.0.0"" or just empty then this daemon skips the ping mechanism and simply checks the RAS connection.",
+                    IDC_STATIC,4,214,345,16
+END
+
+ABOUT_DLG DIALOG DISCARDABLE  0, 0, 304, 197
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "About Author and this Daemon"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,246,173,50,14
+    LTEXT           "Any daemon is inspired from heaven!",IDC_STATIC,8,180,
+                    115,8
+    LTEXT           "",ID_NT_VERSION,139,6,134,26
+    ICON            RASKEEP_ICON,ABOUT_ICON,277,10,18,20
+    LTEXT           "",ID_DAEMON_VER,172,43,124,40
+    LTEXT           "This daemon (native WIN32 service) is\ndesigned for the Microsoft WIndows NT. This program can be used freely for\nthe evaluation purposes.\nAny comments and wishes are welcome.",
+                    IDC_STATIC,170,91,125,42
+    LTEXT           "The author can be reached\n by the following e-mail address:\nwizard@radio-msu.net ,\ndima@mccbn.ru",
+                    IDC_STATIC,16,99,102,34
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,138,34,157,1
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,164,85,131,1
+    LTEXT           "The commercial usage is restricted and\nyou will have to contact the author.",
+                    IDC_STATIC,169,133,128,18
+    CONTROL         "",IDC_STATIC,"Static",SS_WHITEFRAME,4,176,120,16
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,13,136,102,1
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,0,0,3
+ PRODUCTVERSION 0,0,0,3
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Ras Connection Keep Win32 Service (like UNIX-daemon)\0"
+            VALUE "CompanyName", "Dmitry Stefankov\0"
+            VALUE "FileDescription", "RASKEEP\0"
+            VALUE "FileVersion", "0, 0, 0, 3\0"
+            VALUE "InternalName", "RASKEEP\0"
+            VALUE "LegalCopyright", "Copyright \251 1997 Dmitry Stefankov\0"
+            VALUE "OriginalFilename", "RASKEEP.cpl\0"
+            VALUE "ProductName", "RASKEEPD\0"
+            VALUE "ProductVersion", "0, 0, 0, 3\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    CPCAPTION               "Control Panel"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    RASKEEP_NAME            "RasKeepD"
+    RASKEEP_DESC            "RAS Connection Keep Daemon"
+END
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

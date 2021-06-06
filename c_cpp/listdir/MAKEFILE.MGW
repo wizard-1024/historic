@@ -1,0 +1,26 @@
+# Make LISTDIR for Mingw32 GNU C/C++ v2.95.2 for Win32
+
+# $Id: makefile.mgw 1.1 2000/01/21 23:24:42 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project LISTDIR.
+#
+
+TARGET = listdir
+
+#all: $(TARGET).exe
+
+CC     = gcc
+CFLAGS = -D_WIN32 -D_MINGW32 -Wall -mpentium -O2 -mconsole -mno-cygwin \
+	 -ansi -pedantic -x c++
+MAKEFILE = makefile.mgw
+
+$(TARGET).exe:  $(TARGET).c  $(MAKEFILE)
+	$(CC) $(CFLAGS) -o $(TARGET).exe $(TARGET).c
+
+clean:
+#       del $(TARGET).o
+	del $(TARGET).exe

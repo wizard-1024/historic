@@ -1,0 +1,25 @@
+# Make TESTCRC for Microsoft Visual C/C++ v1.52 for 16-bit MS-DOS
+
+# $Id: makefile.msc 1.2 2000/01/21 20:26:16 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project TESTCRC.
+#
+
+TARGET = testcrc
+
+#all: $(TARGET).exe
+
+CC     = cl
+CFLAGS = /D_MSDOS /D_MSVC /AL /WX /O2 /F 8000 /G3 /f-
+MAKEFILE = makefile.msc
+
+$(TARGET).exe:  $(TARGET).c  $(MAKEFILE)
+	$(CC) $(CFLAGS) /Tp$(TARGET).c
+
+clean:
+        del $(TARGET).obj
+	del $(TARGET).exe

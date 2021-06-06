@@ -1,0 +1,24 @@
+# Make TESTCRC for DJGPP C/C++ v2.01 for 32-bit MS-DOS
+
+# $Id: makefile.dj 1.4 2000/01/21 20:25:03 dstef Exp dstef $
+
+#
+# Copyright (c) 1999 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project TESTCRC.
+#
+
+TARGET = testcrc
+
+#all: $(TARGET).exe
+
+CC = gcc
+CFLAGS =  -D_UNIX -D_DJGPP -Wall -mpentium -O2 -s -x c++
+MAKEFILE = makefile.dj
+
+$(TARGET).exe:  $(TARGET).c $(MAKEFILE)
+	 $(CC)  $(CFLAGS) -o $(TARGET).exe $(TARGET).c
+
+clean:
+	del $(TARGET).exe

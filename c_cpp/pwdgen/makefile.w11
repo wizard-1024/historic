@@ -1,0 +1,23 @@
+# Make PWDGEN for Watcom C/C++ v11.0c (Microsoft Windows, 32-bit)
+
+# $Id: makefile.w11 1.1 2003/02/07 16:37:45 dstef Exp dstef $
+
+#
+# Copyright (c) 2003 Dmitry Stefankov
+#
+# This file is part of project PWDGEN.
+#
+
+TARGET = pwdgen
+
+#all: $(TARGET).exe
+
+c_flags = -D_WIN32 -D_WATCOM -bt=windows
+
+$(TARGET).exe:  $(TARGET).c
+	wcl386  $(c_flags) $(TARGET).c
+
+clean:
+        del $(TARGET).obj
+	del $(TARGET).exe
+  

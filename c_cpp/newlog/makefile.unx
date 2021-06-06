@@ -1,0 +1,15 @@
+# Build NEWLOG for UNIX platform
+
+# $Id: makefile.unx,v 1.1 2003-05-23 20:39:06+04 dstef Exp root $
+
+#
+# Copyright (c) 2003 Dmitry Stefankov
+#
+
+target=newlog
+
+$(target): $(target).c
+	cc -Wall -O2 -o $(target) $(target).c
+
+clean:
+	rm -f $(target)

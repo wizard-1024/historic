@@ -1,0 +1,222 @@
+
+            How to solve some problems with AT hard disks?
+
+Introduction.
+So many peoples ask about the same, and nobody help them,
+but sometimes a help comes incidentally.
+
+Keywords:
+AT, hard disk, CMOS, disk type, boot record, 
+format, IDE/ATA, MFM, DOS.
+
+Preface.
+This article for all who have PC/AT computer with the hard disk and
+want to solve some problems with installation and maintence of these
+hard disks. This article will discussed only disks/controllers 
+with standard AT interface (called ATA) and 
+also MFM/RLL disks/controllers. 
+All other disks/controllers (including ESDI,SCSI,IPI) 
+are beyond of the scope of this article.
+Discussed problems: 
+(1) save of hard disk parameters
+(2) installation of hard disk for computers without user-defined type
+(3) select match CMOS parameters for hard disk
+
+Contents
+1. History
+2. Theory
+3. Practice
+
+
+1. History
+
+1984 - IBM introduced AT computer with 20 MB fixed disk
+       and CMOS battery to store of the computer configuration (very well!).
+My note: 
+I am not discussing the IBM's or other computer firm's ideology, style,
+and methods of work in this article. I only remember actual facts and
+suggest the ways to solve of some problems.
+
+
+2. Theory
+
+Assume that you have the already installed hard disk on your computer system.
+What will occurred when you power on? Let's me go from a point when 
+the system ROM BIOS try to attach the hard disk to a system.
+
+Sample BIOS algorithm.
+Step 1. 
+  Look CMOS type for disk 0 (or disk C:).
+  If type = 0 then BIOS says that no disks in system and goes further.
+Step 2. 
+ CMOS type is just a index to the built-in table of ROM BIOS.
+ This table (called Hard Disk Parameters Table) contains already 
+ predefined parameters for miscellaneous drives. But first problem
+ appear here. The most BIOS may contain the entries from 1 up to 47
+ because the limitations to preserve IBM compatibilty. 
+ So named a user-defined type was introduced to solve this problem.
+Step 3.
+ Now BIOS gets the parameters from his own table and says to disk
+ controller that the attached drive will be have these parameters.
+ Then BIOS try to initialize the hard disk controller/drive pair
+ and if all OK, it will continue, otherwise you must get a message
+ about error.
+Step 4. Repeat steps 1-3 for disk 1 (or disk D:).
+
+And this is all what you need to know about CMOS disk type.
+The following point of my discussion is a boostrap procedure.
+
+Sample boostrap procedure.
+I assume that you have the standard IBM compatible BIOS, which will
+try to boot at first from diskette A:, and if this is unsuccessful 
+then boot from disk C:. But I will describe only hard disk boot process.
+Step 1.
+Before the operating system (for example, well-known DOS) will 
+gained control under the computer system, the very early boot record called
+Master Boot Record (MBR) will loaded  and namely this record
+will load other boot record from the first match bootable DOS or OS.
+Sample structure of MBR.
+ (1) Code
+ (2) Partition table for 4 entries (or 4 OS'es)
+       Each entry contains the information about where and how long
+       is stored this OS.
+ (3) Boot record identificator      
+All what we are interesting here - before a loading from the diskette 
+or the fixed disk, a system already knows what parameters must have 
+a fixed disk(s).
+
+
+
+3. Practice
+
+
+Solving of problems.
+(1) Your CMOS battery was discharged and a system lost all parameters,
+    including a data about the fixed disk.
+
+Way (A).
+ Use any utility to save/restore standard and/or non-standard CMOS memory.
+ You must save (before a disaster) your CMOS memory contents and just
+ restore it from a file if it will need.
+
+Way (B).
+ Use HD-MBOOT program. I describe here one from the possible variants.
+ (1) Load HD-MBOOT
+ (2) Describe parameters for disk 0, or if present then for disk 1 
+     (C: and D:, respectively).
+ (3) Install new MBR
+ (4) And save this MBR to your archive diskette because sometimes even
+     the MBR may be will disapper.
+ I note that HD-MBOOT will save only parameters for hard disks, and
+ not all CMOS memory. HD-MBOOT is a program to work with the fixed disks.
+
+Way (C).
+Write wanted info to paper or text file.
+
+Other ways.
+They are not described here, but are existed.
+
+
+(2) You have older BIOS or another reason which do not enable
+    to install your hard disk(s) with wanted parameters.
+
+Way (A)
+Upgrade your BIOS version or change motherboard. In this case
+I think that you can find the match solving with preservation of 
+money,time,etc.
+
+Way (B).
+Buy a commercial program like DRIVE-PRO. I note that this is not 
+the advertisment of these programs - just an advice.
+
+Way (C)
+Get the freeware utility HD-MBOOT, which can do all need work.
+Possible solution:
+(0) Save all important from you fixed disk to diskette(s) or
+    other archive media.
+(1) Load HD-MBOOT
+(2) Describe parameters for wanted hard disk drive
+    Now I will describe how to install type for drive C: (disk 0),
+    but drive D: (disk 1) can be installed just almost the same way.
+(3) Turn on boot drive prompt  and drive type setup for corresponding
+    disk drive
+(4) This step only for those who are need to do low-level format.
+    You must format your drive if your future parameters are different 
+    from the current disk parameters. You must format only the following
+    drives: older MFM/RLL drives and those IDE(ATA) drives which have
+    soft-sectored format (use IDE-ATA to get this information).
+    HD-MBOOT has a built-in low-level format routine for these drives.
+    Set the drive parameters because HD-MBOOT do not enable the formatting
+    of your drive without such setup. After formatting you can verify
+    is all OK on your drive after the format completing.
+ Note: You must turn on a boot drive prompt option because actual 
+       hard disk parameters are known only after the execution of the MBR.
+       If you just load DOS from a diskette then BIOS/DOS get the low-level
+       information from the CMOS memory, but we know this CMOS type is not
+       actual type.
+(5) Write a new MBR to drive, and exit from HD-MBOOT.
+    Load FDISK, do all what you want to change your disk partitioning
+    and exit. FDISK says about reboot.Remove your system diskette from 
+    a drive A: and reboot system. After boot from disk C: you will be 
+    prompted to continue a boot process from the (H)ard and/or (F)loppy 
+    disk. Insert your diskette back into drive A:, and load DOS from
+    diskette. Now you can inspect what you have with disk partitions,
+    using the FDISK, or just go on without such checking. Just type
+    the following: < FORMAT C:/S > and press <ENTER>. After finishing
+    of the format process and the transferring of the DOS system to 
+    the fixed disk drive, you can disable the boot drive prompt after
+    running again of HD-MBOOT. if all OK, then after this you just
+    load from the fixed disk after the computer power on.
+(6) Almost same steps you can repeat for the disk D: (drive 1), except
+    that drive D: can not be bootable.
+Note 1:
+ If you will may be have some difficulties to understand some steps of
+ the decribed above process then please ask your friends to help you.
+Note 2:
+I do this procedure for many disks, for example, disk ST157A was formatted
+by HD-MBOOT for his native mode (26 sectors), and this was increased
+the transfer rate about 18%. But this increasing does not work always,
+for example, another, more newer ST157A was formatted in the translation
+mode (17 sectors) and had the same good transfer rate. Only experimental
+way can find the most match parameters for your drive.
+
+
+    
+(3) How to find match parameters of good capacity for your IDE disk.
+Answer: Use IDE-ATA program which displays a lot of the information
+about ATA disk, but also calculates the most match parameters for all 
+possible combinations for this drive.
+
+Conclusion.
+I hope that this will useful for you.
+For example, one of nice features of HD-MBOOT is the following:
+You can take your drive and go to your friend, and you will not
+change a CMOS configuration of your friend, you will just attach 
+your drive and all will be OK.
+Example from me:
+I have older 286 machine which it is used the following way:
+(1) This is my post machine with modem and an installed version of the MBR
+    from HD-MBOOT.
+(2) On this machine I recover constantly a data of the drives of my friends,
+    this is required of course to find at first the match CMOS parameters
+    of the recover disk or install HD-MBOOT if writing is possible.
+    But when I finish this work, I just connect the cables to my post drive
+    and power on. And after loading, I see my favourite prompt: C:>.
+    Note: I don't touch CMOS at all, I just connected cables back.
+    Very simple, but very and very nice!
+    Moral of my example: less remember - more do!
+
+Author:
+Dmitry Stefankov,
+ Freelance Software Engineer.
+ E-mail: wizard@npi.msu.su
+
+P.S.
+Sorry for my English, but if you will discover any problems to 
+understand a text of this article, please contact me 
+to possible update of an article.
+
+How to get HD-MBOOT and IDE-ATA?
+Host:     garbo.uwasa.fi
+Dir:      /pc/turbopas
+Archive:  dsutilxx.zip  (where xx - release number)

@@ -1,0 +1,66 @@
+Phase:  ALPHA    (TESTING RESULTS)
+Date:  05/18/95
+Responsible: Dmitry Stefankov
+
+
+Tested Enviroments:
+
+Standard editors and tools:
+DOS command line 5.0+     			->  PASSED OK
+Nortion Commander 3.0	  			->  PASSED OK
+Norton Editor 2.0	 			->  PASSED OK
+PCTOOLS 5.0		  			->  PASSED OK
+Russian Language	  			->  PASSED OK
+Turbo Pascal 7.0	  			->  PASSED OK
+Borland Pascal 7.0	  			->  PASSED OK
+Borland C++ 2.0		  			->  PASSED OK
+Brief 3.0		  			->  PASSED OK
+MS-DOS EDIT 5.0 (QBASIC)  			->  PASSED OK
+MS-DOS EDLIN		  			->  PASSED OK
+MS PWB 1.10		  			->  PASSED OK
+Norton Editor 1.3B	  			->  PASSED OK
+TURBO EditASM 1.03B	  			->  PASSED OK
+IBM EDITOR (E) 3.12	  			->  PASSED OK
+QEdit Advanced 2.15, 3.00			->  PASSED OK
+Turbo Powered Editor 3.4			->  PASSED OK
+ASMED 1989, Programmer's Integrated Editor	->  PASSED OK
+PAS-Ed 1.1, Programmer's Editor For Pascal	->  PASSED OK
+Yikes 1988 Summer				->  PASSED OK
+Multi-Edit Lite 1.0				->  PASSED OK
+[4] ChiWriter 3.16, 1989			->  PASSED
+Multi-Edit Professional 5.0, 6.1		->  PASSED OK
+[5] Easy Word V.9				->  PASSED
+Aurora Editor v2.0				->  PASSED OK
+Bingo Text Editor V4.00				->  PASSED OK
+BOXER/DOS Editor 7.0				->  PASSED OK
+JED Editor v0.97				->  PASSED
+Elvis (vi clone)				->  PASSED OK
+Gnu ED v1.57					->  PASSED OK
+VIM 3.0						->  PASSED OK
+Oak Hill Vi 6.0					->  PASSED OK
+Thomson-Davis Editor 4.0 (TDE)			->  PASSED OK
+TED 1.0 (PC Magazine 1988)			->  PASSED OK
+AEDIT 1.0 (PC Magazine 1993)			->  PASSED OK
+[7] Microsoft Word 5.x (1989,1990)		->  PASSED OK
+Word Perfect 5.1				->  PASSED OK
+
+
+Russian Editors
+[1] Слово и Дело 5.2	        		->  PASSED
+[2] Лексикон 8.88, 1990				->  PASSED
+[3] Лексикон 6.54, 1988				->  PASSED
+[6] Лексикон 1.2,  1993				->  PASSED
+Pocket Editor 5.01				->  PASSED OK
+
+
+LIST OF FOUND PROBLEMS:   
+- [1] does not remove the abbreviation string; it's a problems of the editor;
+- [2] does not remove the abbreviation and incorrectly outputs the replacing
+      string after the additional keypress; this is a problem of the editor;
+- [3] has just the same problems as (2);
+- [4] has the strange behaviour, it outputs all but only symbol-by-symbol 
+     (for example, you must press the down arrow to replace a pattern);
+- [5] does not remove the first char of the abbreviation and does 
+      the replacing like the oldest Norton editor;
+- [6] has just the same problems as (2);
+- [7] successfully works in both text and graphics modes;

@@ -1,0 +1,23 @@
+# Make PWDGEN for Microsoft Visual C/C++ v.152 (MS-DOS, 16-bit)
+
+# $Id$
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+#
+# This file is part of project PWDGEN.
+#
+
+TARGET = pwdgen
+
+#all: $(TARGET).exe
+
+c_flags = -D_MSDOS -D_MSVC /Za /F 2000
+
+$(TARGET).exe:  $(TARGET).c
+	cl  $(c_flags) /Fe$(TARGET).exe /Tc$(TARGET).c
+
+clean:
+        del $(TARGET).obj
+	del $(TARGET).exe
+  

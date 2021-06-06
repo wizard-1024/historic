@@ -1,0 +1,16 @@
+TESTCRC.ZIP is a distribution package of 
+CRC-16 or CRC-32 generator and verificator for files. 
+
+This archive contains the following files:
+COPYING       -  GNU General Public License (GPL)
+TESTCRC.TXT   -  this file!
+TESTCRC.C     -  source code (multiplatform version)
+TESTCRC.EXE   -  MS-DOS executable code
+TESTCRCW.EXE  -  Win32 executable code
+TESTCRC       -  FreeBSD UNIX executable code
+
+All software is distributed under GNU GPL (see COPYING for details).
+Any comments and notes are welcome.
+
+Dmitry Stefankov  (dstef@nsl.ru, dima@mccbn.ru)
+November, 1998

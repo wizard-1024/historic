@@ -1,0 +1,122 @@
+		PAGE	66,132
+		SUBTTL	Standard BIOS segment definitions
+
+;-----------------------------------------------------------------
+; Name          	MACRODEF.INC				 ;
+; Purpose		Include file				 ;
+; Version		1.00A	Date: 07/23/91			 ;
+;			1.00B   Date: 07/24/91
+; Programmer		Dmitry Stefankov			 ;
+; Copyright Notice	(C) Copyright Dmitry Stefankov 1990,1991 ;
+;----------------------------------------------------------------- 
+
+; ========================================================
+; ******************** PC DATA AREA **********************
+; ========================================================
+
+ABS0		SEGMENT	     AT   0
+
+		ORG	410h
+@equip_bits	LABEL	WORD
+  
+		ORG	417h
+@keybd_flags_1	LABEL	BYTE
+  
+		ORG	449h
+@video_mode	LABEL	BYTE
+
+		ORG	44Ah
+@video_columns	LABEL	WORD
+
+		ORG	44Ch
+@video_buf_len	LABEL	WORD
+
+		ORG	44Eh
+@video_segment	LABEL	WORD
+
+		ORG	456h
+@new_video_mode	LABEL	BYTE
+  
+		ORG	463h
+@video_port	LABEL	WORD
+  
+		ORG	46Ch
+@timer_low	LABEL	BYTE
+  
+		ORG	484h
+@video_rows	LABEL	BYTE
+
+		ORG	485h
+@bytes_per_char	LABEL	WORD
+
+		ORG	487h
+@video_options	LABEL	BYTE
+
+		ORG	488h
+@video_switches	LABEL	BYTE
+  
+		ORG	4A8h
+@video_parm_tbl	LABEL	DWORD
+
+ABS0		ENDS
+
+; ========================================================
+; ******************** PC BIOS DATA AREA *****************
+; ========================================================
+
+ROM_DATA	SEGMENT		AT	40h
+
+		ORG	1Ah
+dwKbd_Head	dw	?
+dwKbd_Tail	dw	?
+
+		ORG	49h
+dbVideo_Mode	db	?
+dwVideo_Columns	dw	?
+
+		ORG	4Eh
+dwBuffer_Start	dw	?
+
+		ORG	62h
+dbVideo_Page	db	?
+dwCRTC_Base	dw	?
+
+		ORG	84h
+dbVideo_Rows	db	?
+
+		ORG	80h
+dwKbd_Start	dw	?
+dwKbd_End	dw	?
+
+		ORG	96h
+dbKeyboard_Flags db	?
+
+ROM_DATA	ENDS
+
+
+; =========================================================
+; **************** PC ROM BIOS SEGMENT ********************
+; =========================================================
+
+ROM_BIOS	SEGMENT	   AT   0F000h
+		ORG	0C04Ah
+OLIVETTI_ID_1	label	word
+
+		ORG	0C04Ch
+OLIVETTI_ID_2	label	word
+
+		ORG	0C050h
+OLIVETTI_ID_3	label	word		
+
+		ORG	0E017h
+OLIVETTI_ID_4	label	word
+
+		ORG	0FFFEh
+model_type	db	0FCh
+
+ROM_BIOS	ENDS
+
+;==========================================
+;		END
+;=========================================
+

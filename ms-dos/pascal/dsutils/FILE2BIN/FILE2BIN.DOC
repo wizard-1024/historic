@@ -1,0 +1,78 @@
+* File Name:            FILE2BIN.DOC
+* Date:                 28 October 1993
+* Version:              1
+* Updates count:        1
+* Purpose:              Documentation for FILE2BIN.PAS
+* Author:               Dmitry Stefankov
+* Format:               Simplified form of ISO/DIS 6592 standard
+
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:                   FILE2BIN.PAS
+Version:                        1
+Release:                        33
+Date:                           2 September 1997
+History:                        Written for internal use of author
+                                (for BIOS ToolKit)
+
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:                 no specified
+Supply order:                   no specified
+Purpose:                        file(s) image(s) manipulation
+Area of usage:                  utility program for OS
+Common knowledges:              no specified
+Problem description:            partial copying from any file
+Additional knowledges:          no specified
+Agreements and terminology:     standard IBM PC terminology
+Algorithms and principles:      described in source code
+Function:                       single
+Characteristics:                application (utility),
+                                special class (file-manipulation)
+Restrictions:                   (1) Intel computer architecture only 
+                                (2) see hardware/software requirements
+Errors processing:              described in source code
+Data safety/protection:         described in source code
+Data for application:           input:  any file(s)
+                                output: none
+Programming language:           Turbo Pascal (Version 7.0+)
+Instructions to compile:        TPC  file2bin.pas , where
+                                TPC is a Turbo Pascal command-line compiler
+Requirements for software:      operating system:  PC/MS-DOS (Version 3.0+)
+                                other:             no specified
+Requirements for hardware:      computer:  IBM PC, IBM PS/2 or compatible 
+                                memory:    minimum 128 Kbytes
+                                other:     no specified
+Example to run:                 file2bin.exe in.fil out.bin $10 10  , where
+                                <in.fil>   -> input filename  (from)
+                                <out.bin>  -> output filename (to)
+                                <$10> -> byte offset for input file  (get)
+                                <10>   -> number of bytes to copy
+Miscellaneous:                  none specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:      no specified
+Program structure:              single module
+Program listing:                source code available
+Data techical description:      no specified
+Control commands:               no specified
+Work methods:                   batch mode
+Messages:                       described in source code
+Setup:                          no required
+Adaptation:                     no specified
+Tests:                          no specified
+Service:                        no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                      read license agreement
+Changes to source code:         read license agreement
+Serial number:                  no specified
+Price:                          read license agreement
+Other:                          nothing

@@ -1,0 +1,24 @@
+# Make LISTIDR for UNIX FreeBSD GNU C/C++ v2.7.2.3
+
+# $Id: makefile.bsd 1.1 2000/01/21 23:26:18 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project LISTIDR.
+#
+
+TARGET = listdir
+
+#all: $(TARGET)
+
+CC = cc
+CFLAGS = -D_UNIX -D_FREEBSD -Wall -m486 -O2 -x c++
+MAKEFILE = makefile.bsd
+
+$(TARGET):  $(TARGET).c $(MAKEFILE)
+	 $(CC)  $(CFLAGS) -o $(TARGET) $(TARGET).c
+
+clean:
+	rm $(TARGET)

@@ -1,0 +1,192 @@
+
+        LIST OF FILES
+
+The following files must be present in the archive FREEWARE.ZIP:
+
+
+----------------- general documentation files ----------------------------
+path: \freeware
+
+  README.1ST    ---  read this first
+  NOTATION.TXT  ---  short description of prefix notation
+  FILELIST.TXT  ---  this file!
+  COPYING.      ---  GNU GENERAL PUBLIC LICENSE text
+  COPYING.LIB   ---  GNU LIBRARY GENERAL PUBLIC LICENSE text
+
+----------------- Source code and support files --------------------------
+
+path: \freeware\asc2bin
+  ASC2BIN.PAS   ---  converter from ASCII format (hex,dec,oct) to binary format
+  ASC2BIN.DOC   ---  documentation
+  ASC2BIN.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\ascz2bin
+  ASCZ2BIN.PAS  ---  convert from ASCIIZ format to ASM (DB defs) format
+  ASCZ2BIN.DOC  ---  documentation
+  ASCZ2BIN.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\atintvec
+  ATINTVEC.PAS  ---  AT ROM interrupt vector table (specially for BIOS makers)
+  ATINTVEC.DOC  ---  documentation
+  ATINTVEC.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\bin2asm
+  BIN2ASM.PAS   ---  converter from binary to ASM (hexfmt) format
+  BIN2ASM.DOC   ---  documentation
+  BIN2ASM.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\bin2bit
+  BIN2BIT.PAS   ---  converter from binary to ASM (bitfmt) format
+  BIN2BIT.DOC   ---  documentation
+  BIN2BIT.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\bin2data
+  BIN2DATA.PAS  ---  converter from binary to data format (ASM,C,PAS)
+  BIN2DATA.DOC  ---  documentation
+  BIN2DATA.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\bin2file
+  BIN2FILE.PAS  ---  put a partial binary image to the file
+  BIN2FILE.DOC  ---  documentation
+  BIN2FILE.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\chipview
+  CHIPVIEW.PAS  ---  read std/ext/chipset CMOS memory
+  CHIPVIEW.DOC  ---  documentation
+  CHIPVIEW.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+  CMOS.EXT      ---  sample output for chipset specific CMOS memory
+  CMOS.STD      ---- sample output for standard/extended CMOS memory
+
+path: \freeware\ddloader
+  DDLOADER.PAS  ---  dynamic device loader during DOS start-up
+  DDLOADER.DOC  ---  documentation
+  DDLOADER.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+  CONFIG.SYS    ---  sample MS-DOS system configuration file
+    
+path: \freeware\file2bin
+  FILE2BIN.PAS  ---  extract a partial binary image from the file
+  FILE2BIN.DOC  ---  documentation
+  FILE2BIN.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\findrep
+  FINDREP.PAS   ---  find/replace hex/text utility (simple, but easy)
+  FINDREP.DOC   ---  documentation
+  FINDREP.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\fmerge
+  FMERGE.PAS    ---  merge the binary files (odd/even splitting)
+  FMERGE.DOC    ---  documentation
+  FMERGE.EXE    ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\fsplit
+  FSPLIT.PAS    ---  split a binary file (to even/odd parts)
+  FSPLIT.DOC    ---  documentation
+  FSPLIT.EXE    ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\hd-mboot
+  AT-HDD.TXT    ---  Old Internet article about how to use HD-MBOOT
+  HD-MBOOT.PAS  ---  Custom Master Boot Record with installation of
+                     user defined type of fixed disk(s)
+  HD-MBOOT.DOC  ---  documentation
+  HD-MBOOT.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\hdcreset
+  HDCRESET.PAS  ---  HDD controller reset during DOS start-up
+  HDCRESET.DOC  ---  documentation
+  HDCRESET.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+  
+path: \freeware\ide-ata
+  IDE-ATA.PAS   ---  ATA/IDE drive internal information
+  IDE-ATA.DOC   ---  documentation
+  IDE-ATA.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+  IDE-ATA.TXT   ---  external user's documentation (English)
+  IDE-ATAR.TXT  ---  external user's documentation (Russian)
+
+path: \freeware\lc
+  LC.PAS    ---  line count for DOS text files
+  LC.DOC        ---  documentation
+  LC.EXE        ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\lprint
+  LPRINT.PAS    ---  text formatter for printing with many options
+  MESSAGES.INC  ---  international text messages (ENGLISH/RUSSIAN/GERMANY)
+  LPRINT.DOC    ---  documentation
+  LPRINT.EXE    ---  executable code (compiled under Turbo Pascal 7.0)
+  @LASER.CFG    ---  HP II+ laser printer configuration file (sample)
+  @LPRINT.CFG   ---  EPSON FX-1050 matrix printer configuration file (sample)
+  EVEN_LP.BAT   ---  batch file to print even pages only (sample)
+  ODD_LP.BAT    ---  batch file to print odd  pages only (sample)
+  @KOI2ASC.CFG  ---  KOI-7 to ASCII-8 (russian alternate charmap)
+                     configuration file (sample)
+  KOI2ASC8.BAT  ---  batch file to translate from KOI-7 to 
+                     ASCII-8 (russ.alt.)
+  KOI2ASC8.BIN  ---  character map file for translation from KOI-7
+             to ASCII-8 (russian alternate coding)
+
+path: \freeware\map2exe
+  MAP2EXE.PAS   ---  put Pascal debugging info into executable code
+  MAP2EXE.DOC   ---  documentation
+  MAP2EXE.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\merge12
+  MERGE12.PAS   ---  merge the text pages (1 to 2)
+  MERGE12.DOC   ---  documentation
+  MERGE12.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\optexe
+  OPTEXE.PAS    ---  simple DOS executable files optimizer 
+                      (FAR -> NEAR calls for file which size < 64K)
+  OPTEXE.DOC    ---  documentation
+  OPTEXE.EXE    ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\os-boot
+  OS-BOOT.PAS   ---  multiple Operating Systems loader
+  OS-BOOT.DOC   ---  documentation
+  OS-BOOT.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+
+path: \freeware\pc-login
+  PC-LOGIN.PAS   ---  simple user logging journal program
+  PC-LOGIN.DOC   ---  documentation
+  PC-LOGIN.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+
+path:   \freeware\showterr
+  SHOWTERR.PAS  ---  Turbo run-time errors text description module
+  SHOWTERR.DOC  ---  documentation
+  SHOWTERR.TPU  ---  executable unit module (compiled under Turbo Pascal 7.0)
+  RUNERROR.PAS  ---  RunError function sample
+  RUNERROR.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+  TESTUNIT.PAS  ---  test unit based on ShowTErr module
+  TESTUNIT.TPU  ---  executable unit module (compiled under Turbo Pascal 7.0)
+  TESTSHOW.PAS  ---  test program using TestUnit module
+  TESTSHOW.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+  SAMPLE1.PAS   ---  example how to use ShowTErr+MAP2EXE module
+  SAMPLE1.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+  SAMPLE1.BAT   ---  batch module to compile example SAMPLE1
+  TRAPERR.PAS   ---  sample to demonstrate trapping technique  
+  TRAPERR.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+  TRAPERR2.PAS  ---  next sample to demonstrate trapping technique  
+  TRAPERR2.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+  
+path:   \freeware\snd2wav
+  SND2WAV.PAS   ---  converter .SND (raw sound data) file to .WAV file
+  SND2WAV.DOC   ---  documentation
+  SND2WAV.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+
+path:   \freeware\timelog
+  LOGTEST.BAT   ---  sample batch file how to use
+  TIMELOG.PAS   ---  time logging device
+  TIMELOG.DOC   ---  documentation
+  TIMELOG.EXE   ---  executable code (compiled under Turbo Pascal 7.0)
+  
+path:   \freeware\transprn
+  TRANSPRN.PAS  ---  background print converter 
+  TRANSPRN.DOC  ---  documentation
+  TRANSPRN.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+  
+path: \freeware\unix2dos
+  UNIX2DOS.PAS  ---  convert UNIX manuals to std DOS text files
+  UNIX2DOS.DOC  ---  documentation
+  UNIX2DOS.EXE  ---  executable code (compiled under Turbo Pascal 7.0)
+
+
+--------------------------- end of file -----------------------------------

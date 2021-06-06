@@ -1,0 +1,22 @@
+# Make PWDGEN for DJGPP GNU C/C++ v2 (MS-DOS, 32-bit)
+
+# $Id: makefile.dj 1.2 2000/10/07 19:10:12 dstef Exp dstef $
+
+#
+# Copyright (c) 19992-2000 Dmitry Stefankov
+#
+# This file is part of project PWDGEN.
+#
+
+TARGET = pwdgen
+
+#all: $(TARGET).exe
+
+c_flags = -ansi -D_MSDOS -D_UNIX
+
+$(TARGET).exe:  $(TARGET).c
+	gcc  $(c_flags) -o $(TARGET).exe $(TARGET).c
+
+clean:
+	del $(TARGET).exe
+  

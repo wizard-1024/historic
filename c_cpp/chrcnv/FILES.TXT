@@ -1,0 +1,33 @@
+# $Id: files.txt 1.1 2000/01/22 05:33:29 dstef Exp dstef $
+
+----- General files -----
+chrcnv.txt
+files.txt
+build.txt
+
+----- Control sums files -----
+md5sums
+md5sums.asc
+
+----- Source codes -----
+chrcnv.c  
+
+----- Project make/build files -----
+makefile.bcc 
+makefile.mgw 
+makefile.msc
+makefile.bsd
+makefile.vc4
+makefile.dj  
+makefile.lnx
+
+----- Win32 MSVC 4+ project files -----
+chrcnv.mdp
+chrcnv.mak
+
+----- Borland C++ project filess -----
+chrcnv.dsk
+chrcnv.prj
+
+----- Support files ------
+full256.bin

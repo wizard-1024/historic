@@ -1,0 +1,17 @@
+CHRCNV.ZIP is a distribution package of 
+smart cyrillic converter for files. 
+
+This archive contains the following files:
+COPYING       -  GNU General Public License (GPL)
+CHRCNV.TXT   -  this file!
+CHRCNV.C     -  source code (multiplatform version)
+CHRCNV.MAN   -  Unix manual 
+CHRCNV.EXE   -  MS-DOS executable code
+CHRCNVW.EXE  -  Win32 executable code
+CHRCNV       -  FreeBSD UNIX executable code
+
+All software is distributed under GNU GPL (see COPYING for details).
+Any comments and notes are welcome.
+
+Dmitry Stefankov  (dstef@nsl.ru, dima@mccbn.ru)
+November, 1998

@@ -1,0 +1,25 @@
+# Make TESTSUM for Watcom C/C++ v11.0c for 16-bit MS-DOS
+
+# $Id: makefile.w11 1.1 2003/02/05 04:30:58 dstef Exp dstef $
+
+#
+# Copyright (c) 1998-2003 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project TESTSUM.
+#
+
+TARGET = testsum
+
+#all: $(TARGET).exe
+
+CC     = wcl
+CFLAGS = -ml -D_MSDOS -D_MSVC -bt=dos /k32768
+MAKEFILE = makefile.w11
+
+$(TARGET).exe:  $(TARGET).c  $(MAKEFILE)
+	$(CC) $(CFLAGS) $(TARGET).c
+
+clean:
+        del $(TARGET).obj
+	del $(TARGET).exe

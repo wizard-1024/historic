@@ -1,0 +1,9 @@
+LIBRARY     RASKEEP
+
+DESCRIPTION 'Control Panel Applet (RasKeepD) Copyright (c) 1997 Dmitry Stefankov'
+
+EXPORTS
+        CPlApplet
+        RasKeepDlgProc
+        HelpDlgProc
+        AboutDlgProc

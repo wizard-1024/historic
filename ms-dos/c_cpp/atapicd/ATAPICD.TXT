@@ -1,0 +1,882 @@
+ATAPI CD-ROM Drive Identification Program v2.11
+(October, 1998)
+
+
+This program was designed to get a lot useful info from ATAPI standard
+features: 
+(1) Identify Device  (ATAPI command);
+(2) Drive Inquiry    (ATAPI command);
+(3) Mode Sense       (ATAPI command).
+
+In the current release program supports audio commands and 
+power management commands.
+
+
+The brief description of features follows below:
+
+1. Paging to scroll over program output  (switch -lines)
+   It is useful sometimes to disable paging and write output info to file.
+   Sample:  ATAPICD  -lines:0 >atapicd.out
+
+2. Make a drive controller reset if it is necessary (switch -sreset)
+   If first attempt to detect ATAPI device fails the program makes a
+   software reset of drive and try again to detect ATAPI device.
+   Sample:  ATAPICD  -sreset:1
+
+3. Debugging output for additional diagnostic (switch -debug)
+   It is useful for system software developers to look register contents.
+   But some drives will be detected only with this option (for example,
+   the older 2-x CD-ROM drives).
+   Sample:  ATAPICD  -debug:1
+
+4. Can select any drive on any 4 standard controllers to identify
+   (switches -ds0,..,-ds7)
+   By default, only the drives attached to a primary and a secondary 
+   controllers will be checked. Value 0 disables this drive, 1 enables
+   this drive, 2 enables only this drive and all other will be disabled.
+   The following example disables primary controller looking and
+   tertiary controller searching.
+   Sample:  ATAPICD  -ds0:0  -ds1:0  -ds5:1  -ds6:1
+
+5. Use interrupt method to transfer a sector (switches -int0,..,-int3)
+   Default method to read identification sector is the polling method
+   but it's very useful to look how interrupt hardware logic works.
+   The following sample enables the interrupt method for primary controller
+   but note that you must provide the software interrupt number but not 
+   the interrupt request (IRQ) number.
+   Sample:  ATAPICD  -int:0x76
+   Please note that interrupt method is use only for Drive Identify command,
+   all other command are used the default polling method.
+   
+6. User defined addresses and interrupt to identify a drive
+   (switches -base,-ctrl,-intu)
+   This is a very useful for non-standard ATAPI implementations.
+   You must provide both base and status register but really only base
+   value will be used except case when you will resetting drive by switch
+   -reset. Switch -base means base I/O register for EIDE controller and
+   switch -ctrl means the control register in the alternate status register 
+   set for EIDE controller.
+   The following table lists the default values:
+   controller    base    status   interrupt
+   primary       0x1F0   0x3F6     0x76 (IRQ14)
+   secondary     0x170   0x376     0x77 (IRQ15), or maybe 0x72 (IRQ10)
+   tertiary      0x1E8   0x3EE     0x74 (IRQ12), or maybe 0x73 (IRQ11)
+   quaternary    0x168   0x36E     0x72 (IRQ10), or maybe 0x71 (IRQ9)
+   The following example forces the program to display info only about
+   the user-defined drive using the interrupt method.
+   Sample:  ATAPICD -ds0:0 -ds1:0 -ds2:0 -ds3:0 
+                    -base:0x168 -ctrl:0x36E -intu:0x72
+
+7. Select interface language (switch -lang)
+   By default English language, but alternate russian not implemented yet:
+   Sample:  ATAPICD  -lang:0
+
+8. Make a drive controller reset before issue Drive Inquiry command
+   (switch -ireset)
+   It was noted some drives are need a reset after Drive Identify command
+   before continue therefore this switch was added.
+   Sample:  ATAPICD  -ireset:1
+   
+9. Write raw dump files after each command (switch -dump)
+   This is useful if you want to check the program work.
+   Three files will appeared in current directory, their names must be
+   identical to drive number on the controller.
+   Sample:  ATAPICD  -dump:1
+
+10.Reverse a model identification string (switch -model)
+   According to the ATAPI standard this string must contain a words in
+   the big-endian order (Motorola style), but some drives are used
+   little-endian byte order.
+   Sample:  ATAPICD  -model:1
+
+11.Enable to unmask IRQ for selected controller (switch -irq0,..,-irq3,-irqu)
+   In some cases the PC system software (for example, BIOS) do not unmask
+   the corresponding IRQs for potential drives and therefore the interrupt
+   method will be useless. If you use this switch then a program will
+   be unmask the necessary IRQ bit but only during the program work.
+   Sample:  ATAPICD  -int0:0x76 -irq0:14
+
+12. Make a some delay before drive access during waiting interrupt signal
+    or 'no busy' state (switch -delay)
+    It maybe is required by some older EIDE CD-ROM drives (it is usually
+    enough to use value one).
+    Sample:  ATAPICD  -delay:1
+
+13. Make a drive controller reset before issue Drive Mode Sense command
+    (switch -mreset)
+    It was noted some drives are need a reset after Drive Identify command
+    before continue therefore this switch was added.
+    Sample:  ATAPICD  -mreset:1
+
+14. Return the current device mode sense page values through a Mode Sense
+    command (switch -curmpg)
+    By default, a program will return the default values, but sometimes
+    it be useful take a look at current values of this page.
+    Sample:  ATAPICD  -curmpg:1
+
+15. Start playing of audio CD (switch -play)
+    If program detects the inserted audio compact disc in the drive
+    then it start a playing from first audio track upto audio last track
+    according a table of contents (TOC).
+    Sample:  ATAPICD -play:1
+
+15. Stop a playing of audio CD (switch -stop)
+    Stops a current playing of audio CD.
+    Sample:  ATAPICD -stop:1
+
+15. Pause a playing of audio CD (switch -pause)
+    Pauses a current playing of audio CD.
+    Sample:  ATAPICD -pause:1
+
+16. Resume a playing of audio CD (switch -resume)
+    Resumes a paused playing of audio CD.
+    Sample:  ATAPICD -resume:1
+    
+17. Load a tray to CD-ROM drive (switch -load)
+    Useful command for lazy men or women. Recommended instead push to button.
+    CD-ROM drive will automatically load a tray into drive and try to recognize
+    an inserted CD-ROM disc.
+    Sample:  ATAPICD -load:1
+    
+18. Eject a tray to CD-ROM drive (switch -eject)
+    Useful command for lazy men or women. Recommended instead push to button.
+    CD-ROM drive will automatically eject a tray from drive.
+    Sample:  ATAPICD -eject:1
+
+19. Lock a disc in drive (switch -lock)
+    Software method to lock disc in drive. You will be able to get back 
+    a disc only by command unlock or hardware reset.
+    Sample:  ATAPICD -lock:1
+
+20. Unlock a disc in drive (switch -unlock)
+    Software method to unlock disc in drive. You will be able to get back 
+    a disc after this command.
+    Sample:  ATAPICD -unlock:1
+
+21. First track to playing audio CD (switch -ftrk)
+    Selects a first audio track to start playing.
+    Sample:  ATAPICD -play:1 -ftrk:3
+
+21. Last track to playing audio CD (switch -ftrk)
+    Selects a last audio track to stop playing.
+    In the below sample program will play only one track number 2.
+    Sample:  ATAPICD -play:1 -ltrk:2 -ftrk:2
+
+22. Display table of contents of audio CD (switch -toc)
+    Prints out a table  of contents for inserted audio CD.
+    Sample:  ATAPICD  -toc:1    
+
+23. Use MSF(minutes:seconds:fractions) form for audio command 
+    (switch -msf)
+    Switches between LBA and MSF form of play audio command.
+    Sample:  ATAPICD -play:1 -msf:0
+    
+24. Use PLAY CD command to start playing instead play audio command
+    (switch -cd)
+    Alternate command to play audio command.
+    Sample:  ATAPICD  play:1 -cd:1
+
+25. Emulate READ TOC command in LBA (linear block address) form    
+    (switch -emulba)
+    Use this if READ TOC command fails in standard MSF form.
+    Sample:  ATAPICD -toc:1 -emulba:1
+      
+26. Enable to listen CD music on Sound Blaster card
+    (switch -sbport)
+    Enables CD data input on sound card from CD-ROM drive and enables 
+    also CD data output to SB line out, not speakers (without amplifying, 
+    to listen as is).
+    Sample:  ATAPICD  -play:1 -sbport:0x220
+
+27. Send no operation command to drive (switch -nop)
+    Useful to test drive interface.
+    Sample:  ATAPICD -nop:1
+
+28. Check power management state of drive (switch -chkmod)
+    Returns a current power management mode.
+    Sample:  ATAPICD -chkmod:1
+        
+29. Enter sleep mode (switch -sleep)
+    Switch to sleep mode.
+    Sample:  ATAPICD -sleep:1
+
+30. Enter idle mode immediate (switch -idleim)
+    Switch to idle mode immediate.
+    Sample:  ATAPICD -idleim:1
+
+31. Enter standby mode immediate (switch -stdbim)
+    Switch to standby mode immediate.
+    Sample:  ATAPICD -stdbim:1
+    
+32. And, of course, short online help is available through
+    switches -? and -help.
+    
+About identifcation.
+The program does not make any destructive actions. It only reads the
+device identification sector (512 bytes), inquiry device data (?? bytes),
+CD-ROM Capabilities pages (?? bytes) through ATAPI CD-ROM Mode Sense command
+and displays all found data according ATAPI specifications for CD-ROMs
+(ATAPI specification r2.6 was used in this program). 
+Two classic methods are used to hardware interaction: polling (default)
+and interrupt. Please note: the interrupt method don't work in multitasking
+environments like Microsoft Windows 3.1, Microsoft Windows 95. Only polling
+method is extremely reliable but it is time-consuming, of course.
+The timing algorithm was tested on many ATAPI drives and PC computers and
+only some older drives had given very strange results when I used the default
+settings but problems were disappeared if you use the delay switch or 
+miscellaneous switches. For example, 2-speed Vertos CD-ROM drive in old
+386-Intel computer is only recognized with a switch <delay:1>.
+
+About audio CD support.
+None destructive actions. Only sending of commands.
+Look standards for details.
+
+About power management modes.
+None destructive actions. Only sending of commands.
+Look standards for details.
+
+The program must work in most DOS versions, MS-DOS box for Microsoft
+Windows 3.1, MS-DOS mode for Microsoft Windows 95. Due the direct hardware
+access this program don't work in a MS-DOS box for the Microsoft Windows NT
+and maybe other emulation environments. Of course, ATAPICD don't need any
+help from BIOS and any other hardware driver to read the data drive.
+In most cases it is enough to run ATAPICD without any switches.
+
+The very reliable method to use this program is the following:
+load the old MS-DOS from the system diskette and run ATAPICD program.
+Anyway, you will use this program as IS.
+
+Just the same program but for ATA drives called IDE-ATA also
+available on Internet.
+
+Due private reasons, the ATAPICD source code will not available for 
+the public domain. Sorry.
+
+
+Dmitry V. Stefankov,
+Freelance Software Engineer
+e-mail(in priority order): dstef@nsl.ru, wizard@radio-msu.net, dima@mccbn.ru
+
+
+P.S. 
+The following text is the sample output from ATAPICD for my EIDE CD-ROM drive.
+Program was running as:  ATAPICD  -lines:0  >atapicd.out
+To detect CD-Audio extraction capabilities find the line
+<CD-ROM Capabilities and Mechanical Status Page Data> and look below
+for the lines <Red Book audio can be read using READ-CD command> and
+<CD-DA stream is accurate (recover w/o failure)>. If both lines have
+boolean value <YES> you're happy otherwise you will have enough problems.
+For exact interpretation of all fields please see the official documents.
+
+
+ATAPI/CD-ROM Drive Info 2.01, Copyright (c) 1996, 1997 Dmitry V. Stefankov
+All rights reserved. Disassembly or decompilation no prohibited.
+.....Testing primary drive on primary controller.....
+************************* Identify Device Data *********************
+Model number....................... Pioneer CD-ROM ATAPI Model DR-A10X  0100
+Serial number......................                     
+Firmware revision.................. E1.00A  
+Peripheral device type ............ CD-ROM
+Removable device................... yes
+Protocol type for device........... ATAPI
+Command packet size................ 12 bytes
+Command packet DRQ type ........... microprocessor (slow=3ms)
+DMA supported...................... yes
+LBA supported...................... yes
+Disabling of IORDY supported....... yes
+IORDY supported.................... yes
+Overlap operation supported........ yes
+PIO transfer cycle timing.......... mode 3 (180 ns, i.e. 11.1 MB/sec)
+SingleWord DMA transfer............ mode 2 (240 ns, i.e. 8.33 MB/sec)
+Support SingleWord DMA transfer.... mode 0 (960 ns, i.e. 2.08 MB/sec)
+Support SingleWord DMA transfer.... mode 1 (480 ns, i.e. 4.17 MB/sec)
+Support SingleWord DMA transfer.... mode 2 (240 ns, i.e. 8.33 MB/sec)
+Active SingleWord DMA transfer..... mode 2 (240 ns, i.e. 8.33 MB/sec)
+Support MultiWord DMA transfer..... mode 0 (480 ns, i.e. 4.17 MB/sec)
+Support MultiWord DMA transfer..... mode 1 (150 ns, i.e. 13.3 MB/sec)
+Active MultiWord DMA transfer...... mode 1 (150 ns, i.e. 13.3 MB/sec)
+Enhanced PIO transfer modes........ mode 3 (180 ns, i.e. 11.1 MB/sec)
+Min MultiWord DMA xfr cycle........ 150 ns 
+Manuf/rec MultiWord DMA xfr cycle.. 150 ns 
+Min PIO transfer w/o Flow Control.. 180 ns 
+Min PIO xfr w/IORDY Flow Control... 180 ns 
+Exp. time to release (cmd rcvd).... 100 ns 
+Exp. time to release (srvc cmd).... 100 us 
+Major version number (std)......... 3
+Minor version number (std)......... 9
+************************ Inquiry Device Data ***********************
+Peripheral device type ............ CD-ROM
+Removable medium................... yes
+Vendor identification.............. PIONEER 
+Product identification............. CD-ROM DR-A10X  
+Product revision level............. 1.04
+ANSI version....................... 0
+ECMA version....................... 0
+ISO version........................ 0
+ATAPI version...................... 2
+Response data format............... 1
+Additional length (param bytes).... 42
+************************ Inquiry Device Mode Pages Data ************
+Medium type code = 0x70 (door closed, no disc present)
+********** Read Error Recovery Parameters Page Data **********
+---Error correction flags---
+Disable correction................................. no
+Disable transfer on error.......................... no
+Post error (reports recovered errors).............. no
+Read continuous (w/o error recovery)............... no
+Transfer block (not recovered within time limits).. no
+Error recovery parameter........................... 0
+Read retry count (recovery algorithm calls)........ 30
+********** CD-ROM Device Parameters Page Data **********
+---Device Parameters---
+Minimum time in hold track state................... 8 min
+S units per MSF - M unit........................... 60 (std value)
+F units per MSF - S unit........................... 75 (std value)
+********** CD-ROM Audio Control Page Data **********
+---Red book audio decoders and ADPCM decoders---
+Support of completion status during playback....... yes
+Stop on track crossing during playback............. no
+Logical block per second of playback............... 0
+---Four Red book audio decoders---
+Output Port 0 connected with audio channel 0
+Output Port 0 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 1 connected with audio channel 1
+Output Port 1 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 2 muted
+Output Port 2 volume (binary,attenuation level).... 0 (mute,off)
+Output Port 3 muted
+Output Port 3 volume (binary,attenuation level).... 0 (mute,off)
+********** CD-ROM Capabilities and Mechanical Status Page Data **********
+---General characterisctics---
+Drive Buffer Size (KB)................. 128
+Maximum Drive Speed (KBytes/second).... 1764 (Speed is ~X10)
+Current Drive Speed (KBytes/second).... 1764 (Speed is ~X10)
+Number of discrete volume levels....... 0
+---Media function capability bits---
+CD-R disc read function (Orange Book Part II)...... yes
+CD-E disc read function (Orange Book Part III)..... no
+Read function of CD-Rs written with addr.method 2.. yes
+CD-R disc write function (Orange Book Part II)..... no
+CD-E disc write function (Orange Book Part III).... no
+---Drive's capability bits---
+Audio play/overlap operation supported............. yes
+Deliver composite audio and video data stream...... no
+Supports digital output (IEC958) on port 1......... no
+Supports digital output (IEC958) on port 2......... no
+Read sectors in Mode 2 Form 1 (XA) format.......... yes
+Read sectors in Mode 2 Form 2 format............... yes
+Read multiple session of Photo-CD dics............. yes
+Red Book audio can be read using READ-CD command... yes
+CD-DA stream is accurate (recover w/o failure)..... yes
+Sub-channel data can have combined R-W info........ no
+R-W SubCh data de-interleaved & error corrected.... no
+C2 Error Pointers/C2 Blocks Error Flags support.... no
+International Standard Recording Code Information.. yes
+Media Catalog Number............................... yes
+Software commands really lock media into drive..... yes
+Drive is currently in prevented(locked) state...... no
+Prevent/Allow jumper present (optional)............ no
+Drive can eject disc using software command........ yes
+Drive has tray type loading mechanism.
+Audio level of channel has independent control..... yes
+Mute of each channel has independent control....... yes
+Device contains an embedded changer................ no
+Software slot selection (LOAD/UNLOAD cmd).......... no
+---Drive's digital output---
+Data valid on rising edge of the BCK signal
+Left channel
+MSB comes first
+Length is 32 BCKs
+.....Testing secondary drive on primary controller.....
+.....Testing primary drive on secondary controller.....
+.....Testing secondary drive on secondary controller.....
+ATAPICD: Done.
+
+
+ATAPI CD-ROM Drive Identify 2.10, Copyright (c) 1996, 1997 Dmitry Stefankov
+All rights reserved. Disassembly or decompilation no prohibited.
+.....Testing primary drive on secondary controller.....
+************************* Identify Device Data *********************
+Model number....................... CD-ROM CDU77E                           
+Serial number...................... 
+Firmware revision.................. 1.0e    
+Peripheral device type ............ CD-ROM
+Removable device................... yes
+Protocol type for device........... ATAPI
+Command packet size................ 12 bytes
+Command packet DRQ type ........... accelerated (fastest=50us)
+DMA supported...................... yes
+LBA supported...................... yes
+Disabling of IORDY supported....... no
+IORDY supported.................... yes
+Overlap operation supported........ no
+PIO transfer cycle timing.......... mode 1 (383 ns, i.e. 5.22 MB/sec)
+SingleWord DMA transfer............ mode 1 (480 ns, i.e. 4.17 MB/sec)
+Support SingleWord DMA transfer.... mode 0 (960 ns, i.e. 2.08 MB/sec)
+Support SingleWord DMA transfer.... mode 1 (480 ns, i.e. 4.17 MB/sec)
+Active SingleWord DMA transfer..... mode 1 (480 ns, i.e. 4.17 MB/sec)
+Support MultiWord DMA transfer..... mode 0 (480 ns, i.e. 4.17 MB/sec)
+Active MultiWord DMA transfer...... mode 0 (480 ns, i.e. 4.17 MB/sec)
+************************ Inquiry Device Data ***********************
+Peripheral device type ............ CD-ROM
+Removable medium................... yes
+Vendor identification.............. SONY    
+Product identification............. CD-ROM CDU77E   
+Product revision level............. 1.0e
+ANSI version....................... 0
+ECMA version....................... 0
+ISO version........................ 0
+ATAPI version...................... 0
+Response data format............... 1
+Additional length (param bytes).... 92
+Vendor-specific data............... 
+************************ Inquiry Device Mode Pages Data ************
+Medium type code = 0x0 (door closed / caddy inserted, medium type unknown)
+********** Read Error Recovery Parameters Page Data **********
+---Error correction flags---
+Disable correction................................. no
+Disable transfer on error.......................... no
+Post error (reports recovered errors).............. no
+Read continuous (w/o error recovery)............... no
+Transfer block (not recovered within time limits).. no
+Error recovery parameter........................... 0
+Read retry count (recovery algorithm calls)........ 5
+********** CD-ROM Device Parameters Page Data **********
+---Device Parameters---
+Minimum time in hold track state................... 8 min
+S units per MSF - M unit........................... 60 (std value)
+F units per MSF - S unit........................... 75 (std value)
+********** CD-ROM Audio Control Page Data **********
+---Red book audio decoders and ADPCM decoders---
+Support of completion status during playback....... yes
+Stop on track crossing during playback............. no
+Logical block per second of playback............... 0
+---Four Red book audio decoders---
+Output Port 0 connected with audio channel 0
+Output Port 0 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 1 connected with audio channel 1
+Output Port 1 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 2 muted
+Output Port 2 volume (binary,attenuation level).... 0 (mute,off)
+Output Port 3 muted
+Output Port 3 volume (binary,attenuation level).... 0 (mute,off)
+********** CD-ROM Capabilities and Mechanical Status Page Data **********
+---General characterisctics---
+Drive Buffer Size (KB)................. 128
+Maximum Drive Speed (KBytes/second).... 706 (Speed is X4)
+Current Drive Speed (KBytes/second).... 706 (Speed is X4)
+Number of discrete volume levels....... 0
+---Drive's capability bits---
+Audio play/overlap operation supported............. yes
+All CD-ROM XA commands supported................... no
+Read sectors in Mode 2 Form 1 (XA) format.......... yes
+Read sectors in Mode 2 Form 2 format............... yes
+Read multiple session of Photo-CD dics............. yes
+Red Book audio can be read using READ-CD command... yes
+CD-DA stream is accurate (recover w/o failure)..... no
+Sub-channel data can have combined R-W info........ yes
+R-W SubCh data de-interleaved & error corrected.... yes
+C2 Error Pointers/C2 Blocks Error Flags support.... no
+International Standard Recording Code Information.. yes
+Media Catalog Number............................... yes
+Software commands really lock media into drive..... yes
+Drive is currently in prevented(locked) state...... no
+Prevent/Allow jumper present (optional)............ no
+Drive can eject disc using software command........ yes
+Drive has tray type loading mechanism.
+Audio level of channel has independent control..... yes
+Mute of each channel has independent control....... yes
+ATAPICD: Done.
+
+
+ATAPI CD-ROM Drive Identify 2.10, Copyright (c) 1996, 1997 Dmitry Stefankov
+All rights reserved. Disassembly or decompilation no prohibited.
+.....Testing primary drive on secondary controller.....
+************************* Identify Device Data *********************
+Model number....................... CD-ROM CDU76E                           
+Serial number...................... 
+Firmware revision.................. 1.0h    
+Peripheral device type ............ CD-ROM
+Removable device................... yes
+Protocol type for device........... ATAPI
+Command packet size................ 12 bytes
+Command packet DRQ type ........... accelerated (fastest=50us)
+DMA supported...................... yes
+LBA supported...................... yes
+Disabling of IORDY supported....... no
+IORDY supported.................... yes
+Overlap operation supported........ no
+PIO transfer cycle timing.......... mode 2 (240 ns, i.e. 8.33 MB/sec)
+SingleWord DMA transfer............ mode 2 (240 ns, i.e. 8.33 MB/sec)
+Support SingleWord DMA transfer.... mode 0 (960 ns, i.e. 2.08 MB/sec)
+Support SingleWord DMA transfer.... mode 1 (480 ns, i.e. 4.17 MB/sec)
+Support SingleWord DMA transfer.... mode 2 (240 ns, i.e. 8.33 MB/sec)
+Active SingleWord DMA transfer..... mode 0 (960 ns, i.e. 2.08 MB/sec)
+Active SingleWord DMA transfer..... mode 1 (480 ns, i.e. 4.17 MB/sec)
+Active SingleWord DMA transfer..... mode 2 (240 ns, i.e. 8.33 MB/sec)
+Support MultiWord DMA transfer..... mode 0 (480 ns, i.e. 4.17 MB/sec)
+Active MultiWord DMA transfer...... mode 0 (480 ns, i.e. 4.17 MB/sec)
+************************ Inquiry Device Data ***********************
+Peripheral device type ............ CD-ROM
+Removable medium................... yes
+Vendor identification.............. SONY    
+Product identification............. CD-ROM CDU76E-S 
+Product revision level............. 1.0h
+ANSI version....................... 0
+ECMA version....................... 0
+ISO version........................ 0
+ATAPI version...................... 0
+Response data format............... 1
+Additional length (param bytes).... 92
+************************ Inquiry Device Mode Pages Data ************
+Medium type code = 0x70 (door closed, no disc present)
+********** Read Error Recovery Parameters Page Data **********
+---Error correction flags---
+Disable correction................................. no
+Disable transfer on error.......................... no
+Post error (reports recovered errors).............. no
+Read continuous (w/o error recovery)............... no
+Transfer block (not recovered within time limits).. no
+Error recovery parameter........................... 0
+Read retry count (recovery algorithm calls)........ 5
+********** CD-ROM Device Parameters Page Data **********
+---Device Parameters---
+Minimum time in hold track state................... 8 min
+S units per MSF - M unit........................... 60 (std value)
+F units per MSF - S unit........................... 75 (std value)
+********** CD-ROM Audio Control Page Data **********
+---Red book audio decoders and ADPCM decoders---
+Support of completion status during playback....... yes
+Stop on track crossing during playback............. no
+Logical block per second of playback............... 0
+---Four Red book audio decoders---
+Output Port 0 connected with audio channel 0
+Output Port 0 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 1 connected with audio channel 1
+Output Port 1 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 2 muted
+Output Port 2 volume (binary,attenuation level).... 0 (mute,off)
+Output Port 3 muted
+Output Port 3 volume (binary,attenuation level).... 0 (mute,off)
+********** CD-ROM Capabilities and Mechanical Status Page Data **********
+---General characterisctics---
+Drive Buffer Size (KB)................. 256
+Maximum Drive Speed (KBytes/second).... 706 (Speed is X4)
+Current Drive Speed (KBytes/second).... 706 (Speed is X4)
+Number of discrete volume levels....... 0
+---Drive's capability bits---
+Audio play/overlap operation supported............. yes
+All CD-ROM XA commands supported................... no
+Read sectors in Mode 2 Form 1 (XA) format.......... yes
+Read sectors in Mode 2 Form 2 format............... yes
+Read multiple session of Photo-CD dics............. yes
+Red Book audio can be read using READ-CD command... yes
+CD-DA stream is accurate (recover w/o failure)..... yes
+Sub-channel data can have combined R-W info........ no
+R-W SubCh data de-interleaved & error corrected.... no
+C2 Error Pointers/C2 Blocks Error Flags support.... no
+International Standard Recording Code Information.. yes
+Media Catalog Number............................... yes
+Software commands really lock media into drive..... yes
+Drive is currently in prevented(locked) state...... no
+Prevent/Allow jumper present (optional)............ no
+Drive can eject disc using software command........ yes
+Drive has tray type loading mechanism.
+Audio level of channel has independent control..... yes
+Mute of each channel has independent control....... yes
+ATAPICD: Done.
+
+
+ATAPI/CD-ROM Drive Info 2.03, Copyright (c) 1996, 1997 Dmitry V. Stefankov
+All rights reserved. Disassembly or decompilation no prohibited.
+.....Testing primary drive on primary controller.....
+.....Testing secondary drive on primary controller.....
+.....Testing primary drive on secondary controller.....
+************************* Identify Device Data *********************
+Model number....................... V003S0DS                                
+Serial number......................                     
+Firmware revision.................. 3V001-5.
+Peripheral device type ............ CD-ROM
+Removable device................... yes
+Protocol type for device........... ATAPI
+Command packet size................ 12 bytes
+Command packet DRQ type ........... microprocessor (slow=3ms)
+DMA supported...................... no
+LBA supported...................... yes
+Disabling of IORDY supported....... no
+IORDY supported.................... yes
+Overlap operation supported........ no
+PIO transfer cycle timing.......... mode 0 (600 ns, i.e. 3.33 MB/sec)
+SingleWord DMA transfer............ mode 0 (960 ns, i.e. 2.08 MB/sec)
+************************ Inquiry Device Data ***********************
+Peripheral device type ............ CD-ROM
+Removable medium................... yes
+Vendor identification.............. V300SSD 
+Product identification............. CD-ROM X2-IDE   
+Product revision level............. 1.50
+ANSI version....................... 1
+ECMA version....................... 0
+ISO version........................ 0
+ATAPI version...................... 0
+Response data format............... 1
+Additional length (param bytes).... 31
+************************ Inquiry Device Mode Pages Data ************
+Medium type code = 0x2 (120 mm CD-DA audio only, door closed or caddy inserted)
+********** Read Error Recovery Parameters Page Data **********
+---Error correction flags---
+Disable correction................................. no
+Disable transfer on error.......................... no
+Post error (reports recovered errors).............. no
+Read continuous (w/o error recovery)............... no
+Transfer block (not recovered within time limits).. no
+Error recovery parameter........................... 0
+Read retry count (recovery algorithm calls)........ 10
+********** CD-ROM Device Parameters Page Data **********
+---Device Parameters---
+Minimum time in hold track state................... vendor-specific
+S units per MSF - M unit........................... 60 (std value)
+F units per MSF - S unit........................... 75 (std value)
+********** CD-ROM Audio Control Page Data **********
+---Red book audio decoders and ADPCM decoders---
+Support of completion status during playback....... yes
+Stop on track crossing during playback............. no
+Logical block per second of playback............... 0
+---Four Red book audio decoders---
+Output Port 0 connected with audio channel 0
+Output Port 0 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 1 connected with audio channel 1
+Output Port 1 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 2 connected with audio channel 2
+Output Port 2 volume (binary,attenuation level).... 0 (mute,off)
+Output Port 3 connected with audio channel 3
+Output Port 3 volume (binary,attenuation level).... 0 (mute,off)
+********** CD-ROM Capabilities and Mechanical Status Page Data **********
+---General characterisctics---
+Drive Buffer Size (KB)................. 120
+Maximum Drive Speed (KBytes/second).... 307 (Speed is ~X1.74)
+Current Drive Speed (KBytes/second).... 307 (Speed is ~X1.74)
+Number of discrete volume levels....... 2
+---Drive's capability bits---
+Audio play/overlap operation supported............. yes
+All CD-ROM XA commands supported................... no
+Read sectors in Mode 2 Form 1 (XA) format.......... yes
+Read sectors in Mode 2 Form 2 format............... yes
+Read multiple session of Photo-CD dics............. yes
+Red Book audio can be read using READ-CD command... no
+CD-DA stream is accurate (recover w/o failure)..... no
+Sub-channel data can have combined R-W info........ no
+R-W SubCh data de-interleaved & error corrected.... no
+C2 Error Pointers/C2 Blocks Error Flags support.... no
+International Standard Recording Code Information.. yes
+Media Catalog Number............................... yes
+Software commands really lock media into drive..... yes
+Drive is currently in prevented(locked) state...... no
+Prevent/Allow jumper present (optional)............ no
+Drive can eject disc using software command........ yes
+Drive has tray type loading mechanism.
+Audio level of channel has independent control..... no
+Mute of each channel has independent control....... no
+.....Testing secondary drive on secondary controller.....
+ATAPICD: Done.
+
+
+ATAPI CD-ROM Drive Identify 2.10, Copyright (c) 1996, 1997 Dmitry Stefankov
+All rights reserved. Disassembly or decompilation no prohibited.
+.....Testing primary drive on secondary controller.....
+************************* Identify Device Data *********************
+Model number....................... DC5-E6                                  
+Serial number......................                     
+Firmware revision.................. .1C0    
+Peripheral device type ............ CD-ROM
+Removable device................... yes
+Protocol type for device........... ATAPI
+Command packet size................ 12 bytes
+Command packet DRQ type ........... accelerated (fastest=50us)
+DMA supported...................... yes
+LBA supported...................... yes
+Disabling of IORDY supported....... yes
+IORDY supported.................... yes
+Overlap operation supported........ no
+PIO transfer cycle timing.......... mode 2 (240 ns, i.e. 8.33 MB/sec)
+SingleWord DMA transfer............ mode 2 (240 ns, i.e. 8.33 MB/sec)
+Support SingleWord DMA transfer.... mode 0 (960 ns, i.e. 2.08 MB/sec)
+Support SingleWord DMA transfer.... mode 1 (480 ns, i.e. 4.17 MB/sec)
+Support SingleWord DMA transfer.... mode 2 (240 ns, i.e. 8.33 MB/sec)
+Active SingleWord DMA transfer..... mode 0 (960 ns, i.e. 2.08 MB/sec)
+Support MultiWord DMA transfer..... mode 0 (480 ns, i.e. 4.17 MB/sec)
+Support MultiWord DMA transfer..... mode 1 (150 ns, i.e. 13.3 MB/sec)
+Enhanced PIO transfer modes........ mode 3 (180 ns, i.e. 11.1 MB/sec)
+Min MultiWord DMA xfr cycle........ 150 ns 
+Manuf/rec MultiWord DMA xfr cycle.. 200 ns 
+Min PIO transfer w/o Flow Control.. 180 ns 
+Min PIO xfr w/IORDY Flow Control... 180 ns 
+************************ Inquiry Device Data ***********************
+Peripheral device type ............ CD-ROM
+Removable medium................... yes
+Vendor identification.............. TEAC    
+Product identification............. CD-56E          
+Product revision level............. 1.0C
+ANSI version....................... 0
+ECMA version....................... 0
+ISO version........................ 0
+ATAPI version...................... 0
+Response data format............... 1
+Additional length (param bytes).... 31
+************************ Inquiry Device Mode Pages Data ************
+Medium type code = 0x2 (120 mm CD-DA audio only, door closed or caddy inserted)
+********** Read Error Recovery Parameters Page Data **********
+---Error correction flags---
+Disable correction................................. no
+Disable transfer on error.......................... no
+Post error (reports recovered errors).............. no
+Read continuous (w/o error recovery)............... no
+Transfer block (not recovered within time limits).. no
+Error recovery parameter........................... 0
+Read retry count (recovery algorithm calls)........ 5
+********** CD-ROM Device Parameters Page Data **********
+---Device Parameters---
+Minimum time in hold track state................... vendor-specific
+S units per MSF - M unit........................... 60 (std value)
+F units per MSF - S unit........................... 75 (std value)
+********** CD-ROM Audio Control Page Data **********
+---Red book audio decoders and ADPCM decoders---
+Support of completion status during playback....... yes
+Stop on track crossing during playback............. no
+Logical block per second of playback............... 0
+---Four Red book audio decoders---
+Output Port 0 connected with audio channel 0
+Output Port 0 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 1 connected with audio channel 1
+Output Port 1 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 2 muted
+Output Port 2 volume (binary,attenuation level).... 0 (mute,off)
+Output Port 3 muted
+Output Port 3 volume (binary,attenuation level).... 0 (mute,off)
+********** CD-ROM Capabilities and Mechanical Status Page Data **********
+---General characterisctics---
+Drive Buffer Size (KB)................. 128
+Maximum Drive Speed (KBytes/second).... 1058 (Speed is ~X6.01)
+Current Drive Speed (KBytes/second).... 1058 (Speed is ~X6.01)
+Number of discrete volume levels....... 0
+---Drive's capability bits---
+Audio play/overlap operation supported............. yes
+All CD-ROM XA commands supported................... no
+Read sectors in Mode 2 Form 1 (XA) format.......... yes
+Read sectors in Mode 2 Form 2 format............... yes
+Read multiple session of Photo-CD dics............. yes
+Red Book audio can be read using READ-CD command... yes
+CD-DA stream is accurate (recover w/o failure)..... yes
+Sub-channel data can have combined R-W info........ no
+R-W SubCh data de-interleaved & error corrected.... no
+C2 Error Pointers/C2 Blocks Error Flags support.... no
+International Standard Recording Code Information.. yes
+Media Catalog Number............................... yes
+Software commands really lock media into drive..... yes
+Drive is currently in prevented(locked) state...... no
+Prevent/Allow jumper present (optional)............ no
+Drive can eject disc using software command........ yes
+Drive has tray type loading mechanism.
+Audio level of channel has independent control..... yes
+Mute of each channel has independent control....... yes
+ATAPICD: Done.
+
+
+ATAPI CD-ROM Drive Identify 2.10, Copyright (c) 1996, 1997 Dmitry Stefankov
+All rights reserved. Disassembly or decompilation no prohibited.
+.....Testing primary drive on primary controller.....
+************************* Identify Device Data *********************
+Model number....................... iPnoee rDCR-MOA ATIPoMed lRDU-1A42 X2000
+Serial number......................                     
+Firmware revision.................. 2E0.A0  
+Peripheral device type ............ CD-ROM
+Removable device................... yes
+Protocol type for device........... ATAPI
+Command packet size................ 12 bytes
+Command packet DRQ type ........... microprocessor (slow=3ms)
+DMA supported...................... yes
+LBA supported...................... yes
+Disabling of IORDY supported....... yes
+IORDY supported.................... yes
+Overlap operation supported........ no
+PIO transfer cycle timing.......... mode 3 (180 ns, i.e. 11.1 MB/sec)
+SingleWord DMA transfer............ mode 2 (240 ns, i.e. 8.33 MB/sec)
+Support SingleWord DMA transfer.... mode 0 (960 ns, i.e. 2.08 MB/sec)
+Support SingleWord DMA transfer.... mode 1 (480 ns, i.e. 4.17 MB/sec)
+Support SingleWord DMA transfer.... mode 2 (240 ns, i.e. 8.33 MB/sec)
+Active SingleWord DMA transfer..... mode 2 (240 ns, i.e. 8.33 MB/sec)
+Support MultiWord DMA transfer..... mode 0 (480 ns, i.e. 4.17 MB/sec)
+Active MultiWord DMA transfer...... mode 0 (480 ns, i.e. 4.17 MB/sec)
+Enhanced PIO transfer modes........ mode 3 (180 ns, i.e. 11.1 MB/sec)
+Min MultiWord DMA xfr cycle........ 480 ns 
+Manuf/rec MultiWord DMA xfr cycle.. 480 ns 
+Min PIO transfer w/o Flow Control.. 180 ns 
+Min PIO xfr w/IORDY Flow Control... 180 ns 
+************************ Inquiry Device Data ***********************
+Peripheral device type ............ CD-ROM
+Removable medium................... yes
+Vendor identification.............. PIONEER 
+Product identification............. CD-ROM DR-124X  
+Product revision level............. 1.03
+ANSI version....................... 0
+ECMA version....................... 0
+ISO version........................ 0
+ATAPI version...................... 0
+Response data format............... 1
+Additional length (param bytes).... 42
+************************ Inquiry Device Mode Pages Data ************
+Medium type code = 0x2 (120 mm CD-DA audio only, door closed or caddy inserted)
+********** Read Error Recovery Parameters Page Data **********
+---Error correction flags---
+Disable correction................................. no
+Disable transfer on error.......................... no
+Post error (reports recovered errors).............. no
+Read continuous (w/o error recovery)............... no
+Transfer block (not recovered within time limits).. no
+Error recovery parameter........................... 0
+Read retry count (recovery algorithm calls)........ 4
+********** CD-ROM Device Parameters Page Data **********
+---Device Parameters---
+Minimum time in hold track state................... 8 min
+S units per MSF - M unit........................... 60 (std value)
+F units per MSF - S unit........................... 75 (std value)
+********** CD-ROM Audio Control Page Data **********
+---Red book audio decoders and ADPCM decoders---
+Support of completion status during playback....... yes
+Stop on track crossing during playback............. no
+Logical block per second of playback............... 0
+---Four Red book audio decoders---
+Output Port 0 connected with audio channel 0
+Output Port 0 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 1 connected with audio channel 1
+Output Port 1 volume (binary,attenuation level).... 255 (0db,on)
+Output Port 2 muted
+Output Port 2 volume (binary,attenuation level).... 0 (mute,off)
+Output Port 3 muted
+Output Port 3 volume (binary,attenuation level).... 0 (mute,off)
+********** CD-ROM Capabilities and Mechanical Status Page Data **********
+---General characterisctics---
+Drive Buffer Size (KB)................. 128
+Maximum Drive Speed (KBytes/second).... 706 (Speed is X4)
+Current Drive Speed (KBytes/second).... 706 (Speed is X4)
+Number of discrete volume levels....... 0
+---Drive's capability bits---
+Audio play/overlap operation supported............. yes
+All CD-ROM XA commands supported................... no
+Read sectors in Mode 2 Form 1 (XA) format.......... yes
+Read sectors in Mode 2 Form 2 format............... yes
+Read multiple session of Photo-CD dics............. yes
+Red Book audio can be read using READ-CD command... yes
+CD-DA stream is accurate (recover w/o failure)..... yes
+Sub-channel data can have combined R-W info........ yes
+R-W SubCh data de-interleaved & error corrected.... yes
+C2 Error Pointers/C2 Blocks Error Flags support.... yes
+International Standard Recording Code Information.. yes
+Media Catalog Number............................... yes
+Software commands really lock media into drive..... yes
+Drive is currently in prevented(locked) state...... no
+Prevent/Allow jumper present (optional)............ no
+Drive can eject disc using software command........ yes
+Drive has tray type loading mechanism.
+Audio level of channel has independent control..... yes
+Mute of each channel has independent control....... yes
+ATAPICD: Done.

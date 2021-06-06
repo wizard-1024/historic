@@ -1,0 +1,78 @@
+* File Name:            ATINTVEC.DOC
+* Date:                 21 September 1993
+* Version:              1
+* Updates count:        0
+* Purpose:              Documentation for ATINTVEC.PAS
+* Author:               Dmitry Stefankov
+* Format:               Simplified form of ISO/DIS 6592 standard
+
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:                   ATINTVEC.PAS
+Version:                        1
+Release:                        13
+Date:                           2 September 1997
+History:                        Written for internal use of author
+                                (for BIOS ToolKit)
+
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:                 no specified
+Supply order:                   no specified
+Purpose:                        formats converter
+Area of usage:                  utility program for OS
+Common knowledges:              no specified
+Problem description:            extracts from ROM BIOS binary image 
+                                the hardware/software interrupt vector table
+                                (00h-1Fh,70h-77h)
+Additional knowledges:          no specified
+Agreements and terminology:     standard IBM PC terminology
+Algorithms and principles:      described in source code
+Function:                       single
+Characteristics:                application (utility),
+                                special class (converters)
+Restrictions:                   (1) Intel computer architecture only 
+                                (2) see hardware/software requirements
+Errors processing:              described in source code
+Data safety/protection:         described in source code
+Data for application:           input:  ROM BIOS binary image (size = 64 KB)
+                                output: std ASCII file
+Programming language:           Turbo Pascal (Version 7.0+)
+Instructions to compile:        TPC  atintvec.pas , where
+                                TPC is a Turbo Pascal command-line compiler
+Requirements for software:      operating system:  PC/MS-DOS (Version 3.0+)
+                                other:             no specified
+Requirements for hardware:      computer:  IBM PC, IBM PS/2 or compatible 
+                                memory:    minimum 128 Kbytes
+                                other:     no specified
+Example to run:                 asc2bin.exe in.rom out.asc , where
+                                <in.rom>  -> input filename
+                                <out.asc>  -> output filename
+Miscellaneous:                  none specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:      no specified
+Program structure:              single module
+Program listing:                source code available
+Data techical description:      no specified
+Control commands:               no specified
+Work methods:                   batch mode
+Messages:                       described in source code
+Setup:                          no required
+Adaptation:                     no specified
+Tests:                          no specified
+Service:                        no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                      read license agreement
+Changes to source code:         read license agreement
+Serial number:                  no specified
+Price:                          read license agreement
+Other:                          nothing

@@ -1,0 +1,3 @@
+#! /bin/sh
+lynx /usr/share/doc/ru/books/faq/index.html
+

@@ -1,0 +1,12 @@
+Notes file.
+
+0. Compile freemem.c (cc -o freemem freemem.c)
+
+1. Copy files freemem and freemem.sh to /usr/local/sbin
+
+2. Add to crontab the following line:
+20 * * * * /usr/local/sbin/freemem.sh 500 150 25
+
+3. Take a look into notice log to check freemem work
+
+4. Adjust parameters if you need this

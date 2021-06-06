@@ -1,0 +1,1 @@
+lprint -fc%1 -pw110 -fd%2 -fs%3 -po- -cc+

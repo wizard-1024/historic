@@ -1,0 +1,24 @@
+RAS Connection Keep Daemon (WIN32 Service)
+Copyright (c) 1997 Dmitry V. Stefankov
+
+The program was designed for the RAS connection keep
+on the leased line because other known programs don't work
+for a such lines (for example, STARTRAS, KEEPCON, ARASNT, REDIAL).
+But this program supported the dial-up line also well. 
+
+The program consists of two files:
+RASKEEP.CPL   - RAS Connection Keep Daemon Control Applet
+RASKEEPD.EXE  - RAS Connection Keep Daemon WIN32 Service
+
+What you must do?
+(1) You must copy both files to directoty %RootDir%\SYSTEM32.
+(2) Install the service by the command "raskeepd -install"
+    (of course, without quotas)
+(3) Adjust parameters for your connection
+(4) Run this service through ControlPanel\Services or
+    by the command "start net raskeepservice"
+
+The current version is only for evaluation purposes.
+Use it for your own risk.
+
+Dmitry Stefankov

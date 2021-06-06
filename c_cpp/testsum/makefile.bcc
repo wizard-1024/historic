@@ -1,0 +1,25 @@
+# Make TESTSUM for Borland C/C++ v3.1 for 16-bit MS-DOS
+
+# $Id: makefile.bcc 1.4 2003/02/05 20:59:53 dstef Exp dstef $
+
+#
+# Copyright (c) 1998,2003 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project TESTSUM.
+#
+
+TARGET = testsum
+
+#all: $(TARGET).exe
+
+CC     = bcc
+CFLAGS = -D_MSDOS -D_BCC -O2 -P -3
+MAKEFILE = makefile.bcc
+
+$(TARGET).exe:  $(TARGET).c  $(MAKEFILE)
+	$(CC) $(CFLAGS) $(TARGET).c
+
+clean:
+        del $(TARGET).obj
+	del $(TARGET).exe

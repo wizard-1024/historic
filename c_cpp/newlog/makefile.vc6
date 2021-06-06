@@ -1,0 +1,28 @@
+# Make NEWLOG for Microsoft Visual C/C++ for Win32
+
+# $Id: makefile.vc6,v 1.2 2003-07-27 15:43:53+04 dstef Exp root $
+
+#
+# Copyright (c) 2003 Dmitry Stefankov
+#
+
+TARGET = newlog
+
+all: $(TARGET).exe
+
+GETOPT = getopt
+CC     = cl
+CFLAGS = -D_WIN32  -O2 -WX -W3
+MAKEFILE = makefile.vc6
+
+
+$(GETOPT).obj: $(GETOPT).c $(GETOPT).h $(MAKEFILE)
+	$(CC) -c -o $(GETOPT).obj $(CFLAGS) $(GETOPT).c
+
+$(TARGET).exe:  $(TARGET).c $(GETOPT).obj  $(MAKEFILE)
+	$(CC) $(CFLAGS) $(TARGET).c $(GETOPT).obj
+
+clean:
+        del $(TARGET).obj
+	del $(TARGET).exe
+	del $(GETOPT).obj

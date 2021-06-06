@@ -1,0 +1,76 @@
+* File Name:                SHOWTERR.DOC
+* Date:                     20 April 1995
+* Version:                  3
+* Updates count:            3
+* Purpose:                  Documentation for SHOWTERR.PAS
+* Author:                   Dmitry Stefankov
+* Format:                   Simplified form of ISO/DIS 6592 standard
+
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:               SHOWTERR.PAS
+Version:                    1
+Release:                    17
+Date:                       18 October 1998
+History:                    Written for internal usage of author
+                            ( This unit could be used together with
+                              program MAP2EXE to provide runtime debugging
+                              information. )
+
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:             no specified
+Supply order:               no specified
+Purpose:                    Error Handler
+Area of usage:              utility module for Turbo RunTime library
+Common knowledges:          no specified
+Problem description:        very pretty error and trap handler for Turbo
+Additional knowledges:      no specified
+Agreements and terminology: standard IBM PC terminology
+Algorithms and principles:  described in source code
+Function:                   single
+Characteristics:            system module (utility),
+                            special class (runtime library support)
+Restrictions:               (1) Intel computer architecture only 
+                            (2) see hardware/software requirements
+Errors processing:          described in source code
+Data safety/protection:     described in source code
+Data for application:       input:  none
+                            output: none
+Programming language:       Turbo Pascal (Version 6.0+)
+Instructions to compile:    TPC  showterr.pas , where
+                            TPC is a Turbo Pascal command-line compiler
+Requirements for software:  operating system:  PC/MS-DOS (Version 3.0+)
+                    other:  no specified
+Requirements for hardware:  computer:  IBM PC, IBM PS/2 or compatible 
+                   memory:  minimum 128 Kbytes
+                    other:  no specified
+Example to run:             none 
+Miscellaneous:              none specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:  no specified
+Program structure:          single module
+Program listing:            source code available
+Data techical description:  no specified
+Control commands:           no specified
+Work methods:               batch mode
+Messages:                   described in source code
+Setup:                      no required
+Adaptation:                 no specified
+Tests:                      no specified
+Service:                    no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                  read license agreement
+Changes to source code:     read license agreement
+Serial number:              no specified
+Price:                      read license agreement
+Other:                      nothing

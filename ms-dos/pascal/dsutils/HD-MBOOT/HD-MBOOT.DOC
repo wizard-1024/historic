@@ -1,0 +1,98 @@
+* File Name:            HD-MBOOT.DOC
+* Date:                 5 December 1996
+* Version:              1
+* Updates count:        4
+* Purpose:              Documentation for HD-MBOOT.PAS
+* Author:               Dmitry Stefankov
+* Format:               Simplified form of ISO/DIS 6592 standard
+
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:                   HD-MBOOT.PAS
+Version:                        1
+Release:                        33
+Date:                           2 September 1997
+History:                        Written for internal use of author
+                                and his friends and all who don't want lose
+                                hard disk parameters every time when CMOS
+                                will disappeared.
+                                ( Bad note: 
+                                I wrote this program when I had recovered data 
+                                from hard disk of girl IRINA JAROWAYA.
+                                She came and taken back recovered disk,
+                                and ... she was killed by a mafia at the same 
+                                evening. Very criminal land! )
+                                In my small satellite communications company
+                                we have 2.5 GB 5.25" Quantum IDE disk drive 
+                                installed on old 386 machine, and, of course, 
+                                w/o BIOS support. Therefore I modified HD-MBOOT
+                                and OS-BOOT code to work together because this
+                                machine run two OS: DOS/Windows pair and 
+                                FreeBSD UNIX. All works great! 
+                                ( Last note:
+                                 Just write own code good and 
+                                 you will use this code always! )
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:                 no specified
+Supply order:                   no specified
+Purpose:                        disk control
+Area of usage:                  utility program for OS
+Common knowledges:              no specified
+Problem description:            disk parameters control and
+                                good operating system bootstrap loader
+Additional knowledges:          supports also second stage boot code 
+                                (for example, OS-BOOT code)
+Agreements and terminology:     standard IBM PC terminology
+Algorithms and principles:      described in source code
+Function:                       (1) Custom Master Boot Record
+                                (2) User-defined disk drive type without CMOS
+                                (3) Boot from any computer
+                                (4) Low-level formatter
+                                (5) Any RAM area at $0:xxxx for user-defined
+                                    hard disk type
+Characteristics:                application (utility),
+                                special class (disk-control)
+Restrictions:                   (1) Intel computer architecture only 
+                                (2) see hardware/software requirements
+Errors processing:              described in source code
+Data safety/protection:         described in source code
+Data for application:           input:  none
+                                output: none
+Programming language:           Turbo Pascal (Version 7.0+)
+Instructions to compile:        TPC  hd-mboot.pas , where
+                                TPC is a Turbo Pascal command-line compiler
+Requirements for software:      operating system:  PC/MS-DOS (Version 3.0+)
+                                other:             no specified
+Requirements for hardware:      computer:  IBM PC, IBM PS/2 or compatible 
+                                memory:    minimum 128 Kbytes
+                                other:     no specified
+Example to run:                 hd-mboot.exe
+Miscellaneous:                  none specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:      no specified
+Program structure:              single module
+Program listing:                source code available
+Data techical description:      no specified
+Control commands:               no specified
+Work methods:                   batch mode
+Messages:                       described in source code
+Setup:                          no required
+Adaptation:                     no specified
+Tests:                          no specified
+Service:                        no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                      read license agreement
+Changes to source code:         read license agreement
+Serial number:                  no specified
+Price:                          read license agreement
+Other:                          nothing

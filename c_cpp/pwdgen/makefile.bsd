@@ -1,0 +1,22 @@
+# Make PWDGEN for GNU C/C++ v2.7.2.3 (FreeBSD Unix, 32-bit)
+
+# $Id: makefile.bsd 1.1 2000/10/07 19:10:00 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+#
+# This file is part of project PWDGEN.
+#
+
+TARGET = pwdgen
+
+#all: $(TARGET).exe
+
+c_flags = -ansi -D_UNIX
+
+$(TARGET):  $(TARGET).c
+	gcc  $(c_flags) -o $(TARGET) $(TARGET).c
+
+clean:
+	del $(TARGET)
+  

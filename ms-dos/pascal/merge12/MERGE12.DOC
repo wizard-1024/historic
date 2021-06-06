@@ -1,0 +1,78 @@
+* File Name:            MERGE12.DOC
+* Date:                 18 October 1993
+* Version:              1
+* Updates count:        1
+* Purpose:              Documentation for MERGE12.PAS
+* Author:               Dmitry Stefankov
+* Format:               Simplified form of ISO/DIS 6592 standard
+
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:                   MERGE12.PAS
+Version:                        1
+Release:                        13
+Date:                           2 September 1997
+History:                        Written for internal use of author
+                                (for BIOS ToolKit)
+
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:                 no specified
+Supply order:                   no specified
+Purpose:                        text processing
+Area of usage:                  utility program for OS
+Common knowledges:              no specified
+Problem description:            merge two text pages in one page
+                                (for using of wide paper)
+Additional knowledges:          no specified
+Agreements and terminology:     standard IBM PC terminology
+Algorithms and principles:      described in source code
+Function:                       single
+Characteristics:                application (utility),
+                                special class (text-processors)
+Restrictions:                   (1) Intel computer architecture only 
+                                (2) see hardware/software requirements
+Errors processing:              described in source code
+Data safety/protection:         described in source code
+Data for application:           input:  text file (PC std)
+                                output: text file (PC std)
+Programming language:           Turbo Pascal (Version 6.0+)
+Instructions to compile:        TPC  merge12.pas , where
+                                TPC is a Turbo Pascal command-line compiler
+Requirements for software:      operating system:  PC/MS-DOS (Version 3.0+)
+                                other:             no specified
+Requirements for hardware:      computer:  IBM PC, IBM PS/2 or compatible 
+                                memory:    minimum 192 Kbytes
+                                other:     no specified
+Example to run:                 asc2bin.exe in.txt out.txt 63 , where
+                                <in.txt>   -> input filename
+                                <out.txt>  -> output filename
+                                <63>       -> max. lines per page
+Miscellaneous:                  none specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:      no specified
+Program structure:              single module
+Program listing:                source code available
+Data techical description:      no specified
+Control commands:               no specified
+Work methods:                   batch mode
+Messages:                       described in source code
+Setup:                          no required
+Adaptation:                     no specified
+Tests:                          no specified
+Service:                        no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                      read license agreement
+Changes to source code:         read license agreement
+Serial number:                  no specified
+Price:                          read license agreement
+Other:                          nothing

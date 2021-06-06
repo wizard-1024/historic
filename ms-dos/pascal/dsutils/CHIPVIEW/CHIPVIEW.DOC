@@ -1,0 +1,79 @@
+* File Name:            CHIPVIEW.DOC
+* Date:                 23 July 1997
+* Version:              1
+* Updates count:        0
+* Purpose:              Documentation for CHIPVIEW.PAS
+* Author:               Dmitry Stefankov
+* Format:               Simplified form of ISO/DIS 6592 standard
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:                   CHIPVIEW.PAS
+Version:                        1
+Release:                        02
+Date:                           2 August 1997
+History:                        Written for internal use of author
+                                
+                                
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:                 no specified
+Supply order:                   no specified
+Purpose:                        Read PC AT CMOS memory values
+Area of usage:                  utility program for OS/hardware
+Common knowledges:              no specified
+Problem description:            get all register values from PC AT CMOS
+                                memory
+Additional knowledges:          no specified
+Agreements and terminology:     standard IBM PC hardware/BIOS/DOS
+                                acronyms and abbreviations
+Algorithms and principles:      described in source code
+Function:                       (a) Read standard CMOS memory
+                                (b) Read extended CMOS memory
+Characteristics:                application (utility),
+                                special class (hardware information)
+Restrictions:                   see hardware/software requirements
+Errors processing:              described in source code
+Data safety/protection:         described in source code
+Data for application:           input:  none
+                                output: none
+Programming language:           Turbo Pascal (Version 7.0+)
+Instructions to compile:        TPC  chipview.pas , where
+                                TPC is a Turbo Pascal command-line compiler
+Requirements for software:      operating system:  PC/MS-DOS (Version 3.0+)
+                                other:             no specified
+Requirements for hardware:      computer:  IBM PC, IBM PS/2 or compatible 
+                                memory:    minimum 128 Kbytes
+                                processor: Intel 80186 or higher
+                                other:     no specified
+Example to run:                 chipview.exe 0 yes , where
+                                <0>   -> disable screens paging
+                                <yes> -> display extended cmos memory
+Miscellaneous:                  Magic Keywords: none
+                                Other: no specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:      no specified
+Program structure:              single module
+Program listing:                source code available
+Data techical description:      no specified
+Control commands:               no specified
+Work methods:                   batch mode
+Messages:                       described in source code
+Setup:                          no required
+Adaptation:                     no specified
+Tests:                          no specified
+Service:                        no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                      read license agreement
+Changes to source code:         read license agreement
+Serial number:                  no specified
+Price:                          read license agreement
+Other:                          nothing

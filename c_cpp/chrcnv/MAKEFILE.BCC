@@ -1,0 +1,25 @@
+# Make CHRCNV for Borland C/C++ v3.1 for 16-bit MS-DOS
+
+# $Id: makefile.bcc 1.1 2000/01/22 05:29:19 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project CHRCNV.
+#
+
+TARGET = chrcnv
+
+#all: $(TARGET).exe
+
+CC     = bcc
+CFLAGS = -D_MSDOS -D_BCC -w -mc -O2
+MAKEFILE = makefile.bcc
+
+$(TARGET).exe:  $(TARGET).c  $(MAKEFILE)
+	$(CC) $(CFLAGS) $(TARGET).c
+
+clean:
+        del $(TARGET).obj
+	del $(TARGET).exe

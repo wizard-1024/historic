@@ -1,0 +1,26 @@
+# Make CHRCNV for Mingw32 GNU C/C++ v2.95.2 for Win32
+
+# $Id: makefile.mgw 1.1 2000/01/22 05:28:12 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project CHRCNV.
+#
+
+TARGET = chrcnv
+
+#all: $(TARGET).exe
+
+CC     = gcc
+CFLAGS = -D_WIN32 -D_MINGW32 -Wall -mpentium -O2 -mconsole -mno-cygwin \
+         #-ansi -pedantic
+MAKEFILE = makefile.mgw
+
+$(TARGET).exe:  $(TARGET).c  $(MAKEFILE)
+	$(CC) $(CFLAGS) -o $(TARGET).exe $(TARGET).c
+
+clean:
+#       del $(TARGET).o
+	del $(TARGET).exe

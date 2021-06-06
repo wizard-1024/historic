@@ -1,0 +1,25 @@
+# Make TESTSUM for DJGPP C/C++ v2.01 for 32-bit MS-DOS
+
+# $Id: makefile.dj 1.5 2003/02/05 04:34:35 dstef Exp dstef $
+
+#
+# Copyright (c) 1998,2003 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project TESTSUM.
+#
+
+TARGET = testsum
+
+#all: $(TARGET).exe
+
+CC = gcc
+CFLAGS =  -D_UNIX -D_DJGPP -Wall -mcpu=pentium -O2 -s 
+#-x c++
+MAKEFILE = makefile.dj
+
+$(TARGET).exe:  $(TARGET).c $(MAKEFILE)
+	 $(CC)  $(CFLAGS) -o $(TARGET).exe $(TARGET).c
+
+clean:
+	del $(TARGET).exe

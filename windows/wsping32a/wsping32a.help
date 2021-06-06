@@ -1,0 +1,54 @@
+Windows Sockets PING (32-bit) v1.2,  Copyright (c) 1997,2009 Dmitry Stefankov
+NAME
+  wsping32 - send ICMP ECHO REQUESTS packets to network hosts
+
+SYNOPSIS
+  wsping32 [-afnrvwd] [-c count] [-i wait] [-p pattern] [-s packetsize]
+           [-t ttl] host
+
+DESCRIPTION
+  Ping uses the ICMP protocol's mandatory ECHO REQUEST datagram to elicit
+  an ICMP ECHO_RESPONSE from a host or gateway. ECHO_REQUEST datagrams
+  ("pings") have an IP and ICMP header, followed by a "strict timeval"
+  and then an arbitrary number of "pad" bytes to used to fill out the
+  packet. The options are as follows:
+  -a   Audible. Include a bell (ASCII 0x07) character in the output when
+       any packet is received. This option is ignored if other format
+       options are present.
+  -c count
+       Stop after sending (and receiving) count ECHO_RESPONSE packets.
+  -f      Flood ping.
+  -d   Sends a "Do not Fragment" flag in the packet. The packet will
+       not be fragmented by gateways on the route.
+  -g   Stops a work after the first good received the echo reply packet.
+       Useful for diagnostic purposes.
+  -i wait
+       Wait "wait" seconds between sending each packet. The default is
+       to wait for one second between each packet.
+  -n   Numeric output only.  No attempt will be made to lookup symbolic
+       names for host addresses.
+  -p pattern
+       You may specify only one ``pad'' bytes to fill out the packet you
+       send. This is useful for diagnosing data-dependent problems in a
+       network. For example, ``-p ff'' will cause the sent packet to be
+       filled with all ones.
+  -r   Record route.  Includes the RECORD_ROUTE option in the
+       ECHO_REQUEST packet and displays the route buffer on returned
+       packets.  Note that the IP header is only large enough for nine
+       such routes.  Many hosts ignore or discard this option.
+       (*** Not implemented. ***)
+  -s packetsize
+       Specifies the number of data bytes to be sent.  The default is
+       56, which translates into 64 ICMP data bytes when combined with
+       the 8 bytes of ICMP header data.
+  -t ttl
+       Set the IP Time To Live for multicasted packets.  This flag only
+       applies if the ping destination is a multicast address.
+  -v   Verbose output.  ICMP packets other than ECHO_RESPONSE that are
+       received are listed.
+
+HISTORY
+  WSPING32 command appeared in December 1997
+
+AUTHOR
+  Dmitry V. Stefankov (dmstef22@dstef.pp.ru, dmstef@gmail.com)

@@ -1,0 +1,33 @@
+#
+# "$Id: makefile.w11 1.1 2003/01/27 17:56:45 dstef Exp dstef $"
+#
+
+PROJECT = atapicd
+
+CC = wcl
+CFLAGS = -ml -c -bt=dos
+INCLUDEPATH = $(INCLUDE)
+LIBPATH = $(LIB)
+LINK = wcl
+LFLAGS = /x
+
+.c.obj:
+  $(CC) $(CFLAGS) $<
+
+.cpp.obj:
+  $(CC) $(CFLAGS) $<
+
+HPP_DEPENDENCIES = sb.hpp inth.hpp fproto.hpp extern.hpp compile.hpp cdrom.hpp atapicd.hpp ata.hpp atapi.hpp
+
+CPP_DEPENDENCIES = output.cpp sb.cpp main.cpp inth.cpp info.cpp ata.cpp data.cpp misc.cpp audio.cpp atapicd.cpp atapi.cpp
+
+OBJ_DEPENDENCIES = data.obj sb.obj output.obj audio.obj ata.obj inth.obj misc.obj info.obj atapi.obj atapicd.obj main.obj
+EXE_DEPENDENCIES = $(HPP_DEPENDENCIES) $(CPP_DEPENDENCIES) $(OBJ_DEPENDENCIES)
+
+$(PROJECT).exe: $(OBJ_DEPENDENCIES)
+	$(LINK) $(LFLAGS) -fe=$(PROJECT).exe *.obj
+
+clean:
+     del *.exe
+     del *.obj
+                         

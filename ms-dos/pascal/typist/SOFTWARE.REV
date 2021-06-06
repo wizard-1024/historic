@@ -1,0 +1,784 @@
+Newsgroups: sci.med,sci.med.occupational,comp.human-factors,comp.answers,sci.answers,news.answers
+Path: senator-bedfellow.mit.edu!bloom-beacon.mit.edu!grapevine.lcs.mit.edu!uhog.mit.edu!news.mathworks.com!udel!gatech!psuvax1!news.pop.psu.edu!news.cac.psu.edu!newsserver.jvnc.net!nntpserver.pppl.gov!princeton!olden!dwallach
+From: Dan Wallach <dwallach@cs.princeton.edu>
+Subject: Typing Injury FAQ (5/6): Software Monitoring Tools [monthly posting]
+Content-Type: text/plain;
+	version=1.0;
+	title="Typing Injury FAQ: (5/6) Software monitoring tools"
+Message-ID: <typing-injury-faq/software_795423507@cs.princeton.edu>
+Followup-To: sci.med.occupational
+Summary: software tools to help out injured typists
+Originator: news@hedgehog.Princeton.EDU
+Sender: news@Princeton.EDU (USENET News System)
+Supersedes: <typing-injury-faq/software_793250099@cs.princeton.edu>
+Nntp-Posting-Host: olden.cs.princeton.edu
+Reply-To: Richard Donkin <richardd@cix.compulink.co.uk>
+Organization: Princeton University
+References: <typing-injury-faq/changes_795423507@cs.princeton.edu>
+Date: Fri, 17 Mar 1995 06:59:18 GMT
+Approved: news-answers-request@MIT.Edu
+Expires: Tue, 25 Apr 1995 06:58:27 GMT
+Lines: 761
+Xref: senator-bedfellow.mit.edu sci.med:121639 sci.med.occupational:2910 comp.human-factors:12577 comp.answers:10738 sci.answers:2299 news.answers:40143
+
+Archive-name: typing-injury-faq/software
+Version: 2.4, 24th September 1994
+URL: http://www.cs.princeton.edu/~dwallach/tifaq/software.html
+
+
+Prologue
+
+   This FAQ may be cited as:
+     * Donkin, Richard. (1995) "Typing Injury FAQ: Software Monitoring
+       Tools" Usenet news.answers. Available via anonymous ftp from
+       rtfm.mit.edu in
+       pub/usenet/news.answers/typing-injury-faq/software. 12 pages.
+       
+   World-Wide-Web users will find this available as hypertext:
+     * http://www.cs.princeton.edu/~dwallach/tifaq/software.html
+     * (Dan Wallach's page) http://www.cs.princeton.edu/~dwallach/
+       
+   
+   
+   [This FAQ is maintained by Richard Donkin
+   <richardd@cix.compulink.co.uk>. I post it, along with the other FAQ
+   stuff. If you have questions, you want to send mail to Richard, not
+   me. - dwallach]
+     _________________________________________________________________
+   
+Software Tools to help with RSI
+
+   
+   
+   This file describes tools, primarily software, to help prevent or
+   manage RSI. This version now includes information on diverse tools
+   such as calendar programs and even digital watches, which tends to
+   contradict the title somewhat. It also includes information on
+   software for pain-free use of mice and keyboards - it draws the line
+   at hardware, which is the subject of the Keyboard Alternatives FAQ.
+   
+   Some of the information in this FAQ is now quite out of date, so
+   please send in an update if you use one of these tools.
+   
+   I am especially interested in getting reviews of these products from
+   people who have evaluated them or are using them. The major difficulty
+   with all these products is that when you are under pressure you tend
+   to cancel out of the break reminder almost automatically - any
+   suggestions on how to avoid this would be appreciated.
+   
+   In this FAQ, CIX refers to the UK conferencing system, not the US
+   Commercial Internet Exchange.
+   
+   Richard Donkin <richardd@cix.compulink.co.uk>
+   
+   Acknowledgements:
+     * Amara Graps <agraps@netcom.com> for information on Coffee Break
+     * Charles Hsieh <charles@speedy.cs.wisc.edu> for information on Mac
+       tools
+     * Jean Wilson <JEANW@CLEMSON.EDU> for information on Plug-In for
+       Windows
+       
+   
+   
+   Changes in this version:
+     * Added information on Coffee Break, Plug-In for Windows
+     * Newly available as WWW hypertext
+       
+   
+     _________________________________________________________________
+   
+Typing management tools
+
+   
+   
+   Typing management tools aim to help you manage your keyboard use, by
+   warning you to take a break every so often. The better ones also
+   include advice on exercises, posture and workstation setup. A few use
+   sound hardware to alert you to a break, but the majority use beeps or
+   screen messages.
+   
+   Often, RSI appears only after many years of typing, and the pain has a
+   delayed action in the short term too: frequently you can be typing all
+   day with little problem and the pain gets worse in the evening. These
+   tools act as an early warning system: by listening to their warnings
+   and taking breaks with exercises, you don't have to wait for your body
+   to give you a more serious and painful warning - that is, getting RSI.
+   
+   
+   Activity Monitoring Program (commercial software)
+          
+        Available from:
+                Anthony Steven
+                Office Automation Systems
+                7 Clarks Terrace
+                Heworth
+                YORK
+                YO3 0DQ
+                
+        Phone & FAX:
+                +44 (904) 423622
+                
+        Platforms
+                Windows
+                
+   
+          
+          This product is specifically aimed at helping employers meet
+          the requirements of EC directive 90/270, so it is of most
+          interest to European users. It does not provide animations of
+          exercises, instead providing them in the manual - the rationale
+          for this is that the EC directive requires breaks to be taken
+          away from the computer, so sitting at your keyboard doing
+          exercises is not allowed. In any case, it is better for you to
+          stretch your legs as well as arms, and rest your eyes by
+          leaving the computer, so this seems sensible. The program feels
+          less intrusive than some others as a result, it simply pops up
+          a small window asking you to take a break.
+          
+          Unlike most other programs, you can set a hierarchy of some
+          work then micropause, longer work then short pause, and still
+          longer work then a long pause. This hierarchy is closer to
+          medical recommendations than just taking a break every N
+          minutes.
+          
+          Also, this program is only activated by keyboard or mouse
+          activity, unlike some other programs that pop up at a given
+          time even if you are not at your PC.
+          
+          The program does not let you exit it or change the settings
+          without a password (though this protection is configurable) -
+          ideal for companies that want to discourage people from
+          bypassing the program.
+          
+          The latest version has some improvements: a TSR is supplied so
+          that typing in a DOS window will not affect the accuracy of the
+          break times; the program beeps three times before a break to
+          let you stop typing before it grabs control from the current
+          window; and the minimised icon shows you when the next break is
+          due, changing periodically to cycle through all the break
+          times.
+          
+   At Your Service (commercial software)
+          
+        Available from
+                Bright Star
+                
+        Phone
+                206-451-3697
+                
+        Platforms
+                Mac (System 6.0.4), Windows
+                
+   
+          
+          Provides calendar, keyboard watch, email watch, and system
+          information. Warns when to take a break (configurable). Has a
+          few recommendations on posture, and exercises. Sound-oriented,
+          will probably work best with sound card (PC) or with microphone
+          (Mac). Should be possible to record your own messages to warn
+          of break.
+          
+   Coffee Break (shareware)
+          
+        Available via anonymous ftp
+                
+               o ftp://sumex.stanford.edu
+               o (mirror of Stanford) ftp://ftp.hawaii.edu
+               o (author's site) ftp://thomas_mac.wustl.edu
+                 
+        Platforms
+                Macintosh
+                
+        Price
+                $5 registration fee
+                
+   
+          
+          "This locks you out of your program for X minutes every Y
+          minutes. The X and Y are set by you. You can always see how
+          many minutes you have to go till your break by looking at the
+          digital countdown clock in the corner of your screen. You can
+          also set a warning message to be displayed Z minutes before the
+          break starts, to give yourself an added reminder. The program
+          seems very stable, it's never crashed my computer (and I have a
+          loaded system- always > 4 programs running in memory in
+          addition to the 20 or so CDEVs and INITs), and it even lets
+          serial file transfers run in the background while it's locked
+          you out (if you were transferring a large file over the modem,
+          say). I think the author, Thomas Reed, has done an excellent
+          job, and I urge you to send in your shareware fee, if you are
+          using this program." - Amara Graps
+          
+        Comments
+                Some people like to be completely locked out of their
+                computer when the break occurs, other people would hate
+                this. Still, since Coffee Break is shareware you can see
+                how you feel about it in practice before you pay for it.
+                
+   
+          
+   Computer Health Break (commercial software)
+          
+        Available from
+                Escape Ergonomics, Inc
+                1111 W. El Camino Real
+                Suite 109
+                Mailstop 403
+                Sunnyvale, CA
+                
+        Phone
+                408-730-8410
+                
+        Platforms
+                DOS
+                
+        Cost
+                $79.95; quantity discounts, site licenses.
+                
+   
+          
+          Aimed at preventing RSI, this program warns you to take breaks
+          after a configurable interval, based on clock time, or after a
+          set number of keystrokes - whichever is earlier. It gives you 3
+          exercises to do each time, randomly selected from a set of 70.
+          Exercises are apparently tuned to the type of work you do -
+          data entry, word processing, information processing. Exercises
+          are illustrated and include quite a lot of text on how to do
+          the exercise and on what exactly the exercise does.
+          
+          CHB includes hypertext information on RSI that you can use to
+          learn more about RSI and how to prevent it. Other information
+          on non-RSI topics can be plugged into this hypertext viewer. A
+          full glossary of medical terms and jargon is included.
+          
+          CHB can be run in a DOS box under Windows, but does not then
+          warn you when to take a break; it does not therefore appear
+          useful when used with Windows.
+          
+        Comments
+                The keystroke-counting approach looks good: it seems
+                better to measure the activity that is causing you
+                problems than to measure clock time or even typing time.
+                The marketing stuff is very good and includes some
+                summaries of research papers, as well as lots of
+                arguments you can use to get your company to pay up for
+                RSI management tools.
+                
+   
+          
+   DOS Stretch (commercial software)
+          
+        Available from
+                John Fricker Software
+                PO Box 1289
+                Ashland, OR 97520
+                
+        Phone
+                503-488-5699
+                
+        E-Mail
+                71054.261@compuserve.com
+                
+        Platforms
+                DOS (Hercules, EGA, VGA)
+                
+        Cost
+                $27.00
+                
+        Demo (VGA only, single exercise)
+                CompuServe: Health and Fitness Forum, Issues At Work
+                section, file DSDEMO.EXE
+                
+   
+          
+          This break reminder program includes exercises but no ergonomic
+          information. It includes 11 exercises, taking about four
+          minutes. They are animated using a cartoon figure. The demo
+          includes a hand exercise that seems useful; the full program
+          includes a reminder TSR.
+          
+   Exercise Break [formerly StressFree] (shareware)
+          
+        Available from
+                Hopkins Technology (distributors)
+                421 Hazel Lane
+                Hopkins, MN 55343-7116
+                
+        Phone
+                612-931-9376
+                
+        FAX
+                612-931-9377
+                
+        E-Mail
+                70412.727@compuserve.com (Ignacio Valdes, the developer)
+                
+        Demos (working program but reduced functions)
+                
+              CompuServe
+                      Windows Advanced Forum, New Uploads section, or
+                      Health and Fitness Forum, Issues At Work section.
+                      (Windows and Mac versions in latter)
+                      
+              Anonymous FTP
+                      ftp://ftp.cica.indiana.edu (and mirroring sites)
+                      
+              CIX
+                      rsi conference
+                      
+        Platforms
+                Windows (3.0/3.1), Mac System 6.0.5 or higher, DOS
+                version soon
+                
+        Cost
+                $29.95 if supported via CompuServe or Internet, otherwise
+                $39.95. Site license for 3 or more copies is $20.00 each.
+                
+   
+          
+          Aimed at preventing RSI, this program warns you to take breaks
+          after a configurable interval (or at fixed times). Displays
+          descriptions and pictures of exercises - pictures are animated
+          and program paces you to help you do exercises at the correct
+          rate. Quite a few exercises, can configure which ones are
+          included to a large extent. One useful feature is that when it
+          is running minimised it shows the time to the next break,
+          helping you plan your work to the next break rather than it
+          coming as an interruption.
+          
+          The new release, 3.0, is renamed Exercise Break, supports Mac
+          and Windows and should include a DOS version. I have been
+          trying out a beta version and it has some useful features,
+          including Typewatch (no relation to the freeware program ...),
+          which graphs your typing rate over time, with optional warnings
+          to slow down and export facilities for spreadsheet analysis. It
+          also includes a full ergonomic checklist online to help set up
+          your workstation, and a picture of correct posture and
+          workstation adjustment.
+          
+          An unusual feature is the ability to include your own exercises
+          in the program, providing you have access to a Windows SDK,
+          without programming.
+          
+        Comments
+                This is the only tool I know of with a redistributable
+                demo that is not just a slide show, so if you do get the
+                demo, post it on your local bulletin boards, FTP servers
+                or BITNET servers! Includes the ability to step backward
+                in the exercise sequence, which is good for repeating the
+                most helpful exercises. Hopefully a number of add-on
+                exercise modules will become available now that it is
+                possible to add exercises.
+                
+   
+          
+   EyerCise (commercial software)
+          
+        Available from
+                RAN Enterprises
+                One Woodland Park Dr.
+                Haverhill, MA 01830, US
+                
+        Phone
+                800-451-4487 or 508-521-4487
+                
+        Platforms
+                Windows (3.0/3.1), OS/2 PM (1.3/2.0) [Not DOS]
+                
+        Cost
+                $69.95 including shipping and handling, quantity
+                discounts for resellers. Free demo ($5 outside US).
+                
+   
+          
+          Aimed at preventing RSI and eye strain, this program warns you
+          to take breaks after a configurable interval (or at fixed
+          times). Optionally displays descriptions and pictures of
+          exercises - pictures are animated and program beeps you to help
+          you do exercises at the correct rate. Includes 19 stretches and
+          4 visual training exercises, can configure which are included
+          and how many repetitions you do - breaks last from 3 to 7
+          minutes. Also includes online help on workplace ergonomics.
+          
+        Quote from their literature
+                EyerCise is a Windows program that breaks up your day
+                with periodic sets of stretches and visual training
+                exercises. The stretches work all parts of your body,
+                relieving tension and helping to prevent Repetitive
+                Strain Injury. The visual training exercises will improve
+                your peripheral vision and help to relieve eye strain.
+                Together these help you to become more relaxed and
+                productive.
+                
+                "The package includes the book Computers & Visual Stress
+                by Edward C. Godnig, O.D. and John S. Hacunda, which
+                describes the ergonomic setup for a computer workstation
+                and provides procedures and exercises to promote healthy
+                and efficient computer use.
+                
+        Comments
+                I have a copy of this, and it works as advertised: I
+                would say it is better for RSI prevention than RSI
+                management, because it does not allow breaks at periods
+                less than 30 minutes. Also, it interrupts you based on
+                clock time rather than typing time, which is not so
+                helpful unless you use the keyboard all day. Worked OK on
+                Windows 3.0 though it did occasionally crash with a UAE -
+                not sure why. Also refused to work with the space bar on
+                one PC, and has one window without window controls. Very
+                useable though, and does not require any sound hardware.
+                
+   
+          
+   Lifeguard (commercial software)
+          
+        Available from
+                Visionary Software
+                P.O. Box 69447
+                Portland, OR 97201
+                
+        Tel
+                503-246-6200
+                
+        Platforms
+                Mac, DOS (Windows version underway)
+                
+   
+          
+          Aimed at preventing RSI. Warns you to take a break with dialog
+          box and sound. Includes a list of exercises to do during
+          breaks, and information on configuring your workstation in an
+          ergonomic manner. Price: $59; quantity discounts and site
+          licenses. The DOS product is bought in from another company,
+          apparently; not sure how equivalent this is to the Mac version.
+          
+          
+          The Mac version got a good review in Desktop Publisher Magazine
+          (Feb 1991). Good marketing stuff with useful 2-page summaries
+          of RSI problems and solutions, with references.
+          
+   PC-FIT User-Saver (commercial software, free slideshow demo)
+          
+        Available from
+                Human-ware
+                Burggasse 88/16
+                A-1070 Wien
+                Austria
+                
+        Phone
+                +43 222/526 02880
+                
+        FAX
+                +43 222/526 02889
+                
+        Demo (slideshow) available
+                CompuServe: Health and Fitness Forum, Issues At Work
+                section, file PCFITD.EXE
+                
+        Platforms
+                DOS 3.1 or higher, Windows (3.0/3.1), Macintosh System
+                7.0.1 or higher
+                
+        Cost
+                ???
+                
+   
+          
+          This program warns you to take breaks, provides exercises for
+          the muscles and for the eyes, and includes information on
+          ergonomics. Exercises are animations based on photos of a model
+          (mime artist?), which together with cartoons elsewhere lend a
+          light-weight feeling to this package, as far as I can tell from
+          the demo. Orientated to EC 90/270.
+          
+   Plug-In for Windows (shareware), version 2.11
+          
+        Available from
+                Plannet Crafters, Inc.
+                
+        E-Mail
+                73040.334@compuserve.com
+                dmandell@aol.com
+                
+        Phone
+                404-740-9821
+                
+        Platforms
+                Windows
+                
+        Cost
+                $20, three week free trial
+                
+   
+          
+          This is a Program Manager extension with lots of features,
+          including the ability to display a message box with a message
+          of your own composition, at a configurable time interval.
+          (Presumably based on time elapsed rather than time spent
+          timing).
+          
+   Typewatch (freeware), version 3.11 (September 1993)
+          
+        
+                Available from
+                
+              Anonymous ftp
+                      ftp://ftp.csua.berkeley.edu/pub/typing-injury/softw
+                      are/typewatch.shar
+                      
+              CIX
+                      sco and rsi conferences
+                      
+              Email
+                      richardd@cix.compulink.co.uk
+                      
+        Platforms
+                UNIX (tested on SCO, SunOS, Mach; character and X Window
+                mode)
+                
+   
+          
+          This is a shell script that runs in the background and warns
+          you to stop typing, based on how long you have been
+          continuously typing. It does not provide exercises, but it does
+          check that you really do take a break, and tells you when you
+          can start typing again.
+          
+          Typewatch now tells you how many minutes you have been typing
+          today, each time it warns you, which is useful so you know how
+          much you *really* type. It also logs information to a file that
+          you can analyse or simply print out. The warning message
+          appears on your screen (in character mode), in a pop-up window
+          (for X Windows), or as a Zephyr message (for those with Athena
+          stuff). Tim Freeman <tsf@cs.cmu.edu> has put in a lot of bug
+          fixes, extra features and support for X, Zephyr and Mach.
+          
+   Various calendar / batch queue programs
+          
+        Available from
+                Various sources
+                
+        Platforms
+                Various
+                
+   
+          
+          Any calendar/reminder program that warns you of an upcoming
+          appointment can be turned into an ad hoc RSI management tool.
+          Alternatively, use any batch queue submission program that lets
+          you submit a program to run at a specific time to display a
+          message to the screen.
+          
+          Using Windows as an example: create a Calendar file, and
+          include this filename in your WIN.INI's 'load=' line so you get
+          it on every startup of Windows. Suppose you want to have breaks
+          every 30 minutes, starting from 9 am. Press F7 (Special
+          Time...) to enter an appointment, enter 9:30, hit Enter, and
+          type some text in saying what the break is for. Then press F5
+          to set an alarm on this entry, and repeat for the next
+          appointment. By using Windows Recorder, you can record the
+          keystrokes that set up breaks throughout a day in a .REC file.
+          Put this file on your 'run=' line, as above, and you will then,
+          with a single keypress, be able to set up your daily
+          appointments with RSI exercises.
+          
+          The above method should be adaptable to most calendar programs.
+          An example using batch jobs would be to submit a simple job
+          that runs at 9:30 am and warns you to take a break; this will
+          depend a lot on your operating system.
+          
+          On Windows 3.x, you can use Barclock 2.2 or above - this gives
+          you a clock in the current window title bar, and also lets you
+          type in a message to be popped up every hour (or even more
+          frequently if you set multiple alarms). Not intended for this
+          purpose but simple and effective, Barclock is available on many
+          BBSs as BARCLK22.ZIP.
+          
+          While these approaches are not ideal, they are a good way of
+          forcing yourself to take a break if you can't get hold of a
+          suitable RSI management tool. If you are into programming you
+          might want to write a version of Typewatch (see above) for your
+          operating system, using batch jobs or whatever fits best.
+          
+   Digital watches with count-down timers
+          
+        Available from
+                Various sources, e.g. Casio BP-100.
+                
+   
+          
+          Many digital watches have timers that count down from a
+          settable number of minutes; they usually reset easily to that
+          number, either manually or automatically.
+          
+          While these are a very basic tool, they are very useful if you
+          are writing, reading, driving, or doing anything away from a
+          computer which can still cause or aggravate RSI. The great
+          advantage is that they remind you to break from whatever you
+          are doing.
+          
+        Comments
+                My own experience was that cutting down a lot on my
+                typing led to my writing a lot more, and still reading as
+                much as ever, which actually aggravated the RSI in my
+                right arm though the left arm improved. Getting a
+                count-down timer watch has been very useful on some
+                occasions where I write a lot in a day.
+                
+                I have tried an old fashioned hour-glass type egg timer,
+                but these are not much good because they do not give an
+                audible warning of the end of the time period!
+                
+   
+     _________________________________________________________________
+   
+Keyboard and mouse control tools
+
+   
+   
+   Keyboard control tools enable you to change your keyboard mapping so
+   you can type with one hand, or with a different two-handed layout.
+   One-handed typing tools may help, but be VERY careful about how you
+   use them - if you keep the same overall typing workload you are
+   doubling your hand use for the hand that you use for typing, and may
+   therefore simply cause your remaining "good" hand/arm to deteriorate
+   rapidly. There is probably a large number of people who have worsened
+   their RSI in this way and regret it.
+   
+   Mouse control tools change the way your mouse works to avoid or modify
+   operations that are painful - mouse dragging is a common problem.
+   
+   hsh (public domain)
+          
+        Available via anonymous ftp
+                ftp://ftp.csua.berkeley.edu/pub/typing-injury/software/hs
+                h.shar
+                Platforms
+                UNIX (don't know which ones)
+                
+   
+          
+          Allows one-handed typing and other general keyboard remappings.
+          Only works through tty's (so you can use it with a terminal or
+          an xterm, but not most X programs).
+          
+   Dvorak keyboard tools (various)
+          
+        Available tools
+                
+              X window system software, via anonymous ftp
+                      ftp://ftp.csua.berkeley.edu/pub/typing-injury/softw
+                      are/xdvorak.c
+                      
+              Microsoft systems
+                      Standard in Microsoft Windows, Windows for
+                      Workgroups and Windows NT Available as a free
+                      add-on for MS-DOS
+                      
+        
+                
+        To quote the Microsoft documentation
+                Dvorak keyboard layouts are based on designs created by
+                August Dvorak, a professor at the University of
+                Washington during the 1930s and 1940s. Dr. Dvorak studied
+                the way people type standard English, and determined the
+                most common letter combinations. He then designed new
+                keyboard layouts to speed up typing and reduce fatigue.
+                These layouts, now called Dvorak or simplified keyboards,
+                were initially developed for two-handed typists.
+                Following World War II, Dvorak layouts were developed for
+                typists who use the right or left hand alone.
+                
+   
+          
+          It is doubtful that switching to Dvorak will have a major
+          impact on RSI, but it may be helpful in preventing RSI. If you
+          do switch, your typing rate will go down a lot initially, which
+          will help!
+          
+          Microsoft Windows products support Dvorak as a standard
+          keyboard layout - look in the International setup in the
+          Control panel.
+          
+          MS-DOS supports this via the MS-DOS Supplemental Disk,
+          available from Microsoft, which includes standard and
+          one-handed Dvorak layouts. These layouts are available for
+          Windows in Application Note GA0650, available from Microsoft or
+          from various online services as GA0650.ZIP.
+          
+        In the US, training and keycap stickers for the Dvorak layout are
+                available from:
+                KEYTIME
+                4516 NE 54th St.
+                Seattle, WA 98105-2933
+                Phone: 206-324-7219 (voice and fax)
+                
+   
+          
+          If you are also looking at alternative keyboards, you might
+          also like to look at the Maltron layout, which is claimed to be
+          more efficient than Dvorak. See the alternative keyboard FAQ
+          for supplier details.
+          
+   AccessDOS, Access Pack for Windows (free commercial software)
+          
+        Available from
+                Microsoft, CompuServe, Genie, Microsoft Online, Microsoft
+                Download Service, BBSs
+                
+        Platforms
+                DOS, Windows
+                
+   
+          
+          AccessDOS has a range of keyboard and mouse control features
+          that may be useful, such as sticky shift keys to avoid
+          stretching to hold down shift at same time as other keys, and
+          using the keyboard for mouse functions. It also allows serial-
+          line interfacing of alternative keyboards and other devices.
+          AccessDOS is available from Microsoft on the MS-DOS
+          Supplemental Disk.
+          
+          Access Pack for Windows has roughly the same features but in a
+          Windows environment. The mouse functions of Access Pack for
+          Windows are useful for people who find using the mouse painful.
+          You can use the numeric keypad, with Num Lock off, to do
+          operations like drag and drop without holding down a mouse
+          button or a key on the keyboard. You can also do double click
+          from the keyboard by pressing a single key just once. You can
+          use cursor control keys for all mouse movements, though this is
+          rather slow, as you might expect. The mouse functions probably
+          work best if you can use some kind of ergonomic mouse or
+          trackball and just avoid double click and drag operations as
+          described. You can work entirely without a mouse - if you want
+          to use a real mouse as well as Access Pack functions, it must
+          be Microsoft Mouse compatible.
+          
+   PowerClicks, Mouse2 (shareware)
+          
+        Available via anonymous ftp
+                
+          + ftp://sumex.stanford.edu/info-mac/cfg/power-clicks-102.hqx
+            (PowerClicks)
+          + ftp://sumex.stanford.edu/info-mac/cfg/mouse-2.hqx (Mouse2)
+            
+        Platforms
+                Macintosh
+                
+        Cost
+                PowerClicks is $3
+                
+   
+          
+          "PowerClicks is a cdev that can replace mouse click and mouse
+          click-holding with self-defined keyboard combinations. For
+          example, I use my right hand to move the mouse around, and use
+          my left hand to press F1 for mouse click, and F2 for mouse
+          click- holding." - Charles Hsieh
+          
+          Mouse2 makes the mouse move twice as fast, so that your hand
+          doesn't have to move as far.
+-- 
+Dan Wallach    //    dwallach@cs.princeton.edu    //    Phone#: 609-683-4673
+               http://www.cs.princeton.edu/~dwallach/
+PGP 2.6.2 fingerprint: A7 FC 33 D0 99 B5 2D DE  E6 F8 8F 5A 6D D5 FE B8

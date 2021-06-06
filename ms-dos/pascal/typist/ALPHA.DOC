@@ -1,0 +1,34 @@
+Phase:  ALPHA    (TESTING RESULTS)
+Date:  09/14/94
+
+Tested Enviroments:
+
+DOS command line 5.0+     	->  PASSED OK
+Nortion Commander 3.0	  	->  PASSED OK
+Norton Editor 2.0	 	->  PASSED OK
+PCTOOLS 5.0		  	->  NOT PASSED
+Russian Language	  	->  NOT PASSED
+Turbo Pascal 7.0	  	->  PASSED OK
+Borland Pascal 7.0	  	->  PASSED OK
+Borland C++ 2.0		  	->  PASSED OK
+Brief 3.0		  	->  NOT PASSED 
+MS-DOS EDIT 5.0 (QBASIC)  	->  PASSED OK
+MS-DOS EDLIN		  	->  PASSED OK
+MS PWB 1.10		  	->  NOT PASSED
+Norton Editor 1.3B	  	->  NOT PASSED
+TURBO EditASM 1.03B	  	->  PASSED
+IBM EDITOR (E) 3.12	  	->  NOT PASSED
+
+
+LIST OF FOUND PROBLEMS:   
+- PCTOOLS don't remove first character from text pattern to replace
+- middle search (NO CASE-TRANSLATION!) for russian language
+- Analyzing of input string from beginning is taken too much garbage 
+  (maybe take string from end?)
+- BRIEF filters BS key (CTRL-H); maybe add switch <put PC scancode>;
+  because it uses own keyboard mapping scheme
+- ALT key causes some conflicts with pull-down menu based on same key
+- PWB filters all control characters, works very slowly, why??
+- NE 1.3 has same problem as PWB (filter control characters)
+- IBM E has same problem as PWB (filter control characters)
+

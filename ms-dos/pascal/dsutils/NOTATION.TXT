@@ -1,0 +1,201 @@
+
+                **************************************
+                * Copyright (C) 1991, Dima Stefankov *
+                * But available for free reproduce   *
+                **************************************
+
+
+  ********************  PREFIX DESCRIPTION NOTATION  ****************
+
+    NOTE:  Produced by Dima Stefankov, 09.17.91 - 10.25.91
+           I hearfelt thank V.V.Begtin for an advanced discussion 
+           about the structured style of computer programming and
+           also for his great support over the years.
+        
+
+        Basic idea:  Names of variables, functions, labels, etc.
+                     may be prefaced by short description of the nature
+                     of these objects.
+
+                
+ 1.    Main rule to build the prefaced name:
+
+              [Moderator][DataTypeDesc][Moderator]Name
+
+   General note: the lowercase letters may be mixed with
+                 the uppercase letters to produce the more readable text.
+
+
+        mnemonics                  data type
+     ------------     -------------------------------
+        bt                      bit
+        b                       boolean
+        ch                      char
+        db                      byte (unsigned char)
+        dw                      word (unsigned int)
+        dd                      double word (unsigned long)
+        i                       integer
+        r                       real
+        s                       string
+        sz                      string terminated by NULL (0)
+
+  Examples:     iLineCount      ---   variable of integer type
+                
+                szArgument      ---   string terminated with \0
+					(C language)
+                chUserCmd       ---   variable of char type
+
+                bFileOK         ---   boolean variable
+
+
+
+
+  2.    The following moderators are used
+        to define a corresponding data type:
+
+        mnemonics             data type moderator
+     -------------      -------------------------
+         u                    unsigned 
+         sh                   short
+         l                    long
+	 n		      near
+         g                global declaration
+         a                absolute value (constant),
+	 		     immediate value
+        
+  Examples:     liBytesInFile   ----   variable of long integer type
+  
+                uchTerminator   ----   variable of unsigned char type
+                                            (or byte type)
+
+                gdbTestResult   ----    global variable of byte type
+                
+                achESCAPE       ----    constant of char type
+                
+		aConstant	----    just a constant
+		
+
+
+
+   3.    Basic data types for some popular computer languages 
+         with the suggested mnemonics:
+        
+          ASM                         C                        PASCAL
+  ---------------------    ------------------------     -----------------------
+   char           ch        char               ch         char           ch
+   byte           db        unsigned char      uch,db     byte           db
+                            unsigned short     ushi,db    shortint       shi
+                               integer         
+   word           dw        unsigned integer   ui,dw      word           dw
+   double word    dd        long int           li         longint        li
+   real           r         float              r          real           r
+                            integer            i          integer        i
+                            unsigned long int  uli        boolean        b
+                            short int          shi        string 	 s
+			    
+
+  Examples:   C language    liCharCount    ---  char count var of longint
+
+                            dwFileHandle   ---  handle of file (word type)
+
+          Pascal language   rTempValue     ---  real type value
+                            
+                            sUserInput     ---  get user string input
+                            
+          ASM  language     chUserInKey    ---  user input key of char type
+                                                  (i.e. to byte type)
+                            ddUserFileSize --- file size of double word type  
+                              
+
+
+
+  4.    The following moderators are used
+        to construct a advanced data type with 'pointer':
+
+      mnemonics                    pointer type
+  ----------------       ----------------------------------
+        p                       pointer
+        np                      near(short) pointer 
+        lp                      long(far) pointer
+
+  Examples:     pdbCharCount    ----    pointer to var of byte type
+                
+                lpszWarnMessage ----    long pointer to null-terminated string
+                
+
+
+
+  5.   The following moderators are used
+        to construct the code functions:
+
+      mnemonics                  meaning
+  ----------------       ----------------------------------
+       _fn                      function
+       _                        procedure
+       @                        label
+       mac@                     macro
+
+
+  Examples:     _TestInput      ---     procedure
+                
+                _fndbGetChar    ---     function, return value of byte type
+                
+                _fndwSetMask    ---     function, return  word value
+                
+                _fnGetChar      ---     function, but value type at return
+                                           not specified
+                mac@DosOp       ---     macro definition or macro call
+                
+                @Exit           ---     code label
+                
+                dw@MemSize      ---     data label of word type
+                
+
+
+
+  6.    The following moderators are used
+        to construct a some special data structures
+        (they may be used without the data type definition, and
+         they may be useful for PC programmers):
+
+      mnemonics                 meaning
+  ----------------       ----------------------------------
+        h                       handle  (usually word)
+        m                       message (usually word)
+        w                       window  (usually word)
+        f                       file    (type depends on language)
+        x,y,z                   coordinates X,Y,Z (word or integer)
+        err                     error code         (usually byte)
+        cmd                     interface command  (usually byte)
+        reg                     register	   (usually byte)
+        io                      input/output       (usually byte)
+        op	                offset of address (pointer)
+        sp      	        segment of address (pointer)
+
+  Examples:     
+        hInFile    	      ---  file handle of word type     
+        
+        fINPUT                ---  file structure INPUT
+        
+        mUserAsk              ---  message  UserAsk 
+                                    (messages are often used in 
+				       object-oriented OS)
+        hdbUSER               ---  8-bit user window handle 
+        
+        errDisketteNotDrive   ---  return error code for disk handler
+        
+        errdbDisketteNotDrive ---  same as above only with the data type
+                                      description
+        cmddbTestDrive,       ---  equivalent forms to send a command
+     
+        cmdTestDrive               to disk controller
+        
+        regCMOS_A_status,     ---  status register A in CMOS memory
+        
+        regdbCMOS_A_STAT           of byte size
+
+	opUserInput	      ---  offset of variable
+
+
+********** compiled by Dima Stefankov, 07/23/91, original version ********
+

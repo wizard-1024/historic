@@ -1,0 +1,77 @@
+* File Name:                TIMELOG.DOC
+* Date:                     4 August 1997
+* Version:                  1
+* Updates count:            0
+* Purpose:                  Documentation for TIMELOG.PAS
+* Author:                   Dmitry Stefankov
+* Format:                   Simplified form of ISO/DIS 6592 standard
+
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:               TIMELOG.PAS
+Version:                    1
+Release:                    0
+Date:                       4 August 1997
+History:                    Written for internal usage of author
+                                
+
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:             no specified
+Supply order:               no specified
+Purpose:                    time logging device for humble profiling
+Area of usage:              system/DOS good hardware configuration
+Common knowledges:          no specified
+Problem description:        enables get/put/clear current time
+                            into fixed memory location to profile
+Additional knowledges:      no specified
+Agreements and terminology: standard IBM PC terminology
+Algorithms and principles:  described in source code
+Function:                   single
+Characteristics:            system software (driver),
+Restrictions:               (1) Intel computer architecture only
+                            (2) see hardware/software requirements
+Errors processing:          described in source code
+Data safety/protection:     described in source code
+Data for application:       input:  none
+                            output: none
+Programming language:       Turbo Pascal (Version 7.0+)
+Instructions to compile:    TPC  timelog.pas , where
+                            TPC is a Turbo Pascal command-line compiler
+Requirements for software:  operating system:  PC/MS-DOS (Version 3.0+)
+                    other:  no specified
+Requirements for hardware:  computer:  IBM PC, IBM PS/2 or compatible
+                   memory:  minimum 528 Kbytes
+                    other:  no specified
+Example to run:             add to CONFIG.SYS sample line like
+                            device=C:\DEV\TIMELOG.EXE -N -P
+                            From command line like
+                            timelog -?,   where -? is online help access
+Miscellaneous:              none specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:  no specified
+Program structure:          single module
+Program listing:            source code available
+Data techical description:  no specified
+Control commands:           no specified
+Work methods:               batch mode
+Messages:                   described in source code
+Setup:                      no required
+Adaptation:                 no specified
+Tests:                      no specified
+Service:                    no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                  read license agreement
+Changes to source code:     read license agreement
+Serial number:              no specified
+Price:                      read license agreement
+Other:                      nothing

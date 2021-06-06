@@ -1,0 +1,25 @@
+# Make CHRCNV for Microsoft Visual C/C++ v1.52 for 16-bit MS-DOS
+
+# $Id: makefile.msc 1.1 2000/01/22 05:27:52 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project CHRCNV.
+#
+
+TARGET = chrcnv
+
+#all: $(TARGET).exe
+
+CC     = cl
+CFLAGS = /D_MSDOS /D_MSVC /AC /WX /W3 /O2 /F 8000 /G3 /f-
+MAKEFILE = makefile.msc
+
+$(TARGET).exe:  $(TARGET).c  $(MAKEFILE)
+	$(CC) $(CFLAGS) /Tp$(TARGET).c
+
+clean:
+        del $(TARGET).obj
+	del $(TARGET).exe

@@ -1,0 +1,78 @@
+* File Name:            ASCZ2ASM.DOC
+* Date:                 2 September 1997
+* Version:              1
+* Updates count:        3
+* Purpose:              Documentation for ASCZ2ASM.PAS
+* Author:               Dmitry Stefankov
+* Format:               Simplified form of ISO/DIS 6592 standard
+
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:                   ASCZ2ASM.PAS
+Version:                        1
+Release:                        13
+Date:                           2 September 1997
+History:                        Written for internal use of author
+                                (for BIOS ToolKit)
+
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:                 no specified
+Supply order:                   no specified
+Purpose:                        formats converter
+Area of usage:                  utility program for OS
+Common knowledges:              no specified
+Problem description:            extract ASCIIZ strings to more readable form
+Additional knowledges:          no specified
+Agreements and terminology:     ASCIIZ string - string + NUL (ASCII 0)
+Algorithms and principles:      described in source code
+Function:                       single
+Characteristics:                application (utility),
+                                special class (converters)
+Restrictions:                   see hardware/software requirements
+Errors processing:              described in source code
+Data safety/protection:         described in source code
+Data for application:           input:  file containing ASCIIZ strings
+                                output: Microsoft MASM compatible format file
+Programming language:           Turbo Pascal (Version 7.0+)
+Instructions to compile:        TPC  ascz2asm.pas , where
+                                TPC is a Turbo Pascal command-line compiler
+Requirements for software:      operating system:  PC/MS-DOS (Version 3.0+)
+                                other:             no specified
+Requirements for hardware:      computer:  IBM PC, IBM PS/2 or compatible 
+                                memory:    minimum 64 Kbytes
+                                other:     no specified
+Example to run:                 ascz2asm.exe infile.asc outfile.asm 33 yes ,
+                                where
+                                <infile.asc>  -> input filename
+                                <outfile.asc>  -> output filename
+                                <33>  -> max. bytes per single ASCIIZ string
+                                <yes> -> add file offset for each ASCIIZ string
+Miscellaneous:                  none specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:      no specified
+Program structure:              single module
+Program listing:                source code available
+Data techical description:      no specified
+Control commands:               no specified
+Work methods:                   batch mode
+Messages:                       described in source code
+Setup:                          no required
+Adaptation:                     no specified
+Tests:                          no specified
+Service:                        no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                      read license agreement
+Changes to source code:         read license agreement
+Serial number:                  no specified
+Price:                          read license agreement
+Other:                          nothing

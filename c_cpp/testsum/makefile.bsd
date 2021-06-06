@@ -1,0 +1,24 @@
+# Make TESTSUM for UNIX FreeBSD GNU C/C++ v2.7.2.3
+
+# $Id: makefile.bsd 1.4 2003/02/05 04:34:25 dstef Exp dstef $
+
+#
+# Copyright (c) 1998-2003 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project TESTSUM.
+#
+
+TARGET = testsum
+
+#all: $(TARGET)
+
+CC = cc
+CFLAGS = -D_UNIX -D_FREEBSD -Wall -m486 -O2 -x c++
+MAKEFILE = makefile.bsd
+
+$(TARGET):  $(TARGET).c $(MAKEFILE)
+	 $(CC)  $(CFLAGS) -o $(TARGET) $(TARGET).c
+
+clean:
+	rm $(TARGET)

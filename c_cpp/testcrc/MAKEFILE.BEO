@@ -1,0 +1,24 @@
+# Make TESTCRC for BEOS GNU C/C++ 2.9-beos-99r1beta
+
+# $Id: makefile.beo 1.1 2000/01/21 20:24:38 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+# Distributed under license by the Free Software Foundation, Inc. (GPL)
+#
+# This file is part of project TESTCRC.
+#
+
+TARGET = testcrc
+
+#all: $(TARGET)
+
+CC = cc
+CFLAGS = -D_UNIX -D_BEOS -Wall -m486 -O2
+MAKEFILE = makefile.beo
+
+$(TARGET):  $(TARGET).c $(MAKEFILE)
+	 $(CC)  $(CFLAGS) -o $(TARGET) $(TARGET).c
+
+clean:
+	rm $(TARGET)

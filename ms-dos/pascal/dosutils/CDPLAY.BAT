@@ -1,0 +1,1 @@
+atapicd.exe -load:1 -play:1 -sbport:0x220

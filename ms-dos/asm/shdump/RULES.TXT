@@ -1,0 +1,7 @@
+1: The programm must create it's own file
+2: The file created must be erasable
+3: The programm must: not crash dos when ending
+4: The programm must always work, don't use the fact that sometimes
+registers are 0 on start up (I did that error while debugging my
+programm under TD)
+5: The programm must dump the whole PC memory that is 1048567 bytes

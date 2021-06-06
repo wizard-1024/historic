@@ -1,0 +1,93 @@
+* File Name:            IDE-ATA.DOC
+* Date:                 29 June 1997
+* Version:              1
+* Updates count:        15
+* Purpose:              Documentation for IDE-ATA.PAS
+* Author:               Dmitry Stefankov
+* Format:               Simplified form of ISO/DIS 6592 standard
+
+
+------------------- Part 1 (Identification) ------------------------------
+
+Program Name:                   IDE-ATA.PAS
+Version:                        2
+Release:                        63
+Date:                           24 November 1998
+History:                        Original idea was found in the program
+                                written by Thomas J. Newman (1991) which is
+                                called IDE-INFO. I wrote my program because
+                                I found in July of 1992 the sowjet program
+                                IDE-BUS in which a stolen code from Newman's 
+                                IDE-INFO is present. I was angry. I like 
+                                neither a lie and a stealing. I wrote my own
+                                version with indication of original source of
+                                idea of my program. My Great Thanks to Thomas!
+                                I hope this version is reported about
+                                IDE-ATA drive all useful info what we need.
+                                
+                                
+
+------------------- Part 2 (General) -------------------------------------
+
+Responsibility:                 no specified
+Supply order:                   no specified
+Purpose:                        PC hard drive hardware identification
+Area of usage:                  utility program for OS/hardware
+Common knowledges:              no specified
+Problem description:            get an internal hardware information
+                                about the IBM PC IDE/ATA drive
+Additional knowledges:          no specified
+Agreements and terminology:     standard IBM PC hardware/BIOS/DOS
+                                acronyms and abbreviations
+Algorithms and principles:      described in source code
+Function:                       (a) IDE-ATA drive internal information
+                                (b) Suggested CMOS drive types determination
+                                (c) Suggested CMOS drive types determination
+                                    for maximum available drive capacity
+                                (d) ROM BIOS HDD types table output
+                                (e) ESDI w/o on-board BIOS drive internal info
+Characteristics:                application (utility),
+                                special class (hardware information)
+Restrictions:                   see hardware/software requirements
+Errors processing:              described in source code
+Data safety/protection:         described in source code
+Data for application:           input:  binary file (size = 512 bytes)
+                                output: binary file (size = 512 bytes)
+                                Note: both are optional
+Programming language:           Turbo Pascal (Version 7.0+)
+Instructions to compile:        TPC  ide-ata.pas , where
+                                TPC is a Turbo Pascal command-line compiler
+Requirements for software:      operating system:  PC/MS-DOS (Version 3.0+)
+                                other:             no specified
+Requirements for hardware:      computer:  IBM PC, IBM PS/2 or compatible 
+                                memory:    minimum 128 Kbytes
+                                processor: Intel 80186 or higher
+                                other:     no specified
+Example to run:                 ide-ata.exe /? , where
+                                </?>  -> ask on-line help about how to run
+Miscellaneous:                  Magic Keywords: none
+                                Other: no specified
+
+
+------------------- Part 3 (Technical) -----------------------------------
+
+Terminolgy and agreements:      no specified
+Program structure:              single module
+Program listing:                source code available
+Data techical description:      no specified
+Control commands:               no specified
+Work methods:                   batch mode
+Messages:                       described in source code
+Setup:                          no required
+Adaptation:                     no specified
+Tests:                          no specified
+Service:                        no specified
+
+
+------------------- Part 4 (Miscellaneous) -------------------------------
+
+Guarantee:                      read license agreement
+Changes to source code:         read license agreement
+Serial number:                  no specified
+Price:                          read license agreement
+Other:                          nothing

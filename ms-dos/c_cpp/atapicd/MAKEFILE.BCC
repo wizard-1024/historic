@@ -1,0 +1,54 @@
+#
+# "$Id: makefile.bcc 1.1 1999/01/02 03:01:31 dstef Exp dstef $"
+#
+
+PROJECT = atapicd
+
+CC = bcc
+CFLAGS = -mc -c
+INCLUDEPATH = $(INCLUDE)
+LIBPATH = $(LIB)
+LINK = tlink
+LFLAGS = /c/x/L$(LIBPATH)
+
+.c.obj:
+  $(CC) $(CFLAGS) {$< }
+
+.cpp.obj:
+  $(CC) $(CFLAGS) {$< }
+
+HPP_DEPENDENCIES = sb.hpp inth.hpp fproto.hpp extern.hpp compile.hpp \
+                   cdrom.hpp atapicd.hpp ata.hpp atapi.hpp
+
+CPP_DEPENDENCIES = output.cpp sb.cpp main.cpp inth.cpp info.cpp ata.cpp \
+                   data.cpp misc.cpp audio.cpp atapicd.cpp atapi.cpp
+
+EXE_DEPENDENCIES = $(HPP_DEPENDENCIES) $(CPP_DEPENDENCIES) \
+                   data.obj sb.obj output.obj audio.obj ata.obj inth.obj \
+                   misc.obj info.obj atapi.obj atapicd.obj main.obj
+
+$(PROJECT).exe: $(EXE_DEPENDENCIES)
+         $(LINK) $(LFLAGS)  @&&|
+c0c.obj+
+data.obj+
+main.obj+
+atapi.obj+
+atapicd.obj+
+sb.obj+
+output.obj+
+ata.obj+
+inth.obj+
+audio.obj+
+misc.obj+
+info.obj
+atapicd
+atapicd
+emu.lib+
+mathc.lib+
+cc.lib
+|
+
+clean:
+     del *.exe
+     del *.obj
+                         

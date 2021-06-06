@@ -1,0 +1,1 @@
+pwdzip zipfile encrdfile chrmaptabl userpwdfile minpwdlen maxpwdlen descpwd bmode fndpwdfile

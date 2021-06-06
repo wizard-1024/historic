@@ -1,0 +1,23 @@
+Bad option -h.
+
+
+Usage: ping [-t] [-a] [-n count] [-l size] [-f] [-i TTL] [-v TOS]
+            [-r count] [-s count] [[-j host-list] | [-k host-list]]
+            [-w timeout] target_name
+
+Options:
+    -t             Ping the specified host until stopped.
+                   To see statistics and continue - type Control-Break;
+                   To stop - type Control-C.
+    -a             Resolve addresses to hostnames.
+    -n count       Number of echo requests to send.
+    -l size        Send buffer size.
+    -f             Set Don't Fragment flag in packet.
+    -i TTL         Time To Live.
+    -v TOS         Type Of Service.
+    -r count       Record route for count hops.
+    -s count       Timestamp for count hops.
+    -j host-list   Loose source route along host-list.
+    -k host-list   Strict source route along host-list.
+    -w timeout     Timeout in milliseconds to wait for each reply.
+

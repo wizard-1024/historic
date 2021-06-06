@@ -1,0 +1,30 @@
+
+ ---------------------------------------------------------------------------
+
+  WW	         WW   IIIIII   ZZZZZZZZ      AAA	RRRR       DDDDD
+   WW    W      WW      II	     ZZ     A   A	R   R	   D    D
+    WW	  W    WW       II	   ZZ	   A     A	R   R	   D     D
+     WW  WWW  WW        II       ZZ	   AAAAAAA	RRRR	   D     D
+      WW W W WW		II     ZZ	   A     A	R   R	   D    D
+       WW   WW	      IIIIII   ZZZZZZZZ	   A     A      R    R	   DDDDD
+
+ ---------------------------------------------------------------------------
+
+
+ Archive:  FREEWARE.ZIP
+ Version:  2
+ Release:  1
+ Project:  Non-Profit High Quality Professional Software,
+	   Available for All World
+ Created:  Jul, 4,  1993
+ Updated:  Oct, 28, 1993
+	   Nov, 22  1993
+	   Jan, 19  1994
+           Sep, 20, 1994
+           Jul, 27, 1997
+           Nov, 24, 1998
+ Author:   Dmitry V. Stefankov  
+ E-mail:   Internet:  dstef@nsl.ru, wizard@radio-msu.net
+ Comment:  This archive file contains  source code files, sample files,
+	   help files, documentation files,binary, and executable files 
+           from the project decribed above.

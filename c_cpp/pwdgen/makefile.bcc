@@ -1,0 +1,23 @@
+# Make PWDGEN for Borland C/C++ v3.1 (MS-DOS, 16-bit)
+
+# $Id: makefile.bcc 1.1 2000/10/07 19:09:40 dstef Exp dstef $
+
+#
+# Copyright (c) 2000 Dmitry Stefankov
+#
+# This file is part of project PWDGEN.
+#
+
+TARGET = pwdgen
+
+#all: $(TARGET).exe
+
+c_flags = -D_MSDOS -D_BCC -A
+
+$(TARGET).exe:  $(TARGET).c
+	bcc  $(c_flags) $(TARGET).c
+
+clean:
+	del $(TARGET).obj
+	del $(TARGET).exe
+  

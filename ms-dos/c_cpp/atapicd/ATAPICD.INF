@@ -1,0 +1,45 @@
+File name: ATACD203.ZIP
+One line description: ATAPI CD-ROM Drive Identification program v2.03
+Replaces:
+Suggested Garbo directory: /pc/cd
+Uploader name & email: Dmitry V. Stefankov, dima@mccbn.ru
+Author or company: Dmitry V. Stefankov
+Email address: wizard@radio-msu.net
+Surface address: 4-2-30, Isakowskogo Str., Moscow, 123181, Russia
+Special requirements: NO
+Shareware payment required from private users: NO
+Shareware payment required from corporates: NO
+Distribution limitations: NO
+Garbo CD-ROM distribution allowed without preconditions: YES
+Demo: NO
+Nagware: NO
+Self-documenting: YES
+External documentation included: YES / 13 KB
+Source included: NO
+Size: 39 KB
+10 lines description:
+ATAPICD Drive Identification Program v2.03 displays a lot
+of useful information about ATAPI CD-ROM drive(s) attached to PC computer.
+ATAPI v1.2, ATAPI 2.5, ATAPI 2.6 specifications are supported as 
+it is recommended in these standards. Useful features: 
+support of 4 standard controllers,
+user-defined hardware addresses to find ATAPI drive, polling/interrupt
+methods to detect ATAPI drive, writing raw dump of identify information 
+to files and much other.
+Long description:
+ATAPICD Drive Identification Program v2.03 is the well-known
+information utility about attached ATAPI CD-ROM drive(s) to PC computer.
+This program is displayed the identification information according
+the ATAPI 1.2, ATAPI 2.5, ATAPI 2.6 specifications. Program is used 
+the polling and/or interrupt method to talk directly to hardware. 
+Includes the following useful features:
+Support of all 4 standard EIDE controllers;
+User-defined hardware addresses to detect attached ATAPI drive(s);
+Write identification sector and other identify information to file;
+Reliable timing algorithm to detect ATAPI hardware;
+Debugging diagnostic;
+Online help;
+Friendly simple character-mode interface no using of heaven modern GUI;
+Reset of EIDE controller if necessary;
+Short/long form to output the information if necessary;
+And other useful features.
