@@ -1,0 +1,22 @@
+# Make SHOOTER for Borland C/C++ v3.1 for 16-bit MS-DOS
+
+# $Id: makefile.bcc 1.2 2002/01/01 20:52:50 dstef Exp dstef $
+
+#
+# Copyright (c) 2001-2002 Dmitry Stefankov
+#
+# This file is part of project SHOOTER.
+#
+
+TARGET = shooter
+
+CC     = bcc
+CFLAGS = -D_MSDOS -O2
+MAKEFILE = makefile.bcc
+
+$(TARGET).exe:  $(TARGET).c  $(MAKEFILE)
+	$(CC) $(CFLAGS) $(TARGET).c
+
+clean:
+        del $(TARGET).obj
+	del $(TARGET).exe

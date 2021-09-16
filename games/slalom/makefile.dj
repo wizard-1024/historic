@@ -1,0 +1,21 @@
+# Make SLALOM for GNU C/C++ v3.02 for 32-bit MS-DOS
+
+# $Id: makefile.dj 1.1 2002/01/15 04:08:41 dstef Exp dstef $
+
+#
+# Copyright (c) 2002 Dmitry Stefankov
+#
+# This file is part of project SLALOM.
+#
+
+TARGET = slalom
+
+CC     = gcc
+CFLAGS = -D_DJGPP -O2
+MAKEFILE = makefile.dj
+
+$(TARGET).exe:  $(TARGET).c  $(MAKEFILE)
+	$(CC) $(CFLAGS) -o $(TARGET).exe $(TARGET).c
+
+clean:
+	del $(TARGET).exe

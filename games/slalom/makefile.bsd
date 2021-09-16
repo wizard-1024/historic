@@ -1,0 +1,18 @@
+# Make SLALOM for GNU C/C++ v2.95 for 32-bit UNUX
+
+# $Id: makefile.bsd 1.1 2002/01/15 04:11:06 dstef Exp dstef $
+
+#
+# Copyright (c) 2002 Dmitry Stefankov
+#
+# This file is part of project SLALOM.
+#
+
+
+TARGET=slalom
+
+$(TARGET): $(TARGET).c
+	cc -o $(TARGET) -D_UNIX -lcurses $(TARGET).c
+
+clean:
+	rm  $(TARGET)

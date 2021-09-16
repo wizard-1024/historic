@@ -1,0 +1,26 @@
+# Make SHOOTER for Visual C/C++ 6 for 32-bit Microsoft Windows
+
+# $Id: makefile.vc6 1.1 2002/01/02 04:24:27 dstef Exp dstef $
+
+#
+# Copyright (c) 2001-2002 Dmitry Stefankov
+#
+# This file is part of project SHOOTER.
+#
+
+TARGET=shooter
+
+CC = cl
+LD = link
+CFLAGS = -D_WIN32 /c /WX
+LFLAGS = /OUT:$(TARGET).exe /SUBSYSTEM:CONSOLE 
+MAKEFILE = makefile.vc6
+
+ 
+$(TARGET):    $(TARGET).c
+	$(CC) -Fo$(TARGET).obj $(CFLAGS) $(TARGET).c
+        $(LD) $(LFLAGS) $(TARGET).obj
+
+clean:
+	del $(TARGET).obj
+	del $(TARGET).exe

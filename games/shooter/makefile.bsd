@@ -1,0 +1,18 @@
+# Make SHOOTER for GNU C/C++ v2.95 for 32-bit UNUX
+
+# $Id: makefile.bsd 1.2 2002/01/02 17:10:59 dstef Exp dstef $
+
+#
+# Copyright (c) 2001-2002 Dmitry Stefankov
+#
+# This file is part of project SHOOTER.
+#
+
+
+TARGET=shooter
+
+$(TARGET): $(TARGET).c
+	cc -o $(TARGET) -D_UNIX -lcurses $(TARGET).c
+
+clean:
+	rm  $(TARGET)

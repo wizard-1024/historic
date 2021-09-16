@@ -1,0 +1,21 @@
+# Make SHOOTER for Mingw32 GNU C/C++ v2.95 for 32-bit Microsoft Windows
+
+# $Id: makefile.mgw 1.1 2002/01/02 04:23:48 dstef Exp dstef $
+
+#
+# Copyright (c) 2001-2002 Dmitry Stefankov
+#
+# This file is part of project SHOOTER.
+#
+
+TARGET = shooter
+
+CC     = gcc
+CFLAGS = -D_WIN32 -D_MINGW32 -mconsole -mno-cygwin -Wall 
+MAKEFILE = makefile.mgw
+
+$(TARGET).exe:  $(TARGET).c  $(MAKEFILE)
+	$(CC) $(CFLAGS) -o $(TARGET).exe $(TARGET).c 
+
+clean:
+	del $(TARGET).exe
