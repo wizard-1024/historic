@@ -1,2 +1,2 @@
 # historic
- Oldest software Unix/Windows/DOS (1990-2022)
+ Oldest software Unix/Windows/DOS of Dmitry Stefankov (1990-2022)
